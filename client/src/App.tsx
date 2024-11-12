@@ -37,7 +37,8 @@ function App() {
 
       <main className="text-box">
         <hgroup className="block-primary">
-          <h2 className="block-primary-main">Non c'est Gillou</h2>
+          <h2 className="block-primary-main">Salut c'est Gillou et Michel</h2>
+          <h2 className="block-primary-main">On en a GROS !</h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
         <p>Un concours de circonstances des plus étonnants !</p>
