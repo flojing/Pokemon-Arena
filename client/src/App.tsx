@@ -42,7 +42,7 @@ function App() {
           </h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
-        <p>Vous avez lu le README ?</p>
+        <p>Un concours de circonstances des plus étonnants !</p>
       </main>
       <footer>
         Développé par la&nbsp;
