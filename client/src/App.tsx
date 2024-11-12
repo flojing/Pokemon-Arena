@@ -37,13 +37,13 @@ function App() {
 
       <main className="text-box">
         <hgroup className="block-primary">
-          <h2 className="block-primary-main">Salut c'est Gillou et Michel</h2>
-          <h2 className="block-primary-main">On en a GROS !</h2>
+          <h2 className="block-primary-main">
+            Julien en fait bel et bien el jefe
+          </h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
         <p>Un concours de circonstances des plus étonnants !</p>
       </main>
-
       <footer>
         Développé par la&nbsp;
         <a
