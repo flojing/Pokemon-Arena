@@ -40,7 +40,7 @@ function App() {
           <h2 className="block-primary-main">Non c'est Gillou</h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
-        <p>Hasard de dingue !</p>
+        <p>Un concours de circonstances des plus étonnants !</p>
       </main>
 
       <footer>
