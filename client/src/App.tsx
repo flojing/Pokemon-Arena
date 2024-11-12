@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <header>
-        <h1 className="logo">"Non c'est Gilou"</h1>
+        <h1 className="logo">"Non c'est Gillou"</h1>
       </header>
 
       <nav className="navbar">
@@ -37,7 +37,7 @@ function App() {
 
       <main className="text-box">
         <hgroup className="block-primary">
-          <h2 className="block-primary-main">Non c'est Gilou</h2>
+          <h2 className="block-primary-main">Non c'est Gillou</h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
         <p>Vous avez lu le README ?</p>
