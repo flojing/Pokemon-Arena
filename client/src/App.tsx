@@ -38,7 +38,7 @@ function App() {
       <main className="text-box">
         <hgroup className="block-primary">
           <h2 className="block-primary-main">
-            Julien juste scrum master (pour la semaine)
+            Julien en fait bel et bien el jefe
           </h2>
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
