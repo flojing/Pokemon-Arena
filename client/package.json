@@ -2,8 +2,8 @@
   "name": "@js-monorepo/client",
   "type": "module",
   "scripts": {
-    "check-types": "tsc --noEmit",
     "fix": "npx @biomejs/biome check --write .",
+    "check-types": "tsc --noEmit",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
