@@ -1,9 +1,9 @@
+import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import type { SliderValueLabelProps } from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 
 // Composant personnalisé pour afficher la valeur dans un Tooltip
 function ValueLabelComponent(props: SliderValueLabelProps) {

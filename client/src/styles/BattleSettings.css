@@ -1,69 +1,147 @@
 #battle-settings-title {
-    font-family: var(--font-family-h1);
-    font-size: var(--font-size-h1);
-    font-weight: 100;
-    margin: 40px
+  font-family: var(--font-family-h1);
+  font-size: var(--font-size-h1);
+  font-weight: 100;
+  margin: 40px;
 }
 
 #battle-settings-text {
-    font-family: var(--font-family-p);
-    font-size: var(--font-size-p);
-    text-align: justify;
+  font-family: var(--font-family-p);
+  font-size: var(--font-size-p);
+  text-align: justify;
 }
 
 #battle-settings-text span {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 #battle-settings-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+  margin: 0 10vw 0 10vw;
+}
+
+#settings-ajustments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+#settings-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#battle-settings-page
+  #settings-section
+  #settings-ajustments
+  .battle-filters-button {
+  align-self: flex-end;
+}
+
+#battle-settings-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.battle-filters-button {
+  border-radius: 20px;
+  border-style: none;
+  background: rgba(183, 199, 242, 0.58);
+  padding: 10px;
+  font-family: var(--font-family-p);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.go-to-button {
+  border-radius: 20px;
+  border-style: none;
+  background: #3b2d69;
+  padding: 14px 36px;
+  margin: 48px 0;
+  font-family: var(--font-family-button);
+  font-size: var(--font-size-button);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+}
+
+.img-button {
+  max-width: 80px;
+  background: #3b2d69;
+}
+
+@media screen and (min-width: 767px) {
+  #battle-settings-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 34px;
-    margin: 0 10vw 0 10vw;
-}
+    margin: 0 20vw 0 20vw;
+  }
 
-#settings-ajustments {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
+  #battle-settings-title {
+    font-family: var(--font-family-h1);
+    font-size: 64px;
+    font-weight: 100;
+    margin: 40px;
+  }
 
-#settings-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
+  #battle-settings-text {
+    font-family: var(--font-family-p);
+    text-align: justify;
+    font-size: 28px;
+  }
 
-#battle-settings-page #settings-section #settings-ajustments .battle-filters-button {
-    align-self: flex-end;
-}
-
-#battle-settings-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.battle-filters-button {
-    border-radius: 20px;
+  .battle-filters-button {
+    border-radius: 25px;
     border-style: none;
     background: rgba(183, 199, 242, 0.58);
-    padding: 10px;
+    padding: 10px 30px;
     font-family: var(--font-family-p);
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 500;
-}
+  }
 
-.go-to-button {
+  #settings-ajustments {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px;
+  }
+
+  #battle-settings-page
+    #settings-section
+    #settings-ajustments
+    .battle-filters-button {
+    align-self: flex-start;
+  }
+
+  #settings-section {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .go-to-button {
     border-radius: 20px;
     border-style: none;
     background: #3b2d69;
     padding: 14px 36px;
     margin: 48px 0;
     font-family: var(--font-family-button);
-    font-size: var(--font-size-button);
+    font-size: 64px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -71,77 +149,5 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: #000;
-}
-
-.img-button {
-    max-width: 80px;
-    background: #3b2d69;
-}
-
-@media screen and (min-width: 767px) {
-    #battle-settings-page {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 34px;
-        margin: 0 20vw 0 20vw;
-    }
-
-    #battle-settings-title {
-        font-family: var(--font-family-h1);
-        font-size: 64px;
-        font-weight: 100;
-        margin: 40px
-    }
-
-    #battle-settings-text {
-        font-family: var(--font-family-p);
-        text-align: justify;
-        font-size: 28px;
-    }
-
-    .battle-filters-button {
-        border-radius: 25px;
-        border-style: none;
-        background: rgba(183, 199, 242, 0.58);
-        padding: 10px 30px;
-        font-family: var(--font-family-p);
-        font-size: 28px;
-        font-weight: 500;
-    }
-
-    #settings-ajustments {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-        gap: 30px;
-    }
-
-    #battle-settings-page #settings-section #settings-ajustments .battle-filters-button {
-        align-self: flex-start;
-    }
-
-    #settings-section {
-        width: 100vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-
-    .go-to-button {
-        border-radius: 20px;
-        border-style: none;
-        background: #3b2d69;
-        padding: 14px 36px;
-        margin: 48px 0;
-        font-family: var(--font-family-button);
-        font-size: 64px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 32px;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        -webkit-text-stroke-width: 1;
-        -webkit-text-stroke-color: #000;
-    }
+  }
 }
