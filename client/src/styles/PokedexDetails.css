@@ -1,0 +1,106 @@
+.details-container {
+  background-color: var(--background-color);
+  color: white;
+  text-align: center;
+  font-family: var(--font-family-h2);
+}
+
+.bold-text {
+  font-weight: 600;
+}
+
+.details-title {
+  font-family: var(--font-family-h1);
+  font-size: 24px;
+  font-weight: 100;
+  padding: 16px;
+  text-align: start;
+}
+
+.details-name-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-bottom: 18px;
+}
+
+.details-species-container {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-bottom: 18px;
+}
+
+.details-pokemon-name {
+  font-size: 40px;
+}
+
+.details-type,
+.details-category {
+  padding: 8px 12px;
+  border: solid white 2px;
+  border-radius: 25px;
+  background-color: #4d3a8c;
+}
+
+.details-pokemon-photo {
+  width: 300px;
+  position: relative;
+  z-index: 10;
+}
+
+.image-shadow {
+  width: 265px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 265px;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #1c1636 0%,
+    rgba(81, 65, 156, 0.0) 100%
+  );
+  filter: blur(3.9000000953674316px);
+  margin: auto;
+  transform: translateY(-20px);
+  position: relative;
+}
+
+.details-description-container {
+  font-family: var(--font-family-h2);
+  background-color: #fff;
+  color: black;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  transform: translateY(-80px);
+  position: relative;
+  padding-top: 80px;
+}
+
+.details-description {
+  text-align: justify;
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-bottom: 24px;
+}
+
+.details-body-container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 50px;
+  margin-right: 50px;
+  align-items: start;
+  margin-bottom: 6px;
+  background-color: #4d3a8c;
+  color: white;
+  padding: 25px 20px;
+  border-radius: 20px;
+  box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.605);
+}
