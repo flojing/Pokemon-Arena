@@ -4,7 +4,6 @@
   "scripts": {
     "fix": "npx @biomejs/biome check --write .",
     "check-types": "tsc --noEmit",
-    "fix": "npx @biomejs/biome check --write .",
     "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
