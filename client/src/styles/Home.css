@@ -33,10 +33,37 @@ p {
 }
 
 footer {
-  margin-top: 76px;
   text-align: center;
 }
 
 .heart {
   color: red;
+}
+
+.imgFirstButton {
+  width: 121px;
+  height: 85px;
+}
+
+.imgSecondButton {
+  width: 93.221px;
+  height: 69.605px;
+}
+
+.firstButton,
+.secondButton {
+  width: 302px;
+  height: 121px;
+  border-style: none;
+  background: #3b2d69;
+  border-radius: 20px;
+  color: white;
+  font-family: var(--font-family-button);
+  font-size: var(--font-size-button);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 15px;
+  margin-bottom: 57px;
 }
