@@ -1,0 +1,15 @@
+:root {
+  /* colors */
+  --background-color: #1b1432;
+
+  /* font-style */
+  --font-family-h1: "Bangers", system-ui;
+  --font-size-h1: 54px;
+  --font-family-p: "Fredoka", sans-serif;
+  --font-size-p: 16px;
+  --font-family-h2: "Fredoka", sans-serif;
+  --font-size-h2: 24px;
+  --font-family-button: "Bangers", system-ui;
+  --font-size-button: 54px;
+  --color-font: white;
+}
