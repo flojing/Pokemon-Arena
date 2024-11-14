@@ -1,0 +1,14 @@
+.miniature-container {
+  background-color: #30265a;
+  border-radius: 20px;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.miniature-img {
+  width: 140px;
+}

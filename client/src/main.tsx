@@ -8,6 +8,18 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import "./main.css";
+import Home from "./pages/Home";
+import PokedexSearch from "./pages/PokedexSearch";
+import {
+  getAllPokemon,
+  getPokemon,
+  getPokemonCategoryTranslation,
+  getPokemonDescritpionTranslation,
+  getPokemonNameTranslation,
+  getPokemonSpecies,
+  getPokemonTypesTranslation,
+} from "./services/getApi";
+import type { GetPokemon, GetPokemonSpecies } from "./types/type";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -19,10 +31,71 @@ import "./main.css";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!
+
+const getData = async () => {
+  const language = "fr";
+  const pokemonArray = [];
+  try {
+    const allPokemon = await getAllPokemon();
+    for (const pokemon of allPokemon.results) {
+      const { id, types, height, weight, cry, stats, img, imgShiny } =
+        (await getPokemon(pokemon.url)) as GetPokemon;
+
+      const { name, category, description, generation, baseForm } =
+        (await getPokemonSpecies(id)) as GetPokemonSpecies;
+
+      const typeName = [];
+
+      for (const url of types) {
+        const translatedType = await getPokemonTypesTranslation(url, language);
+        typeName.push(translatedType);
+      }
+
+      pokemonArray.push({
+        id: id,
+        type: typeName,
+        height: height,
+        weight: weight,
+        cry: cry,
+        stats: stats,
+        img: img,
+        imgShiny: imgShiny,
+        name: getPokemonNameTranslation(name, language),
+        category: getPokemonCategoryTranslation(category, language),
+        description: getPokemonDescritpionTranslation(description, language),
+        generation: generation
+          .split("")
+          .filter((_, index) => index === 37)
+          .join(""),
+        baseForm: baseForm,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return pokemonArray;
+};
+
 const router = createBrowserRouter([
   {
-    path: "/", // The root path
     element: <App />, // Renders the App component for the home page
+    loader: () => {
+      return getData();
+    },
+    id: "data",
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/pokedex",
+        element: <PokedexSearch />,
+      },
+      {
+        path: "/pokedex/:id",
+      },
+    ],
   },
   // Try adding a new route! For example, "/about" with an About component
 ]);
