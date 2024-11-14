@@ -1,43 +1,76 @@
-.home {
+.home-container {
   background-color: var(--background-color);
   color: var(--color-font);
 }
 
-.homePage {
+.home-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-img {
+.home-logo-pokemon {
   width: 236px;
   height: 236px;
 }
 
-h1 {
+.home-title {
   font-family: var(--font-family-h1);
   font-size: 24px;
   font-weight: 100;
 }
 
-p {
+.home-first-paragraph,
+.home-second-paragraph {
   font-family: var(--font-family-p);
   margin-left: 38px;
   margin-right: 38px;
   text-align: justify;
 }
 
-.paragraph {
+.home-paragraph {
   padding-top: 64px;
   padding-bottom: 83px;
 }
 
-footer {
-  margin-top: 76px;
+.home-footer {
   text-align: center;
 }
 
-.heart {
+.home-heart {
   color: red;
+}
+
+.home-img-battle-button {
+  width: 121px;
+  height: 85px;
+}
+
+.home-img-pokedex-button {
+  width: 93.221px;
+  height: 69.605px;
+}
+
+.home-button {
+  width: 302px;
+  height: 121px;
+  border-style: none;
+  background: #3b2d69;
+  border-radius: 20px;
+  color: white;
+  font-family: var(--font-family-button);
+  font-size: var(--font-size-button);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 15px;
+  margin-bottom: 57px;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background-color: #b3aace;
+  color: #3b2d69;
 }
