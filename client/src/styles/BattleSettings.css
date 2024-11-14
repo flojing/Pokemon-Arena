@@ -20,7 +20,6 @@
   flex-direction: column;
   align-items: center;
   gap: 34px;
-  margin: 0 10vw 0 10vw;
   background-color: var(--background-color);
   color: var(--color-font);
 }
@@ -59,6 +58,7 @@
   font-family: var(--font-family-p);
   font-size: 20px;
   font-weight: 500;
+  color: var(--color-font);
 }
 
 .go-to-button {
@@ -76,10 +76,12 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   -webkit-text-stroke-width: 1;
   -webkit-text-stroke-color: #000;
+  color: var(--color-font);
 }
 
 .img-button {
-  max-width: 80px;
+  width: 102.86px;
+  height: 97.94px;
   background: #3b2d69;
 }
 
@@ -89,7 +91,6 @@
     flex-direction: column;
     align-items: center;
     gap: 34px;
-    margin: 0 20vw 0 20vw;
   }
 
   #battle-settings-title {
@@ -113,6 +114,7 @@
     font-family: var(--font-family-p);
     font-size: 28px;
     font-weight: 500;
+    color: var(--color-font);
   }
 
   #settings-ajustments {
@@ -151,5 +153,6 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: #000;
+    color: var(--color-font);
   }
 }

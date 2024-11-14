@@ -36,6 +36,7 @@ const SliderPoke = styled(Slider)(() => ({
   "& .MuiSlider-track": {
     border: "none",
     height: 3,
+    backgroundColor: "#ffffff",
   },
   "& .MuiSlider-rail": {
     opacity: 0.8,
