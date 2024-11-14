@@ -10,6 +10,7 @@ import App from "./App";
 import "./main.css";
 import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
+import PokedexDetails from "./pages/PokedexDetails";
 import PokedexSearch from "./pages/PokedexSearch";
 import {
   getAllPokemon,
@@ -99,6 +100,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/pokedex/:id",
+        element: <PokedexDetails />,
       },
     ],
   },
