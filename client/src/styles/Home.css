@@ -1,57 +1,58 @@
-.home {
+.home-container {
   background-color: var(--background-color);
   color: var(--color-font);
 }
 
-.homePage {
+.home-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-img {
+.home-logo-pokemon {
   width: 236px;
   height: 236px;
 }
-h1 {
+.home-title {
   font-family: var(--font-family-h1);
   font-size: 24px;
   font-weight: 100;
 }
 
-p {
+.home-first-paragraph,
+.home-second-paragraph {
   font-family: var(--font-family-p);
   margin-left: 38px;
   margin-right: 38px;
   text-align: justify;
 }
 
-.paragraph {
+.home-paragraph {
   padding-top: 64px;
   padding-bottom: 83px;
 }
 
-footer {
+.home-footer {
   text-align: center;
 }
 
-.heart {
+.home-heart {
   color: red;
 }
 
-.imgFirstButton {
+.home-img-first-button {
   width: 121px;
   height: 85px;
 }
 
-.imgSecondButton {
+.home-img-second-button {
   width: 93.221px;
   height: 69.605px;
 }
 
-.firstButton,
-.secondButton {
+.home-first-button,
+.home-second-button {
   width: 302px;
   height: 121px;
   border-style: none;

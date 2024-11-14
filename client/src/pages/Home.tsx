@@ -5,42 +5,46 @@ import imgSecondButton from "/src/assets/images/pokemon-pokedex-button.svg";
 
 export default function Home() {
   return (
-    <div className="home">
-      <div className="homePage">
-        <img src={logoPokemon} alt="Logo Pokemon Arena" />
-        <h1>Bienvenue sur Pokémon Arena !</h1>
-        <div className="paragraph">
-          <p>
+    <div className="home-container">
+      <div className="home-page">
+        <img
+          className="home-logo-pokemon"
+          src={logoPokemon}
+          alt="Logo Pokemon Arena"
+        />
+        <h1 className="home-title">Bienvenue sur Pokémon Arena !</h1>
+        <div className="home-paragraph">
+          <p className="home-first-paragraph">
             Explorez notre Pokédex complet pour découvrir chaque Pokémon :
             types, statistiques, évolutions… toutes les informations pour
             devenir incollable !
           </p>
           <br />
-          <p>
+          <p className="home-second-paragraph">
             Prêt pour le combat ? Choisissez votre Pokémon favori et lancez-vous
             dans des tournois épiques et personnalisés dans notre arène !
           </p>
         </div>
-        <button type="button" className="firstButton">
+        <button type="button" className="home-first-button">
           Battle
           <img
-            className="imgFirstButton"
+            className="home-img-first-button"
             src={imgFirstButton}
             alt="Pokemon Pokeball"
           />
         </button>
-        <button type="button" className="secondButton">
+        <button type="button" className="home-second-button">
           Pokedex
           <img
-            className="imgSecondButton"
+            className="home-img-second-button"
             src={imgSecondButton}
             alt="Pokemon Pokedex"
           />
         </button>
       </div>
-      <footer>
-        Made with <span className="heart">❤</span> by Justine, Florentin, Rémi
-        et Julien
+      <footer className="home-footer">
+        Made with <span className="home-heart">❤</span> by Justine, Florentin,
+        Rémi et Julien
       </footer>
     </div>
   );
