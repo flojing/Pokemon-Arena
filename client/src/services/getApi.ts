@@ -26,8 +26,8 @@ export const getPokemon = async (url: string) => {
     return {
       id: data.id,
       types: data.types.map((element: Types) => element.type.url),
-      height: data.height,
-      weight: data.weight,
+      height: data.height / 10,
+      weight: data.weight / 10,
       cry: data.cries.latest,
       stats: {
         hp: data.stats.find((element: Stats) => element.stat.name === "hp")
