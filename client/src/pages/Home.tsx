@@ -1,9 +1,19 @@
 import "/src/styles/Home.css";
+import { useNavigate } from "react-router-dom";
 import imgFirstButton from "/src/assets/images/Pokemon-removebg-preview 1.png";
 import logoPokemon from "/src/assets/images/logo-pokemon-arena.png";
 import imgSecondButton from "/src/assets/images/pokemon-pokedex-button.svg";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const handleClickPokedex = () => {
+    navigate("/pokedex");
+  };
+
+  const handleClickBattleSettings = () => {
+    navigate("/battle-settings");
+  };
   return (
     <div className="home-container">
       <div className="home-page">
@@ -25,18 +35,26 @@ export default function Home() {
             dans des tournois épiques et personnalisés dans notre arène !
           </p>
         </div>
-        <button type="button" className="home-first-button">
+        <button
+          onClick={handleClickBattleSettings}
+          type="button"
+          className="home-button"
+        >
           Battle
           <img
-            className="home-img-first-button"
+            className="home-img-battle-button"
             src={imgFirstButton}
             alt="Pokemon Pokeball"
           />
         </button>
-        <button type="button" className="home-second-button">
+        <button
+          onClick={handleClickPokedex}
+          type="button"
+          className="home-button"
+        >
           Pokedex
           <img
-            className="home-img-second-button"
+            className="home-img-pokedex-button"
             src={imgSecondButton}
             alt="Pokemon Pokedex"
           />

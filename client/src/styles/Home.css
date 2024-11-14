@@ -42,18 +42,17 @@
   color: red;
 }
 
-.home-img-first-button {
+.home-img-battle-button {
   width: 121px;
   height: 85px;
 }
 
-.home-img-second-button {
+.home-img-pokedex-button {
   width: 93.221px;
   height: 69.605px;
 }
 
-.home-first-button,
-.home-second-button {
+.home-button {
   width: 302px;
   height: 121px;
   border-style: none;
@@ -68,4 +67,10 @@
   justify-content: space-around;
   padding-left: 15px;
   margin-bottom: 57px;
+  cursor: pointer;
+}
+
+.home-button:hover {
+  background-color: #b3aace;
+  color: #3b2d69;
 }
