@@ -14,9 +14,9 @@ export interface Data {
   };
   img: string;
   imgShiny: string;
-  name: Names[];
-  category: Categories[];
-  description: Descriptions[];
+  name: string;
+  category: string;
+  description: string;
   generation: string;
   baseForm: {
     name: string;

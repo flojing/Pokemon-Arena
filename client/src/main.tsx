@@ -20,6 +20,7 @@ import {
   getPokemonTypesTranslation,
 } from "./services/getApi";
 import type { GetPokemon, GetPokemonSpecies } from "./types/type";
+import BattleSettings from "./pages/BattleSettings";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: "/pokedex",
         element: <PokedexSearch />,
+      },
+      {
+        path: "/battle-settings",
+        element: <BattleSettings />,
       },
       {
         path: "/pokedex/:id",

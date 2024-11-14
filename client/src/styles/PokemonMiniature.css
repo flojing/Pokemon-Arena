@@ -1,4 +1,4 @@
-.miniature-container {
+.pokemon-miniature-container {
   background-color: #30265a;
   border-radius: 20px;
   width: 140px;
@@ -9,6 +9,25 @@
   cursor: pointer;
 }
 
-.miniature-img {
+.pokemon-miniature-img {
   width: 140px;
+  height: 140px;
+  transition: filter 500ms;
+}
+
+.pokemon-miniature-name-hover {
+  display: none;
+  color: var(--color-font);
+  font-size: 24px;
+  position: absolute;
+  transition: display 500ms;
+}
+
+.pokemon-miniature-container:hover {
+  .pokemon-miniature-name-hover {
+    display: block;
+  }
+  .pokemon-miniature-img {
+    filter: blur(16.3574px);
+  }
 }
