@@ -8,6 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import "./main.css";
+import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
 import PokedexSearch from "./pages/PokedexSearch";
 import {
@@ -20,7 +21,6 @@ import {
   getPokemonTypesTranslation,
 } from "./services/getApi";
 import type { GetPokemon, GetPokemonSpecies } from "./types/type";
-import BattleSettings from "./pages/BattleSettings";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
