@@ -17,6 +17,7 @@
 
 .pokemon-miniature-name-hover {
   color: var(--color-font);
+  font-family: var(--font-family-p);
   font-size: 24px;
   position: absolute;
   opacity: 0;
