@@ -1,26 +1,26 @@
 export interface Data {
-  id: number;
-  types: string[];
-  height: number;
-  weight: number;
-  cry: string;
-  stats: {
-    attack: number;
-    defense: number;
-    hp: number;
-    specialAttack: number;
-    specialDefense: number;
-    speed: number;
+  id?: number;
+  type?: string[];
+  height?: number;
+  weight?: number;
+  cry?: string;
+  stats?: {
+    attack?: number;
+    defense?: number;
+    hp?: number;
+    specialAttack?: number;
+    specialDefense?: number;
+    speed?: number;
   };
-  img: string;
-  imgShiny: string;
-  name: string;
-  category: string;
-  description: string;
-  generation: string;
-  baseForm: {
-    name: string;
-    url: string;
+  img?: string;
+  imgShiny?: string;
+  name?: string;
+  category?: string;
+  description?: string;
+  generation?: string;
+  baseForm?: {
+    name?: string;
+    url?: string;
   } | null;
 }
 

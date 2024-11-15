@@ -10,6 +10,7 @@ import App from "./App";
 import "./main.css";
 import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
+import PokedexDetails from "./pages/PokedexDetails";
 import PokedexSearch from "./pages/PokedexSearch";
 import {
   getAllPokemon,
@@ -37,7 +38,7 @@ const getData = async () => {
   const language = "fr";
   const pokemonArray = [];
   try {
-    const allPokemon = await getAllPokemon();
+    const allPokemon = await getAllPokemon(151);
     for (const pokemon of allPokemon.results) {
       const { id, types, height, weight, cry, stats, img, imgShiny } =
         (await getPokemon(pokemon.url)) as GetPokemon;
@@ -99,6 +100,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/pokedex/:id",
+        element: <PokedexDetails />,
       },
     ],
   },

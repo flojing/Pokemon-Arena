@@ -7,10 +7,10 @@ import type {
   Types,
 } from "../types/type";
 
-export const getAllPokemon = async () => {
+export const getAllPokemon = async (num: number) => {
   try {
     const allPokemon = await fetch(
-      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=898",
+      `https://pokeapi.co/api/v2/pokemon?offset=0&limit=${num}`,
     );
     const data = await allPokemon.json();
     return data;
