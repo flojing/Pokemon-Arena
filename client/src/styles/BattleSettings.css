@@ -9,6 +9,7 @@
   font-family: var(--font-family-p);
   font-size: var(--font-size-p);
   text-align: justify;
+  margin: 0 38px;
 }
 
 #battle-settings-text span {
@@ -80,8 +81,8 @@
 }
 
 .img-button {
-  width: 102.86px;
-  height: 97.94px;
+  width: 100px;
+  height: 100px;
   background: #3b2d69;
 }
 
