@@ -1,23 +1,26 @@
-import { useParams, useRouteLoaderData } from "react-router-dom";
+import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
+import { useState } from "react";
 import cryIcon from "/src/assets/images/cry.png";
+import returnArrow from "/src/assets/images/left-arrow.png";
 import type { Data } from "../types/type";
 
 export default function PokedexDetails() {
-  /* const navigate = useNavigate(); */
+  const navigate = useNavigate();
+  const [isShiny, setIsShiny] = useState(false);
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
   const pokemon = data.find((element) => element.id === Number(id));
   const {
     name,
     img,
-    /* imgShiny, */
+    imgShiny,
     type,
     description,
     category,
     height,
     weight,
-    /*  cry, */
+    cry,
   } = pokemon || {
     height: 0,
     weight: 0,
@@ -31,11 +34,29 @@ export default function PokedexDetails() {
     }
     return id;
   };
-
+  const handleClickPlayCry = () => {
+    const audio = new Audio(cry);
+    audio.play();
+  };
+  const handleClickTurnShiny = () => {
+    setIsShiny(!isShiny);
+  };
+  const handleClickBackToList = () => {
+    navigate("/pokedex");
+  };
   return (
     <div>
       <div className="details-container">
-        <h1 className="details-title">Pokédex</h1>
+        <div className="pokedex-detail-header">
+          <img
+            onKeyDown={handleClickBackToList}
+            onClick={handleClickBackToList}
+            className="return-arrow-icon"
+            src={returnArrow}
+            alt="Fléche de retour en arrière"
+          />
+          <h1 className="details-title">Pokédex</h1>
+        </div>
         <ul className="details-name-container">
           <li className="details-pokemon-name">{name}</li>
           <li className="details-pokemon-id">
@@ -50,7 +71,13 @@ export default function PokedexDetails() {
             <b className="bold-text">Catégorie</b> : {category}
           </li>
         </ul>
-        <img className="details-pokemon-photo" src={img} alt="Pokémon" />
+        <img
+          onKeyDown={handleClickTurnShiny}
+          onClick={handleClickTurnShiny}
+          className="details-pokemon-photo"
+          src={isShiny ? imgShiny : img}
+          alt="Pokémon"
+        />
       </div>
       <div className="details-description-container">
         <div className="image-shadow"> </div>
@@ -67,7 +94,13 @@ export default function PokedexDetails() {
             </p>
           </div>
           <div className="cry-container">
-            <img className="cry-icon" src={cryIcon} alt="" />
+            <img
+              onKeyDown={handleClickPlayCry}
+              onClick={handleClickPlayCry}
+              className="cry-icon"
+              src={cryIcon}
+              alt=""
+            />
           </div>
         </div>
       </div>
