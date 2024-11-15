@@ -29,6 +29,27 @@
   font-size: 20px;
   font-family: var(--font-family-p);
   border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+#pokemon-search-input:focus {
+  outline: none;
+}
+
+#pokemon-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#imageSearchBar {
+  height: 24px;
+  margin: 6px 8px;
+  color: white;
+}
+
+#pokedex-search-bar {
+  display: flex;
   border-radius: 10px;
-  padding: 2px;
+  background-color: #3b2d69;
+  padding-right: 8px;
 }
