@@ -2,8 +2,8 @@ import { useRouteLoaderData } from "react-router-dom";
 import PokemonMiniature from "../components/PokemonMiniature";
 import "../styles/PokedexSearch.css";
 import { useState } from "react";
-import type { Data } from "../types/type";
 import imageSearchBar from "../assets/images/loupe.svg";
+import type { Data } from "../types/type";
 
 export default function PokedexSearch() {
   const data = useRouteLoaderData("data") as Data[];
