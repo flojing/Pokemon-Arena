@@ -38,7 +38,7 @@ const getData = async () => {
   const language = "fr";
   const pokemonArray = [];
   try {
-    const allPokemon = await getAllPokemon();
+    const allPokemon = await getAllPokemon(151);
     for (const pokemon of allPokemon.results) {
       const { id, types, height, weight, cry, stats, img, imgShiny } =
         (await getPokemon(pokemon.url)) as GetPokemon;

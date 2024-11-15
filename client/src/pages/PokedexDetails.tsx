@@ -45,7 +45,7 @@ export default function PokedexDetails() {
     navigate("/pokedex");
   };
   return (
-    <div>
+    <div className="details-page-container">
       <div className="details-container">
         <div className="pokedex-detail-header">
           <img
@@ -93,15 +93,14 @@ export default function PokedexDetails() {
               <b className="bold-text">Poids</b> : {weight} Kg
             </p>
           </div>
-          <div className="cry-container">
-            <img
-              onKeyDown={handleClickPlayCry}
-              onClick={handleClickPlayCry}
-              className="cry-icon"
-              src={cryIcon}
-              alt=""
-            />
-          </div>
+
+          <img
+            onKeyDown={handleClickPlayCry}
+            onClick={handleClickPlayCry}
+            className="cry-icon"
+            src={cryIcon}
+            alt=""
+          />
         </div>
       </div>
     </div>
