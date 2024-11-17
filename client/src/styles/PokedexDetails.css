@@ -142,3 +142,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+.previous-pokemon-img,
+.next-pokemon-img {
+  height: 8vh;
+}
