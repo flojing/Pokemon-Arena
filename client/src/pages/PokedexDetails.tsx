@@ -44,6 +44,18 @@ export default function PokedexDetails() {
   const handleClickBackToList = () => {
     navigate("/pokedex");
   };
+  const handleClickPreviousPokemon = () => {
+    const prevId = Number.parseInt(id || "0") - 1;
+    if (prevId > 0) {
+      navigate(`/pokedex/${prevId}`);
+    }
+  };
+  const handleClickNextPokemon = () => {
+    const nextId = Number.parseInt(id || "0") + 1;
+    if (nextId <= 151) {
+      navigate(`/pokedex/${nextId}`);
+    }
+  };
   return (
     <div className="details-page-container">
       <div className="details-container">
@@ -105,6 +117,8 @@ export default function PokedexDetails() {
         <div className="pokedex-details-navigation-container">
           <div className="pokedex-details-navigation-previous-container">
             <img
+              onKeyDown={handleClickPreviousPokemon}
+              onClick={handleClickPreviousPokemon}
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
               alt=""
             />
@@ -112,6 +126,8 @@ export default function PokedexDetails() {
           </div>
           <div className="pokedex-details-navigation-next-container">
             <img
+              onKeyDown={handleClickNextPokemon}
+              onClick={handleClickNextPokemon}
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
               alt=""
             />
