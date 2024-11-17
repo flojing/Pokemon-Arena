@@ -129,3 +129,16 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.pokedex-details-navigation-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.pokedex-details-navigation-previous-container,
+.pokedex-details-navigation-next-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

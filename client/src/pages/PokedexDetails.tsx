@@ -102,6 +102,22 @@ export default function PokedexDetails() {
             alt=""
           />
         </div>
+        <div className="pokedex-details-navigation-container">
+          <div className="pokedex-details-navigation-previous-container">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+              alt=""
+            />
+            <p>Précédent</p>
+          </div>
+          <div className="pokedex-details-navigation-next-container">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+              alt=""
+            />
+            <p>Suivant</p>
+          </div>
+        </div>
       </div>
     </div>
   );
