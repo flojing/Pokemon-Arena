@@ -116,6 +116,7 @@
   cursor: pointer;
   width: 30px;
   height: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .return-arrow-icon {
@@ -141,9 +142,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .previous-pokemon-img,
 .next-pokemon-img {
-  height: 8vh;
+  height: 12vh;
 }

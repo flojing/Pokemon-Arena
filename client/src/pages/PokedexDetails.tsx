@@ -44,20 +44,20 @@ export default function PokedexDetails() {
   const handleClickBackToList = () => {
     navigate("/pokedex");
   };
+  const prevId = Number.parseInt(id || "0") - 1;
+  const nextId = Number.parseInt(id || "0") + 1;
   const handleClickPreviousPokemon = () => {
-    const prevId = Number.parseInt(id || "0") - 1;
     if (prevId > 0) {
       navigate(`/pokedex/${prevId}`);
+      setIsShiny(false);
     }
   };
   const handleClickNextPokemon = () => {
-    const nextId = Number.parseInt(id || "0") + 1;
     if (nextId <= 151) {
       navigate(`/pokedex/${nextId}`);
+      setIsShiny(false);
     }
   };
-  const prevId = Number.parseInt(id || "0") - 1;
-  const nextId = Number.parseInt(id || "0") + 1;
   return (
     <div className="details-page-container">
       <div className="details-container">
@@ -117,25 +117,29 @@ export default function PokedexDetails() {
           />
         </div>
         <div className="pokedex-details-navigation-container">
-          <div className="pokedex-details-navigation-previous-container">
+          <div
+            className="pokedex-details-navigation-previous-container"
+            onKeyDown={handleClickPreviousPokemon}
+            onClick={handleClickPreviousPokemon}
+          >
             <img
               className="previous-pokemon-img"
-              onKeyDown={handleClickPreviousPokemon}
-              onClick={handleClickPreviousPokemon}
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${prevId}.gif`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${prevId}.png`}
               alt="Pokémon précédent"
             />
-            <p>Précédent</p>
+            <p>‹ Précédent</p>
           </div>
-          <div className="pokedex-details-navigation-next-container">
+          <div
+            className="pokedex-details-navigation-next-container"
+            onKeyDown={handleClickNextPokemon}
+            onClick={handleClickNextPokemon}
+          >
             <img
               className="next-pokemon-img"
-              onKeyDown={handleClickNextPokemon}
-              onClick={handleClickNextPokemon}
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${nextId}.gif`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${nextId}.png`}
               alt="Pokémon suivant"
             />
-            <p>Suivant</p>
+            <p>Suivant ›</p>
           </div>
         </div>
       </div>
