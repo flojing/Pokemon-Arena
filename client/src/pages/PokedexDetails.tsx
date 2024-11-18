@@ -117,30 +117,35 @@ export default function PokedexDetails() {
           />
         </div>
         <div className="pokedex-details-navigation-container">
-          <div
-            className="pokedex-details-navigation-previous-container"
-            onKeyDown={handleClickPreviousPokemon}
-            onClick={handleClickPreviousPokemon}
-          >
-            <img
-              className="previous-pokemon-img"
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${prevId}.png`}
-              alt="Pokémon précédent"
-            />
-            <p>‹ Précédent</p>
-          </div>
-          <div
-            className="pokedex-details-navigation-next-container"
-            onKeyDown={handleClickNextPokemon}
-            onClick={handleClickNextPokemon}
-          >
-            <img
-              className="next-pokemon-img"
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${nextId}.png`}
-              alt="Pokémon suivant"
-            />
-            <p>Suivant ›</p>
-          </div>
+          {prevId > 0 && (
+            <div
+              className="pokedex-details-navigation-previous-container"
+              onKeyDown={handleClickPreviousPokemon}
+              onClick={handleClickPreviousPokemon}
+            >
+              <img
+                className="previous-pokemon-img"
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${prevId}.png`}
+                alt="Pokémon précédent"
+              />
+              <p>‹ Précédent</p>
+            </div>
+          )}
+          <div className="pokedex-details-navigation-center-container"> </div>
+          {nextId < 152 && (
+            <div
+              className="pokedex-details-navigation-next-container"
+              onKeyDown={handleClickNextPokemon}
+              onClick={handleClickNextPokemon}
+            >
+              <img
+                className="next-pokemon-img"
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${nextId}.png`}
+                alt="Pokémon suivant"
+              />
+              <p>Suivant ›</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
