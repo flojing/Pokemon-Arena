@@ -104,6 +104,64 @@ export default function PokedexDetails() {
             Stats
           </button>
         </div>
+
+        <div className="details-stats-container">
+          <div className="details-stats">
+            <div className="details-stats-attributes-container">
+              <p className="details-stats-text">PV</p>
+              <p className="stats-level-number">56</p>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"> </div>
+            </div>
+          </div>
+          <div className="details-stats">
+            <div className="details-stats-attributes-container">
+              <p className="details-stats-text">Attaque</p>
+              <p className="stats-level-number">56</p>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"> </div>
+            </div>
+          </div>
+          <div className="details-stats">
+            <div className="details-stats-attributes-container">
+              <p className="details-stats-text">Défense</p>
+              <p className="stats-level-number">56</p>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"> </div>
+            </div>
+          </div>
+          <div className="details-stats">
+            <div className="details-stats-attributes-container">
+              <p className="details-stats-text">Attaque spé</p>
+              <p className="stats-level-number">56</p>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"> </div>
+            </div>
+          </div>
+          <div className="details-stats">
+            <div className="details-stats-attributes-container">
+              <p className="details-stats-text">Défense spé</p>
+              <p className="stats-level-number">56</p>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"> </div>
+            </div>
+          </div>
+          <div className="details-stats">
+            <div className="details-stats-attributes-container">
+              <p className="details-stats-text">Vitesse</p>
+              <p className="stats-level-number">56</p>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"> </div>
+            </div>
+          </div>
+        </div>
+
         <PokemonDetailsContent
           description={description}
           height={height}

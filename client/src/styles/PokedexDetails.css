@@ -140,6 +140,38 @@
   border: #4d3a8c solid 2px;
 }
 
+.details-stats-container {
+  padding: 24px;
+}
+
+.details-stats {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 6px;
+}
+
+.progress-bar-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+  border-radius: 3px;
+  background-color: #4d3a8c37;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 50%;
+  background-color: rgb(255, 225, 0);
+  border-radius: 3px;
+}
+
+.details-stats-attributes-container {
+  width: 48%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .cry-icon {
   cursor: pointer;
   width: 30px;
