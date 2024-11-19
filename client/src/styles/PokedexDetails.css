@@ -112,6 +112,12 @@
   box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.605);
 }
 
+.details-navigation-tabs-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 12px;
+}
+
 .cry-icon {
   cursor: pointer;
   width: 30px;

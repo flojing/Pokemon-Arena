@@ -95,6 +95,14 @@ export default function PokedexDetails() {
       </div>
       <div className="details-description-container">
         <div className="image-shadow"> </div>
+        <div className="details-navigation-tabs-container">
+          <button type="button" className="specifications-button">
+            Caractéristiques
+          </button>
+          <button type="button" className="statistics-button">
+            Stats
+          </button>
+        </div>
         <p className="details-description">
           <b className="bold-text">Description</b> : {description}
         </p>
