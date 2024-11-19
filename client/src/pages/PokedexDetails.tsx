@@ -3,6 +3,7 @@ import "/src/styles/PokedexDetails.css";
 import { useState } from "react";
 import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
+import PokemonDetailsContent from "../components/PokemonNavSpecifications";
 import type { Data } from "../types/type";
 
 export default function PokedexDetails() {
@@ -103,27 +104,13 @@ export default function PokedexDetails() {
             Stats
           </button>
         </div>
-        <p className="details-description">
-          <b className="bold-text">Description</b> : {description}
-        </p>
-        <div className="details-body-container">
-          <div className="height-weight-container">
-            <p className="details-height">
-              <b className="bold-text">Taille</b> : {height} m
-            </p>
-            <p className="details-weight">
-              <b className="bold-text">Poids</b> : {weight} Kg
-            </p>
-          </div>
-
-          <img
-            onKeyDown={handleClickPlayCry}
-            onClick={handleClickPlayCry}
-            className="cry-icon"
-            src={cryIcon}
-            alt=""
-          />
-        </div>
+        <PokemonDetailsContent
+          description={description}
+          height={height}
+          weight={weight}
+          handleClickPlayCry={handleClickPlayCry}
+          cryIcon={cryIcon}
+        />
         <div className="pokedex-details-navigation-container">
           {prevId > 0 && (
             <div
