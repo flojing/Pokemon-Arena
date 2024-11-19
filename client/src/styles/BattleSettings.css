@@ -38,11 +38,9 @@
   justify-content: space-evenly;
 }
 
-#battle-settings-page
-  #settings-section
-  #settings-ajustments
-  .battle-filters-button {
+.battle-filters-button {
   align-self: flex-end;
+  cursor: pointer;
 }
 
 #battle-settings-header {

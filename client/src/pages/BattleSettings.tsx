@@ -1,8 +1,16 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
+import { useState } from "react";
 import monImage from "../assets/images/button-play-pokeball.png";
+import SettingFilter from "../components/SettingFilter";
 
 export default function BattleSettings() {
+  const [isFilters, setIsFilters] = useState(false);
+
+  const handleClickFilters = () => {
+    setIsFilters(!isFilters);
+  };
+
   return (
     <div id="battle-settings-page">
       <header id="battle-settings-header">
@@ -26,9 +34,14 @@ export default function BattleSettings() {
       </header>
       <div id="settings-section">
         <div id="settings-ajustments">
-          <button className="battle-filters-button" type="button">
+          <button
+            className="battle-filters-button"
+            type="button"
+            onClick={handleClickFilters}
+          >
             Filtres
           </button>
+          {isFilters && <SettingFilter />}
           <CustomizedSlider />
         </div>
         <button className="go-to-button" type="button">

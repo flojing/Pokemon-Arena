@@ -56,6 +56,7 @@ export interface GetPokemonSpecies {
 export interface PokemonMiniatureProps {
   id?: number;
   img?: string;
+  name?: string;
 }
 
 export interface Types {
