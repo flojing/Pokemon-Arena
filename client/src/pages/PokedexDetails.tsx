@@ -125,7 +125,7 @@ export default function PokedexDetails({
           />
         </div>
         <div className="pokedex-details-navigation-container">
-          {prevId > 0 && (
+          {prevId > 0 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickPreviousPokemon}
@@ -140,7 +140,7 @@ export default function PokedexDetails({
             </div>
           )}
           <div> </div>
-          {nextId < 152 && (
+          {nextId < 152 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickNextPokemon}

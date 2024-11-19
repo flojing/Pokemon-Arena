@@ -8,8 +8,6 @@ export default function PokemonBattleCard({
   id,
   name,
   img,
-  type,
-  description,
 }: PokemonBattleCardProps) {
   return (
     <div className="pokemon-battle-card-container">
@@ -34,14 +32,6 @@ export default function PokemonBattleCard({
           </DialogPrimitive.Root>
         </div>
         <img src={img} className="pokemon-battle-card-img" alt="" />
-        <div className="pokemon-battle-card-description">
-          <p>
-            <b className="bold-text">Type</b> : {type?.join(" / ")}
-          </p>
-          <p>
-            <b className="bold-text">Description</b> : {description}
-          </p>
-        </div>
       </div>
     </div>
   );

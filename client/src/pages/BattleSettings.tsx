@@ -1,8 +1,14 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
+import { useNavigate } from "react-router-dom";
 import monImage from "../assets/images/button-play-pokeball.png";
 
 export default function BattleSettings() {
+  const navigate = useNavigate();
+  const handleClickBattle = () => {
+    navigate("/battle");
+  };
+
   return (
     <div id="battle-settings-page">
       <header id="battle-settings-header">
@@ -31,7 +37,11 @@ export default function BattleSettings() {
           </button>
           <CustomizedSlider />
         </div>
-        <button className="go-to-button" type="button">
+        <button
+          onClick={handleClickBattle}
+          className="go-to-button"
+          type="button"
+        >
           Play ! <img className="img-button" src={monImage} alt="Pokéball" />
         </button>
       </div>

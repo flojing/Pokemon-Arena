@@ -56,31 +56,6 @@
   margin-bottom: -20px;
 }
 
-.pokemon-battle-card-description {
-  width: 226px;
-  height: 140px;
-  background-color: #fae179;
-  border-radius: 20px;
-  border: 1px solid #fae179;
-  color: #fff;
-  font-family: var(--font-family-h2);
-  font-size: 12px;
-  font-style: normal;
-  line-height: normal;
-  padding: 45px 12px 12px 12px;
-  text-align: justify;
-  margin-top: -10px;
-  position: relative;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.bold-text {
-  font-weight: 600;
-}
-
 .info-button {
   background: none;
   border: none;
