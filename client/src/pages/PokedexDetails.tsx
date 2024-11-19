@@ -4,6 +4,7 @@ import { useState } from "react";
 import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import PokemonDetailsContent from "../components/PokemonNavSpecifications";
+import PokemonNavStats from "../components/PokemonNavStats";
 import type { Data } from "../types/type";
 
 export default function PokedexDetails() {
@@ -19,6 +20,7 @@ export default function PokedexDetails() {
     type,
     description,
     category,
+    stats,
     height,
     weight,
     cry,
@@ -105,62 +107,7 @@ export default function PokedexDetails() {
           </button>
         </div>
 
-        <div className="details-stats-container">
-          <div className="details-stats">
-            <div className="details-stats-attributes-container">
-              <p className="details-stats-text">PV</p>
-              <p className="stats-level-number">56</p>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"> </div>
-            </div>
-          </div>
-          <div className="details-stats">
-            <div className="details-stats-attributes-container">
-              <p className="details-stats-text">Attaque</p>
-              <p className="stats-level-number">56</p>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"> </div>
-            </div>
-          </div>
-          <div className="details-stats">
-            <div className="details-stats-attributes-container">
-              <p className="details-stats-text">Défense</p>
-              <p className="stats-level-number">56</p>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"> </div>
-            </div>
-          </div>
-          <div className="details-stats">
-            <div className="details-stats-attributes-container">
-              <p className="details-stats-text">Attaque spé</p>
-              <p className="stats-level-number">56</p>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"> </div>
-            </div>
-          </div>
-          <div className="details-stats">
-            <div className="details-stats-attributes-container">
-              <p className="details-stats-text">Défense spé</p>
-              <p className="stats-level-number">56</p>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"> </div>
-            </div>
-          </div>
-          <div className="details-stats">
-            <div className="details-stats-attributes-container">
-              <p className="details-stats-text">Vitesse</p>
-              <p className="stats-level-number">56</p>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"> </div>
-            </div>
-          </div>
-        </div>
+        <PokemonNavStats stats={stats} />
 
         <PokemonDetailsContent
           description={description}

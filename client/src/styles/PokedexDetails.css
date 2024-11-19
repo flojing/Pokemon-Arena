@@ -161,7 +161,6 @@
 
 .progress-bar-fill {
   height: 100%;
-  width: 50%;
   background-color: rgb(255, 225, 0);
   border-radius: 3px;
 }
