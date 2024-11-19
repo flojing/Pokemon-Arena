@@ -44,6 +44,20 @@ export default function PokedexDetails() {
   const handleClickBackToList = () => {
     navigate("/pokedex");
   };
+  const prevId = Number.parseInt(id || "0") - 1;
+  const nextId = Number.parseInt(id || "0") + 1;
+  const handleClickPreviousPokemon = () => {
+    if (prevId > 0) {
+      navigate(`/pokedex/${prevId}`);
+      setIsShiny(false);
+    }
+  };
+  const handleClickNextPokemon = () => {
+    if (nextId <= 151) {
+      navigate(`/pokedex/${nextId}`);
+      setIsShiny(false);
+    }
+  };
   return (
     <div className="details-page-container">
       <div className="details-container">
@@ -101,6 +115,37 @@ export default function PokedexDetails() {
             src={cryIcon}
             alt=""
           />
+        </div>
+        <div className="pokedex-details-navigation-container">
+          {prevId > 0 && (
+            <div
+              className="pokedex-details-navigation-previous-next-container"
+              onKeyDown={handleClickPreviousPokemon}
+              onClick={handleClickPreviousPokemon}
+            >
+              <img
+                className="previous-pokemon-img"
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${prevId}.png`}
+                alt="Pokémon précédent"
+              />
+              <p>‹ Précédent</p>
+            </div>
+          )}
+          <div> </div>
+          {nextId < 152 && (
+            <div
+              className="pokedex-details-navigation-previous-next-container"
+              onKeyDown={handleClickNextPokemon}
+              onClick={handleClickNextPokemon}
+            >
+              <img
+                className="next-pokemon-img"
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${nextId}.png`}
+                alt="Pokémon suivant"
+              />
+              <p>Suivant ›</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

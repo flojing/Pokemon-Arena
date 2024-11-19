@@ -116,6 +116,7 @@
   cursor: pointer;
   width: 30px;
   height: auto;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .return-arrow-icon {
@@ -128,4 +129,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.pokedex-details-navigation-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.pokedex-details-navigation-previous-next-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.previous-pokemon-img,
+.next-pokemon-img {
+  height: 12vh;
 }
