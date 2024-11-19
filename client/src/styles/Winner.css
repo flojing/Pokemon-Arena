@@ -1,0 +1,32 @@
+#winner-page {
+  padding: 30px;
+}
+
+.winner-button-nav {
+  border-radius: 25px;
+  border-style: none;
+  padding: 10px 20px;
+  color: white;
+  background-color: #3b2d69;
+  font-family: var(--font-family-button);
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+#winner-nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.winner-image-button {
+  height: 20px;
+}
+
+.winner-button-nav:hover {
+  background-color: #b3aace;
+  color: #3b2d69;
+  cursor: pointer;
+}
