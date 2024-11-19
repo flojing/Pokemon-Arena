@@ -110,3 +110,21 @@ export interface Categories {
     url: string;
   };
 }
+
+export interface PokemonBattleCardProps {
+  id?: number;
+  name?: string;
+  img?: string;
+  type?: string[];
+  description?: string;
+}
+
+export interface PokedexDetailsProps {
+  idBattle?: number | null;
+  isBattle?: boolean;
+}
+
+export interface Context {
+  sliderValue: number;
+  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
+}

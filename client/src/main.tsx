@@ -8,6 +8,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import "./main.css";
+import BattleSettingsProvider from "./context/BattleSettingsProvider";
+import Battle from "./pages/Battle";
 import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
 import PokedexDetails from "./pages/PokedexDetails";
@@ -99,8 +101,12 @@ const router = createBrowserRouter([
         element: <BattleSettings />,
       },
       {
+        path: "/battle",
+        element: <Battle />,
+      },
+      {
         path: "/pokedex/:id",
-        element: <PokedexDetails />,
+        element: <PokedexDetails idBattle={null} isBattle={false} />,
       },
     ],
   },
@@ -118,7 +124,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <BattleSettingsProvider>
+      <RouterProvider router={router} />
+    </BattleSettingsProvider>
   </StrictMode>,
 );
 

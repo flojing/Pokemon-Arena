@@ -3,14 +3,19 @@ import "/src/styles/PokedexDetails.css";
 import { useState } from "react";
 import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
-import type { Data } from "../types/type";
+import type { Data, PokedexDetailsProps } from "../types/type";
 
-export default function PokedexDetails() {
+export default function PokedexDetails({
+  idBattle,
+  isBattle,
+}: PokedexDetailsProps) {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
-  const pokemon = data.find((element) => element.id === Number(id));
+  const pokemon = data.find(
+    (element) => element.id === Number(isBattle ? idBattle : id),
+  );
   const {
     name,
     img,
@@ -48,14 +53,17 @@ export default function PokedexDetails() {
     <div className="details-page-container">
       <div className="details-container">
         <div className="pokedex-detail-header">
-          <img
-            onKeyDown={handleClickBackToList}
-            onClick={handleClickBackToList}
-            className="return-arrow-icon"
-            src={returnArrow}
-            alt="Fléche de retour en arrière"
-          />
-          <h1 className="details-title">Pokédex</h1>
+          {!isBattle && (
+            <img
+              onKeyDown={handleClickBackToList}
+              onClick={handleClickBackToList}
+              className="return-arrow-icon"
+              src={returnArrow}
+              alt="Fléche de retour en arrière"
+            />
+          )}
+          <div> </div>
+          {!isBattle && <h1 className="details-title">Pokédex</h1>}
         </div>
         <ul className="details-name-container">
           <li className="details-pokemon-name">{name}</li>
