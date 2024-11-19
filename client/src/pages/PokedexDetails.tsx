@@ -119,7 +119,7 @@ export default function PokedexDetails() {
         <div className="pokedex-details-navigation-container">
           {prevId > 0 && (
             <div
-              className="pokedex-details-navigation-previous-container"
+              className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickPreviousPokemon}
               onClick={handleClickPreviousPokemon}
             >
@@ -131,10 +131,10 @@ export default function PokedexDetails() {
               <p>‹ Précédent</p>
             </div>
           )}
-          <div className="pokedex-details-navigation-center-container"> </div>
+          <div> </div>
           {nextId < 152 && (
             <div
-              className="pokedex-details-navigation-next-container"
+              className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickNextPokemon}
               onClick={handleClickNextPokemon}
             >

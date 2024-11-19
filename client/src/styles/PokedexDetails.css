@@ -137,8 +137,7 @@
   padding: 12px;
 }
 
-.pokedex-details-navigation-previous-container,
-.pokedex-details-navigation-next-container {
+.pokedex-details-navigation-previous-next-container {
   display: flex;
   flex-direction: column;
   align-items: center;
