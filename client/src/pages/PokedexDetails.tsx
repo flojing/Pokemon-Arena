@@ -1,8 +1,9 @@
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
+import { getPokemonTypesTranslation } from "../services/getApi";
 import type { Data, PokedexDetailsProps } from "../types/type";
 
 export default function PokedexDetails({
@@ -11,6 +12,7 @@ export default function PokedexDetails({
 }: PokedexDetailsProps) {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
+  const [typeNames, setTypeNames] = useState<string[]>([]);
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
   const pokemon = data.find(
@@ -63,6 +65,21 @@ export default function PokedexDetails({
       setIsShiny(false);
     }
   };
+
+  useEffect(() => {
+    const getTypes = async () => {
+      if (type) {
+        const translatedTypes = [];
+        for (const url of type) {
+          const translatedType = await getPokemonTypesTranslation(url, "fr");
+          translatedTypes.push(translatedType);
+        }
+        setTypeNames(translatedTypes);
+      }
+    };
+    getTypes();
+  }, [type]);
+
   return (
     <div className="details-page-container">
       <div className="details-container">
@@ -87,7 +104,7 @@ export default function PokedexDetails({
         </ul>
         <ul className="details-species-container">
           <li className="details-type">
-            <b className="bold-text">Type</b> : {type?.join(" / ")}
+            <b className="bold-text">Type</b> : {typeNames?.join(" / ")}
           </li>
           <li className="details-category">
             <b className="bold-text">Catégorie</b> : {category}
