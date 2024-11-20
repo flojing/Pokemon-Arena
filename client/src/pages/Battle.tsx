@@ -8,8 +8,8 @@ export default function Battle() {
   const data = useRouteLoaderData("data") as Data[];
   // const { sliderValue } = useContext(BattleSettingsContext);
   // const numberOfPokemon = [8, 16, 32, 64];
-  const samplePokemon = data[24];
-  const samplePokemon2 = data[2];
+  const samplePokemon = data[5];
+  const samplePokemon2 = data[49];
   return (
     <div className="battle-page">
       <PokemonBattleCard

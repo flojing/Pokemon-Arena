@@ -128,3 +128,28 @@ export interface Context {
   sliderValue: number;
   setSliderValue: React.Dispatch<React.SetStateAction<number>>;
 }
+
+export interface Background {
+  background: string;
+}
+
+export interface TypeColor {
+  normal: Background;
+  fire: Background;
+  water: Background;
+  electric: Background;
+  grass: Background;
+  ice: Background;
+  fighting: Background;
+  poison: Background;
+  ground: Background;
+  flying: Background;
+  psychic: Background;
+  bug: Background;
+  rock: Background;
+  ghost: Background;
+  dragon: Background;
+  dark: Background;
+  steel: Background;
+  fairy: Background;
+}

@@ -1,17 +1,34 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Info, X } from "lucide-react";
 import "../styles/PokemonBattleCard.css";
+import { useEffect, useState } from "react";
+import { useRouteLoaderData } from "react-router-dom";
 import PokedexDetails from "../pages/PokedexDetails";
-import type { PokemonBattleCardProps } from "../types/type";
+import { typeColor } from "../services/battleCardBackgroundColor";
+import { getPokemonTypesTranslation } from "../services/getApi";
+import type { Data, PokemonBattleCardProps, TypeColor } from "../types/type";
 
 export default function PokemonBattleCard({
   id,
   name,
   img,
 }: PokemonBattleCardProps) {
+  const [type, setType] = useState<keyof TypeColor>("normal");
+  const data = useRouteLoaderData("data") as Data[];
+  const pokemon = data.find((element) => element.id === id);
+  const pokemonType = pokemon?.type?.[0];
+
+  useEffect(() => {
+    const getType = async () => {
+      const responseType = await getPokemonTypesTranslation(pokemonType, "en");
+      setType(responseType.toLowerCase());
+    };
+    getType();
+  }, [pokemonType]);
+
   return (
     <div className="pokemon-battle-card-container">
-      <div className="pokemon-detail-card-container">
+      <div className="pokemon-detail-card-container" style={typeColor[type]}>
         <div className="pokemon-battle-card-title">
           <p>{name}</p>
           <DialogPrimitive.Root>
