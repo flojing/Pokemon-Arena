@@ -91,9 +91,7 @@
 
 .details-description {
   text-align: justify;
-  margin-left: 24px;
-  margin-right: 24px;
-  margin-bottom: 24px;
+  padding: 24px;
 }
 
 .details-body-container {
@@ -126,18 +124,25 @@
   cursor: pointer;
 }
 
-.specifications-button {
-  color: white;
-  background-color: #4d3a8c;
-  border: none;
-  font-family: var(--font-family-h2);
-}
-
-.statistics-button {
+.tab-buttons {
   color: #4d3a8c;
   background-color: white;
   font-family: var(--font-family-h2);
   border: #4d3a8c solid 2px;
+}
+
+.tab-buttons.disabled {
+  color: #4d3a8c;
+  background-color: white;
+  font-family: var(--font-family-h2);
+  border: #4d3a8c solid 2px;
+}
+
+.tab-buttons.active {
+  color: white;
+  background-color: #4d3a8c;
+  border: none;
+  font-family: var(--font-family-h2);
 }
 
 .details-stats-container {

@@ -10,6 +10,7 @@ import type { Data } from "../types/type";
 export default function PokedexDetails() {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
+  const [activeTab, setActiveTab] = useState("specs");
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
   const pokemon = data.find((element) => element.id === Number(id));
@@ -99,23 +100,36 @@ export default function PokedexDetails() {
       <div className="details-description-container">
         <div className="image-shadow"> </div>
         <div className="details-navigation-tabs-container">
-          <button type="button" className="specifications-button tab-buttons">
+          <button
+            type="button"
+            className={`specifications-button tab-buttons ${activeTab === "specs" ? "active" : ""}`}
+            onClick={() => setActiveTab("specs")}
+            disabled={activeTab === "specs"}
+          >
             Caractéristiques
           </button>
-          <button type="button" className="statistics-button tab-buttons">
+          <button
+            type="button"
+            className={`statistics-button tab-buttons ${activeTab === "stats" ? "active" : ""}`}
+            onClick={() => setActiveTab("stats")}
+            disabled={activeTab === "stats"}
+          >
             Stats
           </button>
         </div>
 
-        <PokemonNavStats stats={stats} />
+        {activeTab === "specs" && (
+          <PokemonDetailsContent
+            description={description}
+            height={height}
+            weight={weight}
+            handleClickPlayCry={handleClickPlayCry}
+            cryIcon={cryIcon}
+          />
+        )}
 
-        <PokemonDetailsContent
-          description={description}
-          height={height}
-          weight={weight}
-          handleClickPlayCry={handleClickPlayCry}
-          cryIcon={cryIcon}
-        />
+        {activeTab === "stats" && <PokemonNavStats stats={stats} />}
+
         <div className="pokedex-details-navigation-container">
           {prevId > 0 && (
             <div
