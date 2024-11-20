@@ -55,6 +55,10 @@
 
 #pokemon-search-input:focus {
   outline: none;
+  #pokedex-search-bar {
+    border-style: solid;
+    border-color: white;
+  }
 }
 
 #pokemon-search-input::placeholder {
