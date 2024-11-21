@@ -7,10 +7,10 @@ import type {
   Types,
 } from "../types/type";
 
-export const getAllPokemon = async (num: number) => {
+export const getAllPokemon = async (offset: number, limit: number) => {
   try {
     const allPokemon = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?offset=0&limit=${num}`,
+      `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`,
     );
     const data = await allPokemon.json();
     return data;
@@ -19,12 +19,11 @@ export const getAllPokemon = async (num: number) => {
   }
 };
 
-export const getPokemon = async (url: string) => {
+export const getPokemon = async (id: number) => {
   try {
-    const pokemon = await fetch(url);
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await pokemon.json();
     return {
-      id: data.id,
       types: data.types.map((element: Types) => element.type.url),
       height: data.height / 10,
       weight: data.weight / 10,
@@ -75,11 +74,13 @@ export const getPokemonSpecies = async (id: number) => {
 };
 
 export const getPokemonTypesTranslation = async (
-  url: string,
+  url: string | undefined,
   language: string,
 ) => {
   try {
-    const pokemonTranslation = await fetch(url);
+    const pokemonTranslation = await fetch(
+      url ? url : "https://pokeapi.co/api/v2/pokemon/",
+    );
     const data = await pokemonTranslation.json();
     return data.names.find(
       (element: Localizations) => element.language.name === language,

@@ -8,8 +8,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import "./main.css";
+import BattleProvider from "./context/BattleProvider";
+import Battle from "./pages/Battle";
 import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
+import NextRound from "./pages/NextRound";
 import PokedexDetails from "./pages/PokedexDetails";
 import PokedexSearch from "./pages/PokedexSearch";
 import Winner from "./pages/Winner";
@@ -20,7 +23,6 @@ import {
   getPokemonDescritpionTranslation,
   getPokemonNameTranslation,
   getPokemonSpecies,
-  getPokemonTypesTranslation,
 } from "./services/getApi";
 import type { GetPokemon, GetPokemonSpecies } from "./types/type";
 
@@ -39,24 +41,40 @@ const getData = async () => {
   const language = "fr";
   const pokemonArray = [];
   try {
-    const allPokemon = await getAllPokemon(151);
+    const allPokemon = await getAllPokemon(0, 151);
+
     for (const pokemon of allPokemon.results) {
-      const { id, types, height, weight, cry, stats, img, imgShiny } =
-        (await getPokemon(pokemon.url)) as GetPokemon;
+      const id = Number(
+        pokemon.url
+          .split("")
+          .filter((_: string, index: number) => {
+            if (pokemon.url.length === 36) {
+              return index === 34;
+            }
+            if (pokemon.url.length === 37) {
+              return index === 34 || index === 35;
+            }
+            if (pokemon.url.length === 38) {
+              return index === 34 || index === 35 || index === 36;
+            }
+          })
+          .join(""),
+      );
+
+      const [pokemonBase, pokemonSpecies] = await Promise.all([
+        getPokemon(id),
+        getPokemonSpecies(id),
+      ]);
+
+      const { types, height, weight, cry, stats, img, imgShiny } =
+        pokemonBase as GetPokemon;
 
       const { name, category, description, generation, baseForm } =
-        (await getPokemonSpecies(id)) as GetPokemonSpecies;
-
-      const typeName = [];
-
-      for (const url of types) {
-        const translatedType = await getPokemonTypesTranslation(url, language);
-        typeName.push(translatedType);
-      }
+        pokemonSpecies as GetPokemonSpecies;
 
       pokemonArray.push({
         id: id,
-        type: typeName,
+        type: types,
         height: height,
         weight: weight,
         cry: cry,
@@ -81,7 +99,7 @@ const getData = async () => {
 
 const router = createBrowserRouter([
   {
-    element: <App />, // Renders the App component for the home page
+    element: <App />,
     loader: () => {
       return getData();
     },
@@ -96,16 +114,24 @@ const router = createBrowserRouter([
         element: <PokedexSearch />,
       },
       {
-        path: "/battle-settings",
-        element: <BattleSettings />,
-      },
-      {
         path: "/pokedex/:id",
-        element: <PokedexDetails />,
+        element: <PokedexDetails idBattle={null} isBattle={false} />,
       },
       {
         path: "/battle/winner",
         element: <Winner />,
+      },
+      {
+        path: "/battle",
+        element: <BattleSettings />,
+      },
+      {
+        path: "/battle/:currentRound/:currentMatch",
+        element: <Battle />,
+      },
+      {
+        path: "/battle/next-round",
+        element: <NextRound />,
       },
     ],
   },
@@ -123,7 +149,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <BattleProvider>
+      <RouterProvider router={router} />
+    </BattleProvider>
   </StrictMode>,
 );
 

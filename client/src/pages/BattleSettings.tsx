@@ -1,13 +1,49 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
+import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import monImage from "../assets/images/button-play-pokeball.png";
-import TurnamentStatus from "../components/TurnamentStatus";
-import "../styles/TurnamentStatus.css";
+import { useBattle } from "../context/BattleProvider";
+import type { Data } from "../types/type";
 
 export default function BattleSettings() {
+  const navigate = useNavigate();
+  const data = useRouteLoaderData("data") as Data[];
+  const { sliderValue, setRound, setMatch, setRandomPokemon } = useBattle();
+  const roundArray = [3, 4, 5, 6];
+  const matchArray = [4, 8, 16, 32];
+  const numberOfPokemonArray = [8, 16, 32, 64];
+
+  const randomizer = () => {
+    const rawResult: Data[] = [];
+    const result = [];
+    for (let i = 0; i < numberOfPokemonArray[sliderValue]; i++) {
+      const random = Math.floor(Math.random() * 151);
+      if (!rawResult.includes(data[random])) {
+        rawResult.push(data[random]);
+      } else {
+        i--;
+      }
+    }
+    const array1 = rawResult.filter(
+      (_: Data, index: number) => index % 2 === 0,
+    );
+    const array2 = rawResult.filter(
+      (_: Data, index: number) => index % 2 !== 0,
+    );
+    result.push(array1);
+    result.push(array2);
+    setRandomPokemon(result);
+  };
+
+  const handleClickBattle = () => {
+    setRound(roundArray[sliderValue]);
+    setMatch(matchArray[sliderValue]);
+    randomizer();
+    navigate(`/battle/${roundArray[sliderValue]}/1`);
+  };
+
   return (
     <div id="battle-settings-page">
-      <TurnamentStatus />
       <header id="battle-settings-header">
         <h1 id="battle-settings-title">Battle</h1>
         <p id="battle-settings-text">
@@ -34,7 +70,11 @@ export default function BattleSettings() {
           </button>
           <CustomizedSlider />
         </div>
-        <button className="go-to-button" type="button">
+        <button
+          onClick={handleClickBattle}
+          className="go-to-button"
+          type="button"
+        >
           Play ! <img className="img-button" src={monImage} alt="Pokéball" />
         </button>
       </div>
