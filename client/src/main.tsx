@@ -122,7 +122,7 @@ const router = createBrowserRouter([
         element: <Winner />,
       },
       {
-        path: "/battle-settings",
+        path: "/battle",
         element: <BattleSettings />,
       },
       {
