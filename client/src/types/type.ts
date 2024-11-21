@@ -161,3 +161,27 @@ export interface TypeColor {
   steel: Background;
   fairy: Background;
 }
+
+export interface PokemonNavSpecificationsProps {
+  description?: string;
+  height?: number;
+  weight?: number;
+  handleClickPlayCry: () => void;
+  cryIcon: string;
+}
+
+export interface PokemonNavStatsProps {
+  stats?: {
+    attack?: number;
+    defense?: number;
+    hp?: number;
+    specialAttack?: number;
+    specialDefense?: number;
+    speed?: number;
+  };
+}
+
+export interface StatsBarProps {
+  statCategory?: number;
+  statKey?: string;
+}

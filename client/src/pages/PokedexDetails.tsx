@@ -1,8 +1,10 @@
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
 import { useEffect, useState } from "react";
-import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
+import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
+import PokemonDetailsContent from "../components/PokemonNavSpecifications";
+import PokemonNavStats from "../components/PokemonNavStats";
 import { getPokemonTypesTranslation } from "../services/getApi";
 import type { Data, PokedexDetailsProps } from "../types/type";
 
@@ -13,6 +15,7 @@ export default function PokedexDetails({
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
   const [typeNames, setTypeNames] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState("specs");
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
   const pokemon = data.find(
@@ -25,6 +28,7 @@ export default function PokedexDetails({
     type,
     description,
     category,
+    stats,
     height,
     weight,
     cry,
@@ -120,27 +124,37 @@ export default function PokedexDetails({
       </div>
       <div className="details-description-container">
         <div className="image-shadow"> </div>
-        <p className="details-description">
-          <b className="bold-text">Description</b> : {description}
-        </p>
-        <div className="details-body-container">
-          <div className="height-weight-container">
-            <p className="details-height">
-              <b className="bold-text">Taille</b> : {height} m
-            </p>
-            <p className="details-weight">
-              <b className="bold-text">Poids</b> : {weight} Kg
-            </p>
-          </div>
-
-          <img
-            onKeyDown={handleClickPlayCry}
-            onClick={handleClickPlayCry}
-            className="cry-icon"
-            src={cryIcon}
-            alt=""
-          />
+        <div className="details-navigation-tabs-container">
+          <button
+            type="button"
+            className={`specifications-button tab-buttons ${activeTab === "specs" ? "active" : ""}`}
+            onClick={() => setActiveTab("specs")}
+            disabled={activeTab === "specs"}
+          >
+            Caractéristiques
+          </button>
+          <button
+            type="button"
+            className={`statistics-button tab-buttons ${activeTab === "stats" ? "active" : ""}`}
+            onClick={() => setActiveTab("stats")}
+            disabled={activeTab === "stats"}
+          >
+            Stats
+          </button>
         </div>
+
+        {activeTab === "specs" && (
+          <PokemonDetailsContent
+            description={description}
+            height={height}
+            weight={weight}
+            handleClickPlayCry={handleClickPlayCry}
+            cryIcon={cryIcon}
+          />
+        )}
+
+        {activeTab === "stats" && <PokemonNavStats stats={stats} />}
+
         <div className="pokedex-details-navigation-container">
           {prevId > 0 && !isBattle && (
             <div
