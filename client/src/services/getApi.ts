@@ -74,11 +74,13 @@ export const getPokemonSpecies = async (id: number) => {
 };
 
 export const getPokemonTypesTranslation = async (
-  url: string,
+  url: string | undefined,
   language: string,
 ) => {
   try {
-    const pokemonTranslation = await fetch(url);
+    const pokemonTranslation = await fetch(
+      url ? url : "https://pokeapi.co/api/v2/pokemon/",
+    );
     const data = await pokemonTranslation.json();
     return data.names.find(
       (element: Localizations) => element.language.name === language,

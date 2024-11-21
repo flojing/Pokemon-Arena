@@ -1,18 +1,26 @@
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
 import { useEffect, useState } from "react";
-import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
+import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
+import PokemonDetailsContent from "../components/PokemonNavSpecifications";
+import PokemonNavStats from "../components/PokemonNavStats";
 import { getPokemonTypesTranslation } from "../services/getApi";
-import type { Data } from "../types/type";
+import type { Data, PokedexDetailsProps } from "../types/type";
 
-export default function PokedexDetails() {
+export default function PokedexDetails({
+  idBattle,
+  isBattle,
+}: PokedexDetailsProps) {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
   const [typeNames, setTypeNames] = useState<string[]>([]);
+  const [activeTab, setActiveTab] = useState("specs");
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
-  const pokemon = data.find((element) => element.id === Number(id));
+  const pokemon = data.find(
+    (element) => element.id === Number(isBattle ? idBattle : id),
+  );
   const {
     name,
     img,
@@ -20,6 +28,7 @@ export default function PokedexDetails() {
     type,
     description,
     category,
+    stats,
     height,
     weight,
     cry,
@@ -83,14 +92,17 @@ export default function PokedexDetails() {
     <div className="details-page-container">
       <div className="details-container">
         <div className="pokedex-detail-header">
-          <img
-            onKeyDown={handleClickBackToList}
-            onClick={handleClickBackToList}
-            className="return-arrow-icon"
-            src={returnArrow}
-            alt="Fléche de retour en arrière"
-          />
-          <h1 className="details-title">Pokédex</h1>
+          {!isBattle && (
+            <img
+              onKeyDown={handleClickBackToList}
+              onClick={handleClickBackToList}
+              className="return-arrow-icon"
+              src={returnArrow}
+              alt="Fléche de retour en arrière"
+            />
+          )}
+          <div> </div>
+          {!isBattle && <h1 className="details-title">Pokédex</h1>}
         </div>
         <ul className="details-name-container">
           <li className="details-pokemon-name">{name}</li>
@@ -99,11 +111,11 @@ export default function PokedexDetails() {
           </li>
         </ul>
         <ul className="details-species-container">
-          <li className="details-category">
-            <b className="bold-text">Catégorie</b> : {category}
-          </li>
           <li className="details-type">
             <b className="bold-text">Type</b> : {typeNames?.join(" / ")}
+          </li>
+          <li className="details-category">
+            <b className="bold-text">Catégorie</b> : {category}
           </li>
         </ul>
         <img
@@ -116,29 +128,39 @@ export default function PokedexDetails() {
       </div>
       <div className="details-description-container">
         <div className="image-shadow"> </div>
-        <p className="details-description">
-          <b className="bold-text">Description</b> : {description}
-        </p>
-        <div className="details-body-container">
-          <div className="height-weight-container">
-            <p className="details-height">
-              <b className="bold-text">Taille</b> : {height} m
-            </p>
-            <p className="details-weight">
-              <b className="bold-text">Poids</b> : {weight} Kg
-            </p>
-          </div>
-
-          <img
-            onKeyDown={handleClickPlayCry}
-            onClick={handleClickPlayCry}
-            className="cry-icon"
-            src={cryIcon}
-            alt=""
-          />
+        <div className="details-navigation-tabs-container">
+          <button
+            type="button"
+            className={`specifications-button tab-buttons ${activeTab === "specs" ? "active" : ""}`}
+            onClick={() => setActiveTab("specs")}
+            disabled={activeTab === "specs"}
+          >
+            Caractéristiques
+          </button>
+          <button
+            type="button"
+            className={`statistics-button tab-buttons ${activeTab === "stats" ? "active" : ""}`}
+            onClick={() => setActiveTab("stats")}
+            disabled={activeTab === "stats"}
+          >
+            Stats
+          </button>
         </div>
+
+        {activeTab === "specs" && (
+          <PokemonDetailsContent
+            description={description}
+            height={height}
+            weight={weight}
+            handleClickPlayCry={handleClickPlayCry}
+            cryIcon={cryIcon}
+          />
+        )}
+
+        {activeTab === "stats" && <PokemonNavStats stats={stats} />}
+
         <div className="pokedex-details-navigation-container">
-          {prevId > 0 && (
+          {prevId > 0 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickPreviousPokemon}
@@ -153,7 +175,7 @@ export default function PokedexDetails() {
             </div>
           )}
           <div> </div>
-          {nextId < 152 && (
+          {nextId < 152 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickNextPokemon}

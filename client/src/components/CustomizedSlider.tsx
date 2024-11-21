@@ -4,6 +4,7 @@ import type { SliderValueLabelProps } from "@mui/material/Slider";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
+import { useBattle } from "../context/BattleProvider";
 
 // Composant personnalisé pour afficher la valeur dans un Tooltip
 function ValueLabelComponent(props: SliderValueLabelProps) {
@@ -50,10 +51,10 @@ const SliderPoke = styled(Slider)(() => ({
 
 // Définition des marques pour les valeurs spécifiques
 const marks = [
-  { value: 1, label: "8" },
-  { value: 2, label: "16" },
-  { value: 3, label: "32" },
-  { value: 4, label: "64" },
+  { value: 0, label: "8" },
+  { value: 1, label: "16" },
+  { value: 2, label: "32" },
+  { value: 3, label: "64" },
 ];
 
 const StyledTypography = styled(Typography)({
@@ -65,14 +66,20 @@ const StyledTypography = styled(Typography)({
 
 // Composant principal
 export default function CustomizedSlider() {
+  const { sliderValue, setSliderValue } = useBattle();
+
+  const handleChange = (_: Event, value: number | number[]) => {
+    setSliderValue(Number(value));
+  };
   return (
     <Box sx={{ width: 278 }}>
       <StyledTypography gutterBottom>Nombre de Pokémon</StyledTypography>
       <SliderPoke
         aria-label="slider"
-        defaultValue={0}
-        min={1}
-        max={4}
+        onChange={handleChange}
+        value={sliderValue}
+        min={0}
+        max={3}
         step={null} // Pour restreindre aux valeurs de `marks`
         marks={marks}
         slots={{ valueLabel: ValueLabelComponent }}
