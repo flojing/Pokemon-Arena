@@ -1,10 +1,13 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
 import monImage from "../assets/images/button-play-pokeball.png";
+import TurnamentStatus from "../components/TurnamentStatus";
+import "../styles/TurnamentStatus.css";
 
 export default function BattleSettings() {
   return (
     <div id="battle-settings-page">
+      <TurnamentStatus />
       <header id="battle-settings-header">
         <h1 id="battle-settings-title">Battle</h1>
         <p id="battle-settings-text">
