@@ -122,9 +122,6 @@
   width: 40%;
   border-radius: 20px;
   cursor: pointer;
-}
-
-.tab-buttons {
   color: #4d3a8c;
   background-color: white;
   font-family: var(--font-family-h2);

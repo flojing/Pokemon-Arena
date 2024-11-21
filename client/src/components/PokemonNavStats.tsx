@@ -1,22 +1,10 @@
-import type React from "react";
+import type { PokemonNavStatsProps } from "../types/type";
 
-interface PokemonNavStatsProps {
-  stats?: {
-    attack?: number;
-    defense?: number;
-    hp?: number;
-    specialAttack?: number;
-    specialDefense?: number;
-    speed?: number;
+export default function PokemonNavStats({ stats }: PokemonNavStatsProps) {
+  const statPercentage = (stat: number | undefined) => {
+    if (stat === undefined) return "0";
+    return `${Math.round((stat / 255) * 100)}`;
   };
-}
-
-const statPercentage = (stat: number | undefined) => {
-  if (stat === undefined) return "0";
-  return `${Math.round((stat / 255) * 100)}`;
-};
-
-const PokemonNavStats: React.FC<PokemonNavStatsProps> = ({ stats }) => {
   return (
     <div className="details-stats-container">
       <div className="details-stats">
@@ -105,6 +93,4 @@ const PokemonNavStats: React.FC<PokemonNavStatsProps> = ({ stats }) => {
       </div>
     </div>
   );
-};
-
-export default PokemonNavStats;
+}

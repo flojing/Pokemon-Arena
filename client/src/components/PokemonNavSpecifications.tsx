@@ -1,20 +1,12 @@
-import type React from "react";
+import type { PokemonNavSpecificationsProps } from "../types/type";
 
-interface PokemonNavSpecificationsProps {
-  description?: string;
-  height?: number;
-  weight?: number;
-  handleClickPlayCry: () => void;
-  cryIcon: string;
-}
-
-const PokemonNavSpecifications: React.FC<PokemonNavSpecificationsProps> = ({
+export default function PokemonNavSpecifications({
   description,
   height,
   weight,
   handleClickPlayCry,
   cryIcon,
-}) => {
+}: PokemonNavSpecificationsProps) {
   return (
     <div className="details-components-container">
       <p className="details-description">
@@ -40,6 +32,4 @@ const PokemonNavSpecifications: React.FC<PokemonNavSpecificationsProps> = ({
       </div>
     </div>
   );
-};
-
-export default PokemonNavSpecifications;
+}

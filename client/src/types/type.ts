@@ -110,3 +110,22 @@ export interface Categories {
     url: string;
   };
 }
+
+export interface PokemonNavSpecificationsProps {
+  description?: string;
+  height?: number;
+  weight?: number;
+  handleClickPlayCry: () => void;
+  cryIcon: string;
+}
+
+export interface PokemonNavStatsProps {
+  stats?: {
+    attack?: number;
+    defense?: number;
+    hp?: number;
+    specialAttack?: number;
+    specialDefense?: number;
+    speed?: number;
+  };
+}
