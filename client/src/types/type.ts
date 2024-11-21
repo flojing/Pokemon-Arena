@@ -111,6 +111,57 @@ export interface Categories {
   };
 }
 
+export interface PokemonBattleCardProps {
+  id?: number;
+  name?: string;
+  img?: string;
+  type?: string[];
+  description?: string;
+}
+
+export interface PokedexDetailsProps {
+  idBattle?: number | null;
+  isBattle?: boolean;
+}
+
+export interface Context {
+  sliderValue: number;
+  setSliderValue: React.Dispatch<React.SetStateAction<number>>;
+  round: number;
+  setRound: React.Dispatch<React.SetStateAction<number>>;
+  match: number;
+  setMatch: React.Dispatch<React.SetStateAction<number>>;
+  randomPokemon: Data[][];
+  setRandomPokemon: React.Dispatch<React.SetStateAction<Data[][]>>;
+  matchWinner: Data[];
+  setMatchWinner: React.Dispatch<React.SetStateAction<Data[]>>;
+}
+
+export interface Background {
+  background: string;
+}
+
+export interface TypeColor {
+  normal: Background;
+  fire: Background;
+  water: Background;
+  electric: Background;
+  grass: Background;
+  ice: Background;
+  fighting: Background;
+  poison: Background;
+  ground: Background;
+  flying: Background;
+  psychic: Background;
+  bug: Background;
+  rock: Background;
+  ghost: Background;
+  dragon: Background;
+  dark: Background;
+  steel: Background;
+  fairy: Background;
+}
+
 export interface PokemonNavSpecificationsProps {
   description?: string;
   height?: number;

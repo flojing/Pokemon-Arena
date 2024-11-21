@@ -1,19 +1,26 @@
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
 import PokemonDetailsContent from "../components/PokemonNavSpecifications";
 import PokemonNavStats from "../components/PokemonNavStats";
-import type { Data } from "../types/type";
+import { getPokemonTypesTranslation } from "../services/getApi";
+import type { Data, PokedexDetailsProps } from "../types/type";
 
-export default function PokedexDetails() {
+export default function PokedexDetails({
+  idBattle,
+  isBattle,
+}: PokedexDetailsProps) {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
+  const [typeNames, setTypeNames] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState("specs");
   const data = useRouteLoaderData("data") as Data[];
   const { id } = useParams();
-  const pokemon = data.find((element) => element.id === Number(id));
+  const pokemon = data.find(
+    (element) => element.id === Number(isBattle ? idBattle : id),
+  );
   const {
     name,
     img,
@@ -62,18 +69,36 @@ export default function PokedexDetails() {
       setIsShiny(false);
     }
   };
+
+  useEffect(() => {
+    const getTypes = async () => {
+      if (type) {
+        const translatedTypes = [];
+        for (const url of type) {
+          const translatedType = await getPokemonTypesTranslation(url, "fr");
+          translatedTypes.push(translatedType);
+        }
+        setTypeNames(translatedTypes);
+      }
+    };
+    getTypes();
+  }, [type]);
+
   return (
     <div className="details-page-container">
       <div className="details-container">
         <div className="pokedex-detail-header">
-          <img
-            onKeyDown={handleClickBackToList}
-            onClick={handleClickBackToList}
-            className="return-arrow-icon"
-            src={returnArrow}
-            alt="Fléche de retour en arrière"
-          />
-          <h1 className="details-title">Pokédex</h1>
+          {!isBattle && (
+            <img
+              onKeyDown={handleClickBackToList}
+              onClick={handleClickBackToList}
+              className="return-arrow-icon"
+              src={returnArrow}
+              alt="Fléche de retour en arrière"
+            />
+          )}
+          <div> </div>
+          {!isBattle && <h1 className="details-title">Pokédex</h1>}
         </div>
         <ul className="details-name-container">
           <li className="details-pokemon-name">{name}</li>
@@ -83,7 +108,7 @@ export default function PokedexDetails() {
         </ul>
         <ul className="details-species-container">
           <li className="details-type">
-            <b className="bold-text">Type</b> : {type?.join(" / ")}
+            <b className="bold-text">Type</b> : {typeNames?.join(" / ")}
           </li>
           <li className="details-category">
             <b className="bold-text">Catégorie</b> : {category}
@@ -131,7 +156,7 @@ export default function PokedexDetails() {
         {activeTab === "stats" && <PokemonNavStats stats={stats} />}
 
         <div className="pokedex-details-navigation-container">
-          {prevId > 0 && (
+          {prevId > 0 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickPreviousPokemon}
@@ -146,7 +171,7 @@ export default function PokedexDetails() {
             </div>
           )}
           <div> </div>
-          {nextId < 152 && (
+          {nextId < 152 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickNextPokemon}

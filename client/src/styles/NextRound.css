@@ -1,0 +1,27 @@
+.next-round-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  height: 100vh;
+}
+.next-round-button {
+  width: 302px;
+  height: 121px;
+  border-style: none;
+  background: #3b2d69;
+  border-radius: 20px;
+  color: white;
+  font-family: var(--font-family-button);
+  font-size: var(--font-size-button);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.next-round-button:hover {
+  background-color: #b3aace;
+  color: #3b2d69;
+}
