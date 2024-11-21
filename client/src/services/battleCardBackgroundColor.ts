@@ -55,4 +55,7 @@ export const typeColor: TypeColor = {
   fairy: {
     background: "#EE99AC",
   },
+  winner: {
+    background: "#FFFFFF",
+  },
 };
