@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import LogoVS from "/src/assets/images/logo_VS-removebg-preview 1.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import "../styles/Battle.css";
-import { useBattle } from "../context/BattleProvider";
+import { useBattle } from "../contexts/BattleProvider";
 
 export default function Battle() {
   const { currentMatch } = useParams();

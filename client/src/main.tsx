@@ -8,7 +8,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import "./main.css";
-import BattleProvider from "./context/BattleProvider";
+import BattleProvider from "./contexts/BattleProvider";
 import Battle from "./pages/Battle";
 import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
