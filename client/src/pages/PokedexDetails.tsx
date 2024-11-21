@@ -1,8 +1,8 @@
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
 import { useState } from "react";
-import cryIcon from "/src/assets/images/cry.png";
 import returnArrow from "/src/assets/images/left-arrow.png";
+import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
 import PokemonDetailsContent from "../components/PokemonNavSpecifications";
 import PokemonNavStats from "../components/PokemonNavStats";
 import type { Data } from "../types/type";

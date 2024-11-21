@@ -35,7 +35,7 @@ const PokemonNavSpecifications: React.FC<PokemonNavSpecificationsProps> = ({
           onClick={handleClickPlayCry}
           className="cry-icon"
           src={cryIcon}
-          alt=""
+          alt="Icone de son"
         />
       </div>
     </div>
