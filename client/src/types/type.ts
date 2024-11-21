@@ -136,6 +136,10 @@ export interface Context {
   setRandomPokemon: React.Dispatch<React.SetStateAction<Data[][]>>;
   matchWinner: Data[];
   setMatchWinner: React.Dispatch<React.SetStateAction<Data[]>>;
+  isBaseForm: boolean;
+  setIsBaseForm: React.Dispatch<React.SetStateAction<boolean>>;
+  isShinyBattle: boolean;
+  setIsShinyBattle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface Background {

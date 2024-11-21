@@ -3,7 +3,7 @@ import { Info, X } from "lucide-react";
 import "../styles/PokemonBattleCard.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
-import { useBattle } from "../context/BattleProvider";
+import { useBattle } from "../contexts/BattleProvider";
 import PokedexDetails from "../pages/PokedexDetails";
 import { typeColor } from "../services/battleCardBackgroundColor";
 import { getPokemonTypesTranslation } from "../services/getApi";
@@ -37,7 +37,6 @@ export default function PokemonBattleCard({
           setMatch(match / 2);
           navigate("/battle/next-round");
         } else {
-          setMatchWinner([]);
           setRandomPokemon([]);
           navigate("/battle/winner");
         }

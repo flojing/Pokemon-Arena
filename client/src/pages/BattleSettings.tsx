@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import monImage from "../assets/images/button-play-pokeball.png";
 import SettingFilter from "../components/SettingFilter";
-import { useBattle } from "../context/BattleProvider";
+import { useBattle } from "../contexts/BattleProvider";
 import type { Data } from "../types/type";
 
 export default function BattleSettings() {
@@ -74,13 +74,15 @@ export default function BattleSettings() {
       <div id="settings-section">
         <div id="settings-ajustments">
           <div className="battle-setting-filter">
-            <button
-              className="battle-filters-button"
-              type="button"
-              onClick={handleClickFilters}
-            >
-              Filtres
-            </button>
+            <div className="battle-settings-filter-button-container">
+              <button
+                className="battle-filters-button"
+                type="button"
+                onClick={handleClickFilters}
+              >
+                Filtres
+              </button>
+            </div>
             {isFilters && <SettingFilter />}
           </div>
           <CustomizedSlider />

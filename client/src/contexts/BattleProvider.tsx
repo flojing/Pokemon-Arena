@@ -9,6 +9,8 @@ export default function BattleProvider({ children }: { children: ReactNode }) {
   const [match, setMatch] = useState<number>(0);
   const [matchWinner, setMatchWinner] = useState<Data[]>([]);
   const [randomPokemon, setRandomPokemon] = useState<Data[][]>([[], []]);
+  const [isBaseForm, setIsBaseForm] = useState<boolean>(false);
+  const [isShinyBattle, setIsShinyBattle] = useState<boolean>(false);
 
   return (
     <BattleContext.Provider
@@ -23,6 +25,10 @@ export default function BattleProvider({ children }: { children: ReactNode }) {
         setRandomPokemon,
         matchWinner,
         setMatchWinner,
+        isBaseForm,
+        setIsBaseForm,
+        isShinyBattle,
+        setIsShinyBattle,
       }}
     >
       {children}

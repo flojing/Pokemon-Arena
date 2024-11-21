@@ -84,6 +84,18 @@
   background: #3b2d69;
 }
 
+.battle-setting-filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.battle-settings-filter-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media screen and (min-width: 767px) {
   #battle-settings-page {
     display: flex;
