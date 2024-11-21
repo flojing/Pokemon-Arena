@@ -4,7 +4,7 @@ import type { SliderValueLabelProps } from "@mui/material/Slider";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
-import { useBattle } from "../context/BattleSettingsProvider";
+import { useBattle } from "../context/BattleProvider";
 
 // Composant personnalisé pour afficher la valeur dans un Tooltip
 function ValueLabelComponent(props: SliderValueLabelProps) {

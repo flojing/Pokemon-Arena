@@ -1,15 +1,15 @@
-import { useRouteLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import LogoVS from "/src/assets/images/logo_VS-removebg-preview 1.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import "../styles/Battle.css";
-import type { Data } from "../types/type";
+import { useBattle } from "../context/BattleProvider";
 
 export default function Battle() {
-  const data = useRouteLoaderData("data") as Data[];
-  // const { sliderValue } = useContext(BattleSettingsContext);
-  // const numberOfPokemon = [8, 16, 32, 64];
-  const samplePokemon = data[5];
-  const samplePokemon2 = data[49];
+  const { currentMatch } = useParams();
+  const { randomPokemon } = useBattle();
+  const samplePokemon = randomPokemon[0][Number(currentMatch) - 1];
+  const samplePokemon2 = randomPokemon[1][Number(currentMatch) - 1];
+
   return (
     <div className="battle-page">
       <PokemonBattleCard

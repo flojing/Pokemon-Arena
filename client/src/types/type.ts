@@ -127,6 +127,14 @@ export interface PokedexDetailsProps {
 export interface Context {
   sliderValue: number;
   setSliderValue: React.Dispatch<React.SetStateAction<number>>;
+  round: number;
+  setRound: React.Dispatch<React.SetStateAction<number>>;
+  match: number;
+  setMatch: React.Dispatch<React.SetStateAction<number>>;
+  randomPokemon: Data[][];
+  setRandomPokemon: React.Dispatch<React.SetStateAction<Data[][]>>;
+  matchWinner: Data[];
+  setMatchWinner: React.Dispatch<React.SetStateAction<Data[]>>;
 }
 
 export interface Background {

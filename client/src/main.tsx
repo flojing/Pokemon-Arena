@@ -8,9 +8,11 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import "./main.css";
+import BattleProvider from "./context/BattleProvider";
 import Battle from "./pages/Battle";
 import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
+import NextRound from "./pages/NextRound";
 import PokedexDetails from "./pages/PokedexDetails";
 import PokedexSearch from "./pages/PokedexSearch";
 import Winner from "./pages/Winner";
@@ -39,7 +41,7 @@ const getData = async () => {
   const language = "fr";
   const pokemonArray = [];
   try {
-    const allPokemon = await getAllPokemon(0, 50);
+    const allPokemon = await getAllPokemon(0, 151);
 
     for (const pokemon of allPokemon.results) {
       const id = Number(
@@ -124,8 +126,12 @@ const router = createBrowserRouter([
         element: <BattleSettings />,
       },
       {
-        path: "/battle",
+        path: "/battle/:currentRound/:currentMatch",
         element: <Battle />,
+      },
+      {
+        path: "/battle/next-round",
+        element: <NextRound />,
       },
     ],
   },
@@ -143,7 +149,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <BattleProvider>
+      <RouterProvider router={router} />
+    </BattleProvider>
   </StrictMode>,
 );
 
