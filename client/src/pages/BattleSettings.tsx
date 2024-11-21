@@ -34,14 +34,16 @@ export default function BattleSettings() {
       </header>
       <div id="settings-section">
         <div id="settings-ajustments">
-          <button
-            className="battle-filters-button"
-            type="button"
-            onClick={handleClickFilters}
-          >
-            Filtres
-          </button>
-          {isFilters && <SettingFilter />}
+          <div className="battle-setting-filter">
+            <button
+              className="battle-filters-button"
+              type="button"
+              onClick={handleClickFilters}
+            >
+              Filtres
+            </button>
+            {isFilters && <SettingFilter />}
+          </div>
           <CustomizedSlider />
         </div>
         <button className="go-to-button" type="button">

@@ -1,6 +1,8 @@
+import "../styles/SettingFilter.css";
+
 export default function SettingFilter() {
   return (
-    <div>
+    <div className="setting-filter-container">
       <p>Generation:</p>
       <p>Type:</p>
       <p>Shiny:</p>
