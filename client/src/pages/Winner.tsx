@@ -1,7 +1,7 @@
 import "../styles/Winner.css";
+import { useNavigate } from "react-router-dom";
 import homeImage from "../assets/images/home.svg";
 import restartImage from "../assets/images/restart.svg";
-import { useNavigate } from "react-router-dom";
 
 export default function Winner() {
   const navigate = useNavigate();
