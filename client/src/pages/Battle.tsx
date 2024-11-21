@@ -2,7 +2,9 @@ import { useParams } from "react-router-dom";
 import LogoVS from "/src/assets/images/logo_VS-removebg-preview 1.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import "../styles/Battle.css";
+import TurnamentStatus from "../components/TurnamentStatus";
 import { useBattle } from "../contexts/BattleProvider";
+import "../styles/TurnamentStatus.css";
 
 export default function Battle() {
   const { currentMatch } = useParams();
@@ -12,6 +14,7 @@ export default function Battle() {
 
   return (
     <div className="battle-page">
+      <TurnamentStatus currentMatch={currentMatch} />
       <PokemonBattleCard
         name={samplePokemon.name}
         id={samplePokemon.id}
