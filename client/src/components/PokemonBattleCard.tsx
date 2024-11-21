@@ -20,7 +20,14 @@ export default function PokemonBattleCard({
   const pokemonType = pokemon?.type?.[0];
   const navigate = useNavigate();
   const { currentMatch } = useParams();
-  const { setMatchWinner, matchWinner, match, setMatch, round } = useBattle();
+  const {
+    setMatchWinner,
+    setRandomPokemon,
+    matchWinner,
+    match,
+    setMatch,
+    round,
+  } = useBattle();
 
   const handleClickWinner = () => {
     if (pokemon) {
@@ -30,6 +37,8 @@ export default function PokemonBattleCard({
           setMatch(match / 2);
           navigate("/battle/next-round");
         } else {
+          setMatchWinner([]);
+          setRandomPokemon([]);
           navigate("/battle/winner");
         }
       } else {
