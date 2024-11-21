@@ -129,3 +129,8 @@ export interface PokemonNavStatsProps {
     speed?: number;
   };
 }
+
+export interface StatsBarProps {
+  statCategory?: number;
+  statKey?: string;
+}

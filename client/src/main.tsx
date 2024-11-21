@@ -12,6 +12,7 @@ import BattleSettings from "./pages/BattleSettings";
 import Home from "./pages/Home";
 import PokedexDetails from "./pages/PokedexDetails";
 import PokedexSearch from "./pages/PokedexSearch";
+import Winner from "./pages/Winner";
 import {
   getAllPokemon,
   getPokemon,
@@ -22,7 +23,6 @@ import {
   getPokemonTypesTranslation,
 } from "./services/getApi";
 import type { GetPokemon, GetPokemonSpecies } from "./types/type";
-import Winner from "./pages/Winner";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
