@@ -9,23 +9,25 @@ import "../styles/TurnamentStatus.css";
 export default function Battle() {
   const { currentMatch } = useParams();
   const { randomPokemon } = useBattle();
-  const samplePokemon = randomPokemon[0][Number(currentMatch) - 1];
-  const samplePokemon2 = randomPokemon[1][Number(currentMatch) - 1];
+  const pokemon1 = randomPokemon[0][Number(currentMatch) - 1];
+  const pokemon2 = randomPokemon[1][Number(currentMatch) - 1];
 
   return (
     <div className="battle-page">
       <TournamentStatus currentMatch={currentMatch} />
       <PokemonBattleCard
-        name={samplePokemon.name}
-        id={samplePokemon.id}
-        img={samplePokemon.img}
+        name={pokemon1.name}
+        id={pokemon1.id}
+        img={pokemon1.img}
+        imgShiny={pokemon1.imgShiny}
         isWinner={false}
       />
       <img src={LogoVS} alt="Versus" className="battle-versus" />
       <PokemonBattleCard
-        name={samplePokemon2.name}
-        id={samplePokemon2.id}
-        img={samplePokemon2.img}
+        name={pokemon2.name}
+        id={pokemon2.id}
+        img={pokemon2.img}
+        imgShiny={pokemon2.imgShiny}
         isWinner={false}
       />
     </div>

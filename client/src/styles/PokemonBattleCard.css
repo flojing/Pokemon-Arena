@@ -60,6 +60,9 @@
   width: 100%;
   margin-bottom: -20px;
   padding: 12px;
+}
+
+.battle {
   cursor: pointer;
 }
 

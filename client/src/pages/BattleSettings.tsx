@@ -1,30 +1,109 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
+import { useState } from "react";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
+import SettingFilter from "../components/SettingFilter";
 import { useBattle } from "../contexts/BattleProvider";
 import type { Data } from "../types/type";
 
 export default function BattleSettings() {
   const navigate = useNavigate();
   const data = useRouteLoaderData("data") as Data[];
-  const { sliderValue, setRound, setMatch, setRandomPokemon } = useBattle();
+  const {
+    sliderValue,
+    setRound,
+    setMatch,
+    setRandomPokemon,
+    isBaseForm,
+    generationName,
+    typeName,
+  } = useBattle();
   const roundArray = [3, 4, 5, 6];
   const matchArray = [4, 8, 16, 32];
   const numberOfPokemonArray = [8, 16, 32, 64];
 
+  const formatedType = (url: string) => {
+    const arrayTypes: string[] = [
+      "Normal",
+      "Combat",
+      "Vol",
+      "Poison",
+      "Sol",
+      "Roche",
+      "Insecte",
+      "Spectre",
+      "Acier",
+      "Feu",
+      "Eau",
+      "Plante",
+      "Électrik",
+      "Psy",
+      "Glace",
+      "Dragon",
+      "Ténèbres",
+      "Fée",
+    ];
+    const numberOfType: number =
+      Number(
+        url
+          .split("")
+          .filter((_, index) => {
+            if (url.length === 33) {
+              return index === 31;
+            }
+            if (url.length === 34) {
+              return index === 31 || index === 32;
+            }
+          })
+          .join(""),
+      ) - 1;
+    return arrayTypes[numberOfType];
+  };
+
   const randomizer = () => {
+    let prevData: Data[] = data;
     const rawResult: Data[] = [];
     const result = [];
-    for (let i = 0; i < numberOfPokemonArray[sliderValue]; i++) {
-      const random = Math.floor(Math.random() * 151);
-      if (!rawResult.includes(data[random])) {
-        rawResult.push(data[random]);
-      } else {
-        i--;
+    let i = 0;
+
+    if (isBaseForm) {
+      prevData = prevData.filter((elem) => elem.baseForm === null);
+    }
+
+    if (generationName.length !== 0) {
+      prevData = prevData.filter((elem) => {
+        return generationName.some((element) =>
+          elem.generation?.includes(element[11]),
+        );
+      });
+    }
+
+    if (typeName.length !== 0) {
+      prevData = prevData.filter((elem) => {
+        if (elem.type) {
+          for (const element of elem.type) {
+            const type = formatedType(element);
+            return typeName.includes(type);
+          }
+        }
+      });
+    }
+
+    if (prevData.length < numberOfPokemonArray[sliderValue]) {
+      return false;
+    }
+
+    while (i < numberOfPokemonArray[sliderValue]) {
+      const random = Math.floor(Math.random() * prevData.length);
+      if (!rawResult.includes(prevData[random])) {
+        rawResult.push(prevData[random]);
+        i++;
       }
     }
+
     const array1 = rawResult.filter(
       (_: Data, index: number) => index % 2 === 0,
     );
@@ -34,18 +113,40 @@ export default function BattleSettings() {
     result.push(array1);
     result.push(array2);
     setRandomPokemon(result);
+    return true;
   };
 
   const handleClickBattle = () => {
     setRound(roundArray[sliderValue]);
     setMatch(matchArray[sliderValue]);
-    randomizer();
-    navigate(`/battle/${roundArray[sliderValue]}/1`);
+    if (randomizer()) {
+      randomizer();
+      navigate(`/battle/${roundArray[sliderValue]}/1`);
+    } else {
+      toast.error("Il n'y a pas assez de Pokemon", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
+  };
+
+  const [isFilters, setIsFilters] = useState(false);
+
+  const handleClickFilters = () => {
+    setIsFilters(!isFilters);
   };
 
   const handleClickBackToHome = () => {
     navigate("/");
   };
+
   return (
     <div id="battle-settings-page">
       <div className="return-button-header">
@@ -78,9 +179,18 @@ export default function BattleSettings() {
       </header>
       <div id="settings-section">
         <div id="settings-ajustments">
-          <button className="battle-filters-button" type="button">
-            Filtres
-          </button>
+          <div className="battle-setting-filter">
+            <div className="battle-settings-filter-button-container">
+              <button
+                className="battle-filters-button"
+                type="button"
+                onClick={handleClickFilters}
+              >
+                Filtres
+              </button>
+            </div>
+            {isFilters && <SettingFilter />}
+          </div>
           <CustomizedSlider />
         </div>
         <button

@@ -16,6 +16,8 @@ import NextRound from "./pages/NextRound";
 import PokedexDetails from "./pages/PokedexDetails";
 import PokedexSearch from "./pages/PokedexSearch";
 import Winner from "./pages/Winner";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 import {
   getAllPokemon,
   getPokemon,
@@ -41,7 +43,7 @@ const getData = async () => {
   const language = "fr";
   const pokemonArray = [];
   try {
-    const allPokemon = await getAllPokemon(0, 151);
+    const allPokemon = await getAllPokemon(0, 898);
 
     for (const pokemon of allPokemon.results) {
       const id = Number(
@@ -150,6 +152,7 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <BattleProvider>
+      <ToastContainer />
       <RouterProvider router={router} />
     </BattleProvider>
   </StrictMode>,
