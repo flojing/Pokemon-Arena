@@ -2,6 +2,7 @@ import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
 import { useState } from "react";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
 import SettingFilter from "../components/SettingFilter";
@@ -18,11 +19,49 @@ export default function BattleSettings() {
     setRandomPokemon,
     isBaseForm,
     generationName,
-    //typeName,
+    typeName,
   } = useBattle();
   const roundArray = [3, 4, 5, 6];
   const matchArray = [4, 8, 16, 32];
   const numberOfPokemonArray = [8, 16, 32, 64];
+
+  const formatedType = (url: string) => {
+    const arrayTypes: string[] = [
+      "Normal",
+      "Combat",
+      "Vol",
+      "Poison",
+      "Sol",
+      "Roche",
+      "Insecte",
+      "Spectre",
+      "Acier",
+      "Feu",
+      "Eau",
+      "Plante",
+      "Électrik",
+      "Psy",
+      "Glace",
+      "Dragon",
+      "Ténèbres",
+      "Fée",
+    ];
+    const numberOfType: number =
+      Number(
+        url
+          .split("")
+          .filter((_, index) => {
+            if (url.length === 33) {
+              return index === 31;
+            }
+            if (url.length === 34) {
+              return index === 31 || index === 32;
+            }
+          })
+          .join(""),
+      ) - 1;
+    return arrayTypes[numberOfType];
+  };
 
   const randomizer = () => {
     let prevData: Data[] = data;
@@ -42,12 +81,20 @@ export default function BattleSettings() {
       });
     }
 
-    // if (typeName.length !== 0) {
-    //   prevData = prevData.filter((elem) => {
-    //     for (const element of typeName) {
-    //     }
-    //   });
-    // }
+    if (typeName.length !== 0) {
+      prevData = prevData.filter((elem) => {
+        if (elem.type) {
+          for (const element of elem.type) {
+            const type = formatedType(element);
+            return typeName.includes(type);
+          }
+        }
+      });
+    }
+
+    if (prevData.length < numberOfPokemonArray[sliderValue]) {
+      return false;
+    }
 
     while (i < numberOfPokemonArray[sliderValue]) {
       const random = Math.floor(Math.random() * prevData.length);
@@ -66,13 +113,28 @@ export default function BattleSettings() {
     result.push(array1);
     result.push(array2);
     setRandomPokemon(result);
+    return true;
   };
 
   const handleClickBattle = () => {
     setRound(roundArray[sliderValue]);
     setMatch(matchArray[sliderValue]);
-    randomizer();
-    navigate(`/battle/${roundArray[sliderValue]}/1`);
+    if (randomizer()) {
+      randomizer();
+      navigate(`/battle/${roundArray[sliderValue]}/1`);
+    } else {
+      toast.error("Il n'y a pas assez de Pokemon", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+    }
   };
 
   const [isFilters, setIsFilters] = useState(false);

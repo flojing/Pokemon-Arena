@@ -92,7 +92,11 @@ export default function PokemonBattleCard({
         </div>
         <img
           src={isShinyBattle ? imgShiny : img}
-          className="pokemon-battle-card-img"
+          className={
+            isWinner
+              ? "pokemon-battle-card-img "
+              : "pokemon-battle-card-img battle"
+          }
           alt=""
           onClick={handleClickWinner}
           onKeyDown={handleClickWinner}
