@@ -29,7 +29,10 @@ export default function PokedexSearch() {
           <h1 className="pokedex-search-title">Pokedex</h1>
         </div>
       </div>
-      <div id="pokedex-search-bar">
+      <form
+        id="pokedex-search-bar"
+        onSubmit={(event) => event.preventDefault()}
+      >
         <img id="imageSearchBar" src={imageSearchBar} alt="loupe" />
         <input
           type="text"
@@ -40,7 +43,7 @@ export default function PokedexSearch() {
           placeholder="Rechercher"
           id="pokemon-search-input"
         />
-      </div>
+      </form>
       <div className="pokedex-search-pokemon">
         {data.map((element) => {
           if (element.name?.toLowerCase().includes(valueInput.toLowerCase())) {

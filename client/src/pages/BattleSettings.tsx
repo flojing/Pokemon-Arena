@@ -10,22 +10,52 @@ import type { Data } from "../types/type";
 export default function BattleSettings() {
   const navigate = useNavigate();
   const data = useRouteLoaderData("data") as Data[];
-  const { sliderValue, setRound, setMatch, setRandomPokemon } = useBattle();
+  const {
+    sliderValue,
+    setRound,
+    setMatch,
+    setRandomPokemon,
+    isBaseForm,
+    generationName,
+    //typeName,
+  } = useBattle();
   const roundArray = [3, 4, 5, 6];
   const matchArray = [4, 8, 16, 32];
   const numberOfPokemonArray = [8, 16, 32, 64];
 
   const randomizer = () => {
+    let prevData: Data[] = data;
     const rawResult: Data[] = [];
     const result = [];
-    for (let i = 0; i < numberOfPokemonArray[sliderValue]; i++) {
-      const random = Math.floor(Math.random() * 151);
-      if (!rawResult.includes(data[random])) {
-        rawResult.push(data[random]);
-      } else {
-        i--;
+    let i = 0;
+
+    if (isBaseForm) {
+      prevData = prevData.filter((elem) => elem.baseForm === null);
+    }
+
+    if (generationName.length !== 0) {
+      prevData = prevData.filter((elem) => {
+        for (const element of generationName) {
+          return elem.generation?.includes(element[11]);
+        }
+      });
+    }
+
+    // if (typeName.length !== 0) {
+    //   prevData = prevData.filter((elem) => {
+    //     for (const element of typeName) {
+    //     }
+    //   });
+    // }
+
+    while (i < numberOfPokemonArray[sliderValue]) {
+      const random = Math.floor(Math.random() * prevData.length);
+      if (!rawResult.includes(prevData[random])) {
+        rawResult.push(prevData[random]);
+        i++;
       }
     }
+
     const array1 = rawResult.filter(
       (_: Data, index: number) => index % 2 === 0,
     );

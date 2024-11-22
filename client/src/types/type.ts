@@ -116,8 +116,7 @@ export interface PokemonBattleCardProps {
   id?: number;
   name?: string;
   img?: string;
-  type?: string[];
-  description?: string;
+  imgShiny?: string;
 }
 
 export interface PokedexDetailsProps {
@@ -140,6 +139,10 @@ export interface Context {
   setIsBaseForm: React.Dispatch<React.SetStateAction<boolean>>;
   isShinyBattle: boolean;
   setIsShinyBattle: React.Dispatch<React.SetStateAction<boolean>>;
+  generationName: string[];
+  setGenerationName: React.Dispatch<React.SetStateAction<string[]>>;
+  typeName: string[];
+  setTypeName: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export interface Background {

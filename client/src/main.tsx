@@ -41,7 +41,7 @@ const getData = async () => {
   const language = "fr";
   const pokemonArray = [];
   try {
-    const allPokemon = await getAllPokemon(0, 151);
+    const allPokemon = await getAllPokemon(0, 898);
 
     for (const pokemon of allPokemon.results) {
       const id = Number(

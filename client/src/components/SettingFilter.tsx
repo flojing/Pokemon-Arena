@@ -19,14 +19,37 @@ export default function SettingFilter() {
     "Génération 8",
   ];
 
-  const type = ["Feu", "Eau"];
+  const type = [
+    "Plante",
+    "Poison",
+    "Feu",
+    "Vol",
+    "Eau",
+    "Insecte",
+    "Normal",
+    "Électrik",
+    "Sol",
+    "Fée",
+    "Combat",
+    "Psy",
+    "Roche",
+    "Acier",
+    "Glace",
+    "Spectre",
+    "Dragon",
+    "Ténèbres",
+  ];
 
   return (
     <div className="setting-filter-container">
-      <MultipleSelectChip contentSelect={generation} nameContent="Génération" />
-      <MultipleSelectChip contentSelect={type} nameContent="Type" />
+      <MultipleSelectChip
+        contentSelect={generation}
+        nameContent="Génération"
+        name="generation"
+      />
+      <MultipleSelectChip contentSelect={type} nameContent="Type" name="type" />
       <p>
-        Shiny:{" "}
+        Mode Shiny:{" "}
         {
           <Switch
             {...label}

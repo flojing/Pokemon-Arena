@@ -76,6 +76,15 @@
   -webkit-text-stroke-width: 1;
   -webkit-text-stroke-color: #000;
   color: var(--color-font);
+  cursor: pointer;
+}
+
+.go-to-button:hover {
+  background-color: #b3aace;
+  color: #3b2d69;
+  .img-button {
+    background-color: #b3aace;
+  }
 }
 
 .img-button {

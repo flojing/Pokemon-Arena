@@ -6,7 +6,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import * as React from "react";
+import { useBattle } from "../contexts/BattleProvider";
 
 const theme = createTheme({
   typography: {
@@ -29,14 +29,24 @@ const MenuProps = {
 export default function MultipleSelectChip({
   contentSelect,
   nameContent,
-}: { contentSelect: string[]; nameContent: string }) {
-  const [generationName, setGenerationName] = React.useState<string[]>([]);
-
-  const handleChange = (event: SelectChangeEvent<typeof generationName>) => {
+  name,
+}: { contentSelect: string[]; nameContent: string; name: string }) {
+  const { setGenerationName, generationName, setTypeName, typeName } =
+    useBattle();
+  const handleChangeGeneration = (
+    event: SelectChangeEvent<typeof generationName>,
+  ) => {
     const {
       target: { value },
     } = event;
     setGenerationName(typeof value === "string" ? value.split(",") : value);
+  };
+
+  const handleChangeType = (event: SelectChangeEvent<typeof typeName>) => {
+    const {
+      target: { value },
+    } = event;
+    setTypeName(typeof value === "string" ? value.split(",") : value);
   };
 
   return (
@@ -48,8 +58,10 @@ export default function MultipleSelectChip({
             labelId="demo-multiple-chip-label"
             id="demo-multiple-chip"
             multiple
-            value={generationName}
-            onChange={handleChange}
+            value={name === "generation" ? generationName : typeName}
+            onChange={
+              name === "generation" ? handleChangeGeneration : handleChangeType
+            }
             input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
             renderValue={(selected) => (
               <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
