@@ -2,6 +2,40 @@
   padding: 30px;
 }
 
+#champion-title {
+  font-family: var(--font-family-h1);
+  font-size: var(--font-size-h1);
+  font-weight: 100;
+  padding: 40px;
+  color: white;
+  text-align: center;
+}
+
+.winner-card-container {
+  display: flex;
+  justify-content: center;
+  animation: hithere 2s ease 2;
+}
+
+@keyframes hithere {
+  30% {
+    transform: scale(1.1);
+  }
+  40%,
+  60% {
+    transform: rotate(-20deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(20deg) scale(1.1);
+  }
+  70% {
+    transform: rotate(0deg) scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .winner-button-nav {
   border-radius: 25px;
   border-style: none;
@@ -19,6 +53,7 @@
 #winner-nav {
   display: flex;
   justify-content: space-around;
+  padding-top: 40px;
 }
 
 .winner-image-button {

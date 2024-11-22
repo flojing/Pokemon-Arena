@@ -1,4 +1,4 @@
-import { useBattle } from "../context/BattleProvider";
+import { useBattle } from "../contexts/BattleProvider";
 
 export default function TurnamentStatus({
   currentMatch,

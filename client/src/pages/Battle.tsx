@@ -3,7 +3,7 @@ import LogoVS from "/src/assets/images/logo_VS-removebg-preview 1.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import "../styles/Battle.css";
 import TurnamentStatus from "../components/TurnamentStatus";
-import { useBattle } from "../context/BattleProvider";
+import { useBattle } from "../contexts/BattleProvider";
 import "../styles/TurnamentStatus.css";
 
 export default function Battle() {
@@ -19,16 +19,14 @@ export default function Battle() {
         name={samplePokemon.name}
         id={samplePokemon.id}
         img={samplePokemon.img}
-        type={samplePokemon.type}
-        description={samplePokemon.description}
+        isWinner={false}
       />
       <img src={LogoVS} alt="Versus" className="battle-versus" />
       <PokemonBattleCard
         name={samplePokemon2.name}
         id={samplePokemon2.id}
         img={samplePokemon2.img}
-        type={samplePokemon2.type}
-        description={samplePokemon2.description}
+        isWinner={false}
       />
     </div>
   );

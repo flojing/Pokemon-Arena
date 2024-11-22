@@ -12,7 +12,7 @@ export default function Home() {
   };
 
   const handleClickBattleSettings = () => {
-    navigate("/battle-settings");
+    navigate("/battle");
   };
   return (
     <div className="home-container">

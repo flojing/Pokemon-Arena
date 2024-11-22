@@ -3,7 +3,7 @@ import { Info, X } from "lucide-react";
 import "../styles/PokemonBattleCard.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
-import { useBattle } from "../context/BattleProvider";
+import { useBattle } from "../contexts/BattleProvider";
 import PokedexDetails from "../pages/PokedexDetails";
 import { typeColor } from "../services/battleCardBackgroundColor";
 import { getPokemonTypesTranslation } from "../services/getApi";
@@ -13,6 +13,7 @@ export default function PokemonBattleCard({
   id,
   name,
   img,
+  isWinner,
 }: PokemonBattleCardProps) {
   const [type, setType] = useState<keyof TypeColor>("normal");
   const data = useRouteLoaderData("data") as Data[];
@@ -30,32 +31,40 @@ export default function PokemonBattleCard({
   } = useBattle();
 
   const handleClickWinner = () => {
-    if (pokemon) {
-      setMatchWinner([...matchWinner, pokemon]);
-      if (Number(currentMatch) === match) {
-        if (round !== 1) {
-          setMatch(match / 2);
-          navigate("/battle/next-round");
+    if (!isWinner) {
+      if (pokemon) {
+        setMatchWinner([...matchWinner, pokemon]);
+        if (Number(currentMatch) === match) {
+          if (round !== 1) {
+            setMatch(match / 2);
+            navigate("/battle/next-round");
+          } else {
+            setRandomPokemon([]);
+            navigate("/battle/winner");
+          }
         } else {
-          setMatchWinner([]);
-          setRandomPokemon([]);
-          navigate("/battle/winner");
+          navigate(
+            `/battle/${Number(currentMatch) + 1 === match + 1 ? round - 1 : round}/${Number(currentMatch) + 1 === match + 1 ? 1 : Number(currentMatch) + 1}`,
+          );
         }
-      } else {
-        navigate(
-          `/battle/${Number(currentMatch) + 1 === match + 1 ? round - 1 : round}/${Number(currentMatch) + 1 === match + 1 ? 1 : Number(currentMatch) + 1}`,
-        );
       }
     }
   };
 
   useEffect(() => {
-    const getType = async () => {
-      const responseType = await getPokemonTypesTranslation(pokemonType, "en");
-      setType(responseType.toLowerCase());
-    };
-    getType();
-  }, [pokemonType]);
+    if (!isWinner) {
+      const getType = async () => {
+        const responseType = await getPokemonTypesTranslation(
+          pokemonType,
+          "en",
+        );
+        setType(responseType.toLowerCase());
+      };
+      getType();
+    } else {
+      setType("winner");
+    }
+  }, [pokemonType, isWinner]);
 
   return (
     <div className="pokemon-battle-card-container">
