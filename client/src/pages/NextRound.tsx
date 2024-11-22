@@ -21,7 +21,7 @@ export default function NextRound() {
         className="next-round-button"
         onClick={handdleClickNextRound}
       >
-        Next Round
+        Round <br /> Suivant
       </button>
     </div>
   );

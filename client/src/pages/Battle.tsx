@@ -20,6 +20,7 @@ export default function Battle() {
         id={pokemon1.id}
         img={pokemon1.img}
         imgShiny={pokemon1.imgShiny}
+        isWinner={false}
       />
       <img src={LogoVS} alt="Versus" className="battle-versus" />
       <PokemonBattleCard
@@ -27,6 +28,7 @@ export default function Battle() {
         id={pokemon2.id}
         img={pokemon2.img}
         imgShiny={pokemon2.imgShiny}
+        isWinner={false}
       />
     </div>
   );

@@ -13,6 +13,7 @@ export default function PokemonBattleCard({
   id,
   name,
   img,
+  isWinner,
   imgShiny,
 }: PokemonBattleCardProps) {
   const [type, setType] = useState<keyof TypeColor>("normal");
@@ -32,31 +33,40 @@ export default function PokemonBattleCard({
   } = useBattle();
 
   const handleClickWinner = () => {
-    if (pokemon) {
-      setMatchWinner([...matchWinner, pokemon]);
-      if (Number(currentMatch) === match) {
-        if (round !== 1) {
-          setMatch(match / 2);
-          navigate("/battle/next-round");
+    if (!isWinner) {
+      if (pokemon) {
+        setMatchWinner([...matchWinner, pokemon]);
+        if (Number(currentMatch) === match) {
+          if (round !== 1) {
+            setMatch(match / 2);
+            navigate("/battle/next-round");
+          } else {
+            setRandomPokemon([]);
+            navigate("/battle/winner");
+          }
         } else {
-          setRandomPokemon([]);
-          navigate("/battle/winner");
+          navigate(
+            `/battle/${Number(currentMatch) + 1 === match + 1 ? round - 1 : round}/${Number(currentMatch) + 1 === match + 1 ? 1 : Number(currentMatch) + 1}`,
+          );
         }
-      } else {
-        navigate(
-          `/battle/${Number(currentMatch) + 1 === match + 1 ? round - 1 : round}/${Number(currentMatch) + 1 === match + 1 ? 1 : Number(currentMatch) + 1}`,
-        );
       }
     }
   };
 
   useEffect(() => {
-    const getType = async () => {
-      const responseType = await getPokemonTypesTranslation(pokemonType, "en");
-      setType(responseType.toLowerCase());
-    };
-    getType();
-  }, [pokemonType]);
+    if (!isWinner) {
+      const getType = async () => {
+        const responseType = await getPokemonTypesTranslation(
+          pokemonType,
+          "en",
+        );
+        setType(responseType.toLowerCase());
+      };
+      getType();
+    } else {
+      setType("winner");
+    }
+  }, [pokemonType, isWinner]);
 
   return (
     <div className="pokemon-battle-card-container">

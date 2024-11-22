@@ -2,6 +2,7 @@ import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
 import { useState } from "react";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
+import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
 import SettingFilter from "../components/SettingFilter";
 import { useBattle } from "../contexts/BattleProvider";
@@ -80,10 +81,23 @@ export default function BattleSettings() {
     setIsFilters(!isFilters);
   };
 
+  const handleClickBackToHome = () => {
+    navigate("/");
+  };
+
   return (
     <div id="battle-settings-page">
-      <header id="battle-settings-header">
+      <div className="return-button-header">
+        <img
+          onClick={handleClickBackToHome}
+          onKeyDown={handleClickBackToHome}
+          className="return-home-icon"
+          src={returnArrow}
+          alt="Retour Home"
+        />
         <h1 id="battle-settings-title">Battle</h1>
+      </div>
+      <header id="battle-settings-header">
         <p id="battle-settings-text">
           <span>Prêt à découvrir quel Pokémon est vraiment ton préféré ?</span>
           <br />

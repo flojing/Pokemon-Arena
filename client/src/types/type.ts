@@ -116,6 +116,7 @@ export interface PokemonBattleCardProps {
   id?: number;
   name?: string;
   img?: string;
+  isWinner: boolean;
   imgShiny?: string;
 }
 
@@ -168,6 +169,7 @@ export interface TypeColor {
   dark: Background;
   steel: Background;
   fairy: Background;
+  winner: Background;
 }
 
 export interface PokemonNavSpecificationsProps {
