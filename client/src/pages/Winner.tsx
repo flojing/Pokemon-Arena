@@ -16,7 +16,7 @@ export default function Winner() {
   };
   const handleClickBattleSettings = () => {
     setMatchWinner([]);
-    navigate("/battle-settings");
+    navigate("/battle");
   };
 
   return (

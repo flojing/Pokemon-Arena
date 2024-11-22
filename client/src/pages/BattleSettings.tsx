@@ -1,6 +1,7 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
+import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
 import { useBattle } from "../contexts/BattleProvider";
 import type { Data } from "../types/type";
@@ -42,10 +43,22 @@ export default function BattleSettings() {
     navigate(`/battle/${roundArray[sliderValue]}/1`);
   };
 
+  const handleClickBackToHome = () => {
+    navigate("/");
+  };
   return (
     <div id="battle-settings-page">
-      <header id="battle-settings-header">
+      <div className="return-button-header">
+        <img
+          onClick={handleClickBackToHome}
+          onKeyDown={handleClickBackToHome}
+          className="return-home-icon"
+          src={returnArrow}
+          alt="Retour Home"
+        />
         <h1 id="battle-settings-title">Battle</h1>
+      </div>
+      <header id="battle-settings-header">
         <p id="battle-settings-text">
           <span>Prêt à découvrir quel Pokémon est vraiment ton préféré ?</span>
           <br />

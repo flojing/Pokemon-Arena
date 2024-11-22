@@ -56,6 +56,7 @@ export const typeColor: TypeColor = {
     background: "#EE99AC",
   },
   winner: {
-    background: "#FFFFFF",
+    background:
+      "repeating-linear-gradient(190deg,rgba(255, 0, 0, 0.5) 40px,rgba(255, 153, 0, 0.5) 80px,rgba(255, 255, 0, 0.5) 120px,rgba(0, 255, 0, 0.5) 160px,rgba(0, 0, 255, 0.5) 200px,rgba(75, 0, 130, 0.5) 240px,rgba(238, 130, 238, 0.5) 280px,rgba(255, 0, 0, 0.5) 300px), repeating-linear-gradient(-190deg,rgba(255, 0, 0, 0.5) 30px,rgba(255, 153, 0, 0.5) 60px,rgba(255, 255, 0, 0.5) 90px,rgba(0, 255, 0, 0.5) 120px,rgba(0, 0, 255, 0.5) 150px,rgba(75, 0, 130, 0.5) 180px,rgba(238, 130, 238, 0.5) 210px,rgba(255, 0, 0, 0.5) 230px)",
   },
 };
