@@ -68,7 +68,7 @@ export default function PokedexDetails({
     }
   };
   const handleClickNextPokemon = () => {
-    if (nextId <= 151) {
+    if (nextId <= 898) {
       navigate(`/pokedex/${nextId}`);
       setIsShiny(false);
     }
@@ -175,7 +175,7 @@ export default function PokedexDetails({
             </div>
           )}
           <div> </div>
-          {nextId < 152 && !isBattle && (
+          {nextId < 899 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickNextPokemon}
