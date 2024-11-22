@@ -103,7 +103,9 @@ export default function PokedexDetails({
         <ul className="details-name-container">
           <li className="details-pokemon-name">{name}</li>
           <li className="details-pokemon-id">
-            <i>Pokedex ID : {convertID(id)}</i>
+            <i>
+              Pokedex ID : {convertID(isBattle ? idBattle?.toString() : id)}
+            </i>
           </li>
         </ul>
         <ul className="details-species-container">
