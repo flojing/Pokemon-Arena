@@ -4,4 +4,5 @@
   align-items: center;
   width: 100vw;
   padding: 30px;
+  perspective: 1000px;
 }

@@ -148,6 +148,7 @@ export interface Context {
 
 export interface Background {
   background: string;
+  border: string;
 }
 
 export interface TypeColor {
