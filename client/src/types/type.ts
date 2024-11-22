@@ -115,8 +115,7 @@ export interface PokemonBattleCardProps {
   id?: number;
   name?: string;
   img?: string;
-  type?: string[];
-  description?: string;
+  isWinner: boolean;
 }
 
 export interface PokedexDetailsProps {
@@ -139,6 +138,7 @@ export interface Context {
 
 export interface Background {
   background: string;
+  border: string;
 }
 
 export interface TypeColor {
@@ -160,6 +160,7 @@ export interface TypeColor {
   dark: Background;
   steel: Background;
   fairy: Background;
+  winner: Background;
 }
 
 export interface PokemonNavSpecificationsProps {

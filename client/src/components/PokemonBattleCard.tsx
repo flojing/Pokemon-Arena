@@ -13,6 +13,7 @@ export default function PokemonBattleCard({
   id,
   name,
   img,
+  isWinner,
 }: PokemonBattleCardProps) {
   const [type, setType] = useState<keyof TypeColor>("normal");
   const data = useRouteLoaderData("data") as Data[];
@@ -30,54 +31,64 @@ export default function PokemonBattleCard({
   } = useBattle();
 
   const handleClickWinner = () => {
-    if (pokemon) {
-      setMatchWinner([...matchWinner, pokemon]);
-      if (Number(currentMatch) === match) {
-        if (round !== 1) {
-          setMatch(match / 2);
-          navigate("/battle/next-round");
+    if (!isWinner) {
+      if (pokemon) {
+        setMatchWinner([...matchWinner, pokemon]);
+        if (Number(currentMatch) === match) {
+          if (round !== 1) {
+            setMatch(match / 2);
+            navigate("/battle/next-round");
+          } else {
+            setRandomPokemon([]);
+            navigate("/battle/winner");
+          }
         } else {
-          setMatchWinner([]);
-          setRandomPokemon([]);
-          navigate("/battle/winner");
+          navigate(
+            `/battle/${Number(currentMatch) + 1 === match + 1 ? round - 1 : round}/${Number(currentMatch) + 1 === match + 1 ? 1 : Number(currentMatch) + 1}`,
+          );
         }
-      } else {
-        navigate(
-          `/battle/${Number(currentMatch) + 1 === match + 1 ? round - 1 : round}/${Number(currentMatch) + 1 === match + 1 ? 1 : Number(currentMatch) + 1}`,
-        );
       }
     }
   };
 
   useEffect(() => {
-    const getType = async () => {
-      const responseType = await getPokemonTypesTranslation(pokemonType, "en");
-      setType(responseType.toLowerCase());
-    };
-    getType();
-  }, [pokemonType]);
+    if (!isWinner) {
+      const getType = async () => {
+        const responseType = await getPokemonTypesTranslation(
+          pokemonType,
+          "en",
+        );
+        setType(responseType.toLowerCase());
+      };
+      getType();
+    } else {
+      setType("winner");
+    }
+  }, [pokemonType, isWinner]);
 
   return (
     <div className="pokemon-battle-card-container">
       <div className="pokemon-detail-card-container" style={typeColor[type]}>
         <div className="pokemon-battle-card-title">
           <p>{name}</p>
-          <DialogPrimitive.Root>
-            <DialogPrimitive.Trigger asChild>
-              <button type="button" className="info-button">
-                <Info className="pokemon-battle-card-logo-info" />
-              </button>
-            </DialogPrimitive.Trigger>
-            <DialogPrimitive.Portal>
-              <DialogPrimitive.Overlay className="modal-overlay" />
-              <DialogPrimitive.Content className="modal-content">
-                <DialogPrimitive.Close className="modal-close">
-                  <X className="h-4 w-4" />
-                </DialogPrimitive.Close>
-                <PokedexDetails idBattle={id} isBattle={true} />
-              </DialogPrimitive.Content>
-            </DialogPrimitive.Portal>
-          </DialogPrimitive.Root>
+          {
+            <DialogPrimitive.Root>
+              <DialogPrimitive.Trigger asChild>
+                <button type="button" className="info-button">
+                  <Info className="pokemon-battle-card-logo-info" />
+                </button>
+              </DialogPrimitive.Trigger>
+              <DialogPrimitive.Portal>
+                <DialogPrimitive.Overlay className="modal-overlay" />
+                <DialogPrimitive.Content className="modal-content">
+                  <DialogPrimitive.Close className="modal-close">
+                    <X className="h-4 w-4" />
+                  </DialogPrimitive.Close>
+                  <PokedexDetails idBattle={id} isBattle={true} />
+                </DialogPrimitive.Content>
+              </DialogPrimitive.Portal>
+            </DialogPrimitive.Root>
+          }
         </div>
         <img
           src={img}
