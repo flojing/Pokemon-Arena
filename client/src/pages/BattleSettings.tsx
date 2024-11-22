@@ -75,9 +75,9 @@ export default function BattleSettings() {
 
     if (generationName.length !== 0) {
       prevData = prevData.filter((elem) => {
-        for (const element of generationName) {
-          return elem.generation?.includes(element[11]);
-        }
+        return generationName.some((element) =>
+          elem.generation?.includes(element[11]),
+        );
       });
     }
 
