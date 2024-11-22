@@ -1,11 +1,12 @@
 import "../styles/PokemonMiniature.css";
-import { useNavigate, useRouteLoaderData } from "react-router-dom";
-import type { Data, PokemonMiniatureProps } from "../types/type";
+import { useNavigate } from "react-router-dom";
+import type { PokemonMiniatureProps } from "../types/type";
 
-export default function PokemonMiniature({ img, id }: PokemonMiniatureProps) {
-  const data = useRouteLoaderData("data") as Data[];
-  const pokemon = data.find((element) => element.id === id);
-  const { name } = pokemon as Data;
+export default function PokemonMiniature({
+  img,
+  id,
+  name,
+}: PokemonMiniatureProps) {
   const navigate = useNavigate();
 
   const handleClickPokemon = () => {

@@ -56,6 +56,7 @@ export interface GetPokemonSpecies {
 export interface PokemonMiniatureProps {
   id?: number;
   img?: string;
+  name?: string;
 }
 
 export interface Types {
@@ -116,6 +117,7 @@ export interface PokemonBattleCardProps {
   name?: string;
   img?: string;
   isWinner: boolean;
+  imgShiny?: string;
 }
 
 export interface PokedexDetailsProps {
@@ -134,6 +136,14 @@ export interface Context {
   setRandomPokemon: React.Dispatch<React.SetStateAction<Data[][]>>;
   matchWinner: Data[];
   setMatchWinner: React.Dispatch<React.SetStateAction<Data[]>>;
+  isBaseForm: boolean;
+  setIsBaseForm: React.Dispatch<React.SetStateAction<boolean>>;
+  isShinyBattle: boolean;
+  setIsShinyBattle: React.Dispatch<React.SetStateAction<boolean>>;
+  generationName: string[];
+  setGenerationName: React.Dispatch<React.SetStateAction<string[]>>;
+  typeName: string[];
+  setTypeName: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 export interface Background {

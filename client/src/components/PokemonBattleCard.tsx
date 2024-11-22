@@ -14,6 +14,7 @@ export default function PokemonBattleCard({
   name,
   img,
   isWinner,
+  imgShiny,
 }: PokemonBattleCardProps) {
   const [type, setType] = useState<keyof TypeColor>("normal");
   const data = useRouteLoaderData("data") as Data[];
@@ -28,6 +29,7 @@ export default function PokemonBattleCard({
     match,
     setMatch,
     round,
+    isShinyBattle,
   } = useBattle();
 
   const handleClickWinner = () => {
@@ -91,8 +93,12 @@ export default function PokemonBattleCard({
           }
         </div>
         <img
-          src={img}
-          className="pokemon-battle-card-img"
+          src={isShinyBattle ? imgShiny : img}
+          className={
+            isWinner
+              ? "pokemon-battle-card-img "
+              : "pokemon-battle-card-img battle"
+          }
           alt=""
           onClick={handleClickWinner}
           onKeyDown={handleClickWinner}

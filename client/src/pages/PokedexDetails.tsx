@@ -36,6 +36,7 @@ export default function PokedexDetails({
     height: 0,
     weight: 0,
   };
+
   const convertID = (id: string | undefined) => {
     if (Number(id) < 10) {
       return `00${id}`;
@@ -45,13 +46,16 @@ export default function PokedexDetails({
     }
     return id;
   };
+
   const handleClickPlayCry = () => {
     const audio = new Audio(cry);
     audio.play();
   };
+
   const handleClickTurnShiny = () => {
     setIsShiny(!isShiny);
   };
+
   const handleClickBackToList = () => {
     navigate("/pokedex");
   };
@@ -64,7 +68,7 @@ export default function PokedexDetails({
     }
   };
   const handleClickNextPokemon = () => {
-    if (nextId <= 151) {
+    if (nextId <= 898) {
       navigate(`/pokedex/${nextId}`);
       setIsShiny(false);
     }
@@ -171,7 +175,7 @@ export default function PokedexDetails({
             </div>
           )}
           <div> </div>
-          {nextId < 152 && !isBattle && (
+          {nextId < 899 && !isBattle && (
             <div
               className="pokedex-details-navigation-previous-next-container"
               onKeyDown={handleClickNextPokemon}

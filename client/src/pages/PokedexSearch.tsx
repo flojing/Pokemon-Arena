@@ -14,6 +14,7 @@ export default function PokedexSearch() {
   const handleClickBackToHome = () => {
     navigate("/");
   };
+
   return (
     <div className="pokedex-search-container">
       <div className="pokedex-header">
@@ -50,6 +51,7 @@ export default function PokedexSearch() {
               <PokemonMiniature
                 key={element.id}
                 img={element.img}
+                name={element.name}
                 id={element.id}
               />
             );
