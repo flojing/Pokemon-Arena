@@ -14,6 +14,7 @@
 .home-logo-pokemon {
   width: 236px;
   height: 236px;
+  opacity: 0;
 }
 
 .home-title {
@@ -45,7 +46,6 @@
 
 .home-img-battle-button {
   width: 121px;
-  height: 85px;
 }
 
 .home-img-pokedex-button {
