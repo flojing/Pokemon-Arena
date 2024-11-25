@@ -19,8 +19,8 @@ export default function TurnamentStatus({
 
   return (
     <div id="battle-header">
-      <h1>{checkRound(round)}</h1>
-      <h2>
+      <h1 className="tournament-1">{checkRound(round)}</h1>
+      <h2 className="tournament-2">
         Match {currentMatch} / {match}
       </h2>
     </div>
