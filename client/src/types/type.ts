@@ -149,6 +149,7 @@ export interface Context {
 export interface Background {
   background: string;
   border: string;
+  color: string;
 }
 
 export interface TypeColor {
@@ -195,4 +196,9 @@ export interface PokemonNavStatsProps {
 export interface StatsBarProps {
   statCategory?: number;
   statKey?: string;
+}
+
+export interface GenerationTypeFilterProps {
+  array: string[];
+  name: string;
 }
