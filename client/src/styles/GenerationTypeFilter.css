@@ -10,14 +10,14 @@
 }
 
 .generation-type-filter-element-active {
-  border: 1.5px solid #4d3a8c;
+  border: 2px solid #4d3a8c;
   background-color: #4d3a8c;
   color: white;
   user-select: none;
   border-radius: 20px;
   padding: 5px;
   cursor: pointer;
-  width: 107px;
+  width: 110px;
   text-align: center;
 }
 

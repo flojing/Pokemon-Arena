@@ -73,12 +73,6 @@
   cursor: pointer;
 }
 
-/* .battle-filters-button:hover {
-  border: 1.5px solid transparent;
-  background-color: white;
-  color: #4d3a8c;
-} */
-
 .go-to-button {
   border-radius: 20px;
   border-style: none;
