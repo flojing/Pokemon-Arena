@@ -12,8 +12,8 @@
 }
 
 .home-logo-pokemon {
-  width: 236px;
-  height: 236px;
+  width: 150px;
+  height: 180px;
   opacity: 0;
 }
 
@@ -26,18 +26,19 @@
 .home-first-paragraph,
 .home-second-paragraph {
   font-family: var(--font-family-p);
-  margin-left: 38px;
-  margin-right: 38px;
+  padding-left: 30px;
+  padding-right: 30px;
   text-align: justify;
 }
 
 .home-paragraph {
-  padding-top: 64px;
-  padding-bottom: 83px;
+  padding-top: 34px;
+  padding-bottom: 43px;
 }
 
 .home-footer {
   text-align: center;
+  font-family: var(--font-family-p);
 }
 
 .home-heart {
@@ -67,11 +68,46 @@
   align-items: center;
   justify-content: space-around;
   padding-left: 15px;
-  margin-bottom: 57px;
+  margin-bottom: 30px;
   cursor: pointer;
 }
 
 .home-button:hover {
   background-color: #b3aace;
   color: #3b2d69;
+}
+
+@media screen and (min-width: 767px) {
+  .home-title {
+    font-size: 54px;
+  }
+
+  .home-paragraph {
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  .home-nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .home-first-paragraph,
+  .home-second-paragraph {
+    padding: 40px 70px 40px 70px;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  .home-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 20px;
+  }
 }
