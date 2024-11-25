@@ -130,11 +130,21 @@
 @media screen and (min-width: 767px) {
   .modal-content {
     transform: translate(-50%, -50%);
-    width: 80%; /* Au lieu de 155% */
-    max-width: 800px; /* Ajout de cette ligne */
+    width: 80%;
+    max-width: 800px;
     height: 700px;
     overflow-y: auto;
     font-family: var(--font-family-h1);
     z-index: 10;
+  }
+
+  .pokemon-battle-card-container {
+    width: 100%;
+    max-width: 450px;
+    height: 65%;
+  }
+
+  .pokemon-battle-card-title {
+    font-size: 45px;
   }
 }
