@@ -1,11 +1,11 @@
-#battle-header h1 {
+.tournament-1 {
   font-family: var(--font-family-h1);
   font-size: var(--font-size-h1);
   font-weight: var(--font-weight-h1);
   color: white;
 }
 
-#battle-header h2 {
+.tournament-2 {
   font-family: var(--font-family-h2);
   font-size: var(--font-size-h2);
   font-weight: var(--font-weight-h2);

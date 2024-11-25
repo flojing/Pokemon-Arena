@@ -40,30 +40,33 @@ export default function Home() {
               arène !
             </p>
           </div>
-          <button
-            onClick={handleClickBattleSettings}
-            type="button"
-            className="home-button"
-          >
-            Battle
-            <img
-              className="home-img-battle-button"
-              src={imgFirstButton}
-              alt="Pokemon Pokeball"
-            />
-          </button>
-          <button
-            onClick={handleClickPokedex}
-            type="button"
-            className="home-button"
-          >
-            Pokedex
-            <img
-              className="home-img-pokedex-button"
-              src={imgSecondButton}
-              alt="Pokemon Pokedex"
-            />
-          </button>
+          <div className="home-nav">
+            <button
+              onClick={handleClickBattleSettings}
+              type="button"
+              className="home-button"
+            >
+              Battle
+              <img
+                className="home-img-battle-button"
+                src={imgFirstButton}
+                alt="Pokemon Pokeball"
+              />
+            </button>
+
+            <button
+              onClick={handleClickPokedex}
+              type="button"
+              className="home-button"
+            >
+              Pokedex
+              <img
+                className="home-img-pokedex-button"
+                src={imgSecondButton}
+                alt="Pokemon Pokedex"
+              />
+            </button>
+          </div>
         </div>
         <footer className="home-footer">
           Made with <span className="home-heart">❤</span> by Justine, Florentin,
