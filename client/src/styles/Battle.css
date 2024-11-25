@@ -21,6 +21,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding-top: 80px;
+    padding-top: 150px;
+  }
+
+  .battle-card > :first-child {
+    transform: translateY(-100px);
+  }
+
+  .battle-card > :last-child {
+    transform: translateY(100px);
+  }
+
+  .battle-versus {
+    margin: 0;
   }
 }
