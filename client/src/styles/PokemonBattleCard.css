@@ -1,5 +1,5 @@
 .pokemon-battle-card-container {
-  width: 85%;
+  width: 65%;
   max-width: 320px;
   height: 35%;
   border-radius: 20px;
@@ -46,7 +46,7 @@
   display: flex;
   justify-content: space-between;
   font-family: var(--font-family-h1);
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 100;
   width: 100%;
@@ -57,9 +57,9 @@
 }
 
 .pokemon-battle-card-img {
-  width: 100%;
-  margin-bottom: -20px;
-  padding: 12px;
+  width: 80%;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .battle {
@@ -124,5 +124,17 @@
   }
   100% {
     background-position: 100% 50%;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .modal-content {
+    transform: translate(-50%, -50%);
+    width: 80%; /* Au lieu de 155% */
+    max-width: 800px; /* Ajout de cette ligne */
+    height: 700px;
+    overflow-y: auto;
+    font-family: var(--font-family-h1);
+    z-index: 10;
   }
 }

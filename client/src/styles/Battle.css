@@ -1,8 +1,26 @@
 .battle-page {
+  padding: 30px;
+  width: 100%;
+}
+
+.battle-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  padding: 30px;
   perspective: 1000px;
+}
+
+.battle-versus {
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+@media screen and (min-width: 767px) {
+  .battle-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+  }
 }
