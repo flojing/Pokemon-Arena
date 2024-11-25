@@ -46,9 +46,12 @@
   justify-content: space-evenly;
 }
 
-.battle-filters-button {
-  align-self: flex-end;
-  cursor: pointer;
+.battle-filter-img-button {
+  width: 12px;
+}
+
+.battle-filter-img-button path {
+  fill: white !important;
 }
 
 #battle-settings-header {
@@ -58,15 +61,23 @@
 }
 
 .battle-filters-button {
-  border-radius: 20px;
-  border-style: none;
-  background: rgba(183, 199, 242, 0.58);
-  padding: 10px;
+  border-radius: 50px;
+  background-color: #4d3a8c;
+  border: 1.5px solid white;
+  padding: 5px 10px;
   font-family: var(--font-family-p);
   font-size: 20px;
   font-weight: 500;
   color: var(--color-font);
+  align-self: flex-end;
+  cursor: pointer;
 }
+
+/* .battle-filters-button:hover {
+  border: 1.5px solid transparent;
+  background-color: white;
+  color: #4d3a8c;
+} */
 
 .go-to-button {
   border-radius: 20px;

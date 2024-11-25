@@ -1,12 +1,35 @@
-import { Switch } from "@mui/material";
+import { Collapse, Switch, alpha } from "@mui/material";
 import "../styles/SettingFilter.css";
+import styled from "@emotion/styled";
+import { useState } from "react";
 import { useBattle } from "../contexts/BattleProvider";
-import MultipleSelectChip from "./MultipleSelectChip";
+import GenerationTypeFilter from "./GenerationTypeFilter";
+
+const CustomSwitch = styled(Switch)({
+  "& .MuiSwitch-switchBase.Mui-checked": {
+    color: "#4d3a8c",
+    transform: "translateX(20px)",
+    "&:hover": {
+      backgroundColor: alpha("#4d3a8c", 0.05),
+    },
+  },
+  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+    backgroundColor: "#4d3a8c",
+  },
+});
 
 export default function SettingFilter() {
-  const label = { inputProps: { "aria-label": "Switch demo" } };
-  const { isBaseForm, setIsBaseForm, isShinyBattle, setIsShinyBattle } =
-    useBattle();
+  const label = { inputProps: { "aria-label": "Color switch demo" } };
+  const [isGeneration, setIsGeneration] = useState(false);
+  const [isType, setIsType] = useState(false);
+  const {
+    isBaseForm,
+    setIsBaseForm,
+    isShinyBattle,
+    setIsShinyBattle,
+    setGenerationName,
+    setTypeName,
+  } = useBattle();
 
   const generation = [
     "Génération 1",
@@ -40,18 +63,78 @@ export default function SettingFilter() {
     "Ténèbres",
   ];
 
+  const handleClickReset = () => {
+    setGenerationName([]);
+    setTypeName([]);
+    setIsBaseForm(false);
+    setIsShinyBattle(false);
+  };
+
   return (
     <div className="setting-filter-container">
-      <MultipleSelectChip
-        contentSelect={generation}
-        nameContent="Génération"
-        name="generation"
-      />
-      <MultipleSelectChip contentSelect={type} nameContent="Type" name="type" />
-      <p>
+      <div className="setting-filter-container-reset">
+        <p
+          className="setting-filter-button setting-filter-title"
+          onClick={() => setIsGeneration(!isGeneration)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") setIsGeneration(!isGeneration);
+          }}
+        >
+          Génération{" "}
+          <img
+            className="setting-filter-img-button"
+            src={
+              !isGeneration
+                ? "/src/assets/images/down.svg"
+                : "/src/assets/images/up.svg"
+            }
+            alt="up"
+            style={{ fill: "#4d3a8c" }}
+          />
+        </p>
+        <div
+          className="setting-filter-reset-button"
+          onClick={handleClickReset}
+          onKeyDown={handleClickReset}
+        >
+          <img
+            src="/src/assets/images/restart.svg"
+            alt=""
+            style={{ width: "17px" }}
+          />
+          Reset
+        </div>
+      </div>
+      <Collapse in={isGeneration}>
+        <GenerationTypeFilter array={generation} name="generation" />
+      </Collapse>
+
+      <p
+        className="setting-filter-button setting-filter-title"
+        onClick={() => setIsType(!isType)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") setIsType(!isType);
+        }}
+      >
+        Type{" "}
+        <img
+          className="setting-filter-img-button"
+          src={
+            !isType
+              ? "/src/assets/images/down.svg"
+              : "/src/assets/images/up.svg"
+          }
+          alt="up"
+          style={{ fill: "#4d3a8c" }}
+        />
+      </p>
+      <Collapse in={isType}>
+        <GenerationTypeFilter array={type} name="type" />
+      </Collapse>
+      <p className="setting-filter-title">
         Mode Shiny:{" "}
         {
-          <Switch
+          <CustomSwitch
             {...label}
             checked={isShinyBattle}
             onChange={(event) => {
@@ -60,9 +143,9 @@ export default function SettingFilter() {
           />
         }
       </p>
-      <p>
+      <p className="setting-filter-title">
         Forme de base:{" "}
-        <Switch
+        <CustomSwitch
           {...label}
           checked={isBaseForm}
           onChange={(event) => {
