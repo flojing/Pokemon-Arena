@@ -3,6 +3,7 @@ import "../styles/SettingFilter.css";
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { useBattle } from "../contexts/BattleProvider";
+import { generation, types } from "../services/arrays";
 import GenerationTypeFilter from "./GenerationTypeFilter";
 
 const CustomSwitch = styled(Switch)({
@@ -18,56 +19,15 @@ const CustomSwitch = styled(Switch)({
   },
 });
 
-export default function SettingFilter() {
+export default function SettingFilter({ filter }: { filter: string }) {
   const label = { inputProps: { "aria-label": "Color switch demo" } };
   const [isGeneration, setIsGeneration] = useState(false);
   const [isType, setIsType] = useState(false);
-  const {
-    isBaseForm,
-    setIsBaseForm,
-    isShinyBattle,
-    setIsShinyBattle,
-    setGenerationName,
-    setTypeName,
-  } = useBattle();
-
-  const generation = [
-    "Génération 1",
-    "Génération 2",
-    "Génération 3",
-    "Génération 4",
-    "Génération 5",
-    "Génération 6",
-    "Génération 7",
-    "Génération 8",
-  ];
-
-  const type = [
-    "Plante",
-    "Poison",
-    "Feu",
-    "Vol",
-    "Eau",
-    "Insecte",
-    "Normal",
-    "Électrik",
-    "Sol",
-    "Fée",
-    "Combat",
-    "Psy",
-    "Roche",
-    "Acier",
-    "Glace",
-    "Spectre",
-    "Dragon",
-    "Ténèbres",
-  ];
+  const { isBaseForm, setIsBaseForm, isShinyBattle, setIsShinyBattle, reset } =
+    useBattle();
 
   const handleClickReset = () => {
-    setGenerationName([]);
-    setTypeName([]);
-    setIsBaseForm(false);
-    setIsShinyBattle(false);
+    reset();
   };
 
   return (
@@ -129,20 +89,22 @@ export default function SettingFilter() {
         />
       </p>
       <Collapse in={isType}>
-        <GenerationTypeFilter array={type} name="type" />
+        <GenerationTypeFilter array={types} name="type" />
       </Collapse>
-      <p className="setting-filter-title">
-        Mode Shiny:{" "}
-        {
-          <CustomSwitch
-            {...label}
-            checked={isShinyBattle}
-            onChange={(event) => {
-              setIsShinyBattle(event.target.checked);
-            }}
-          />
-        }
-      </p>
+      {filter === "battle" && (
+        <p className="setting-filter-title">
+          Mode Shiny:{" "}
+          {
+            <CustomSwitch
+              {...label}
+              checked={isShinyBattle}
+              onChange={(event) => {
+                setIsShinyBattle(event.target.checked);
+              }}
+            />
+          }
+        </p>
+      )}
       <p className="setting-filter-title">
         Forme de base:{" "}
         <CustomSwitch

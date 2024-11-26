@@ -8,6 +8,7 @@ import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
 import SettingFilter from "../components/SettingFilter";
 import { useBattle } from "../contexts/BattleProvider";
+import { formatedType } from "../services/utils";
 import type { Data } from "../types/type";
 
 export default function BattleSettings() {
@@ -21,49 +22,12 @@ export default function BattleSettings() {
     isBaseForm,
     generationName,
     typeName,
+    reset,
   } = useBattle();
   const [isFilters, setIsFilters] = useState(false);
   const roundArray = [3, 4, 5, 6];
   const matchArray = [4, 8, 16, 32];
   const numberOfPokemonArray = [8, 16, 32, 64];
-
-  const formatedType = (url: string) => {
-    const arrayTypes: string[] = [
-      "Normal",
-      "Combat",
-      "Vol",
-      "Poison",
-      "Sol",
-      "Roche",
-      "Insecte",
-      "Spectre",
-      "Acier",
-      "Feu",
-      "Eau",
-      "Plante",
-      "Électrik",
-      "Psy",
-      "Glace",
-      "Dragon",
-      "Ténèbres",
-      "Fée",
-    ];
-    const numberOfType: number =
-      Number(
-        url
-          .split("")
-          .filter((_, index) => {
-            if (url.length === 33) {
-              return index === 31;
-            }
-            if (url.length === 34) {
-              return index === 31 || index === 32;
-            }
-          })
-          .join(""),
-      ) - 1;
-    return arrayTypes[numberOfType];
-  };
 
   const randomizer = () => {
     let prevData: Data[] = data;
@@ -86,10 +50,14 @@ export default function BattleSettings() {
     if (typeName.length !== 0) {
       prevData = prevData.filter((elem) => {
         if (elem.type) {
+          let containType = false;
           for (const element of elem.type) {
             const type = formatedType(element);
-            return typeName.includes(type);
+            if (typeName.includes(type)) {
+              containType = true;
+            }
           }
+          return containType;
         }
       });
     }
@@ -144,6 +112,7 @@ export default function BattleSettings() {
   };
 
   const handleClickBackToHome = () => {
+    reset();
     navigate("/");
   };
 
@@ -200,7 +169,7 @@ export default function BattleSettings() {
               </button>
             </div>
             <Collapse in={isFilters}>
-              <SettingFilter />
+              <SettingFilter filter="battle" />
             </Collapse>
           </div>
           <div className="battle-slider">

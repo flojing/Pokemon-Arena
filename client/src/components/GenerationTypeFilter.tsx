@@ -1,33 +1,13 @@
 import { useBattle } from "../contexts/BattleProvider";
+import { typeTranslation } from "../services/arrays";
 import { typeColor } from "../services/battleCardBackgroundColor";
 import "../styles/GenerationTypeFilter.css";
-import type { GenerationTypeFilterProps } from "../types/type";
+import type { GenerationTypeFilterProps, TypeLanguage } from "../types/type";
 
 export default function GenerationTypeFilter({
   array,
   name,
 }: GenerationTypeFilterProps) {
-  const typeTranslation = {
-    Plante: "grass",
-    Poison: "poison",
-    Feu: "fire",
-    Vol: "flying",
-    Eau: "water",
-    Insecte: "bug",
-    Normal: "normal",
-    Électrik: "electric",
-    Sol: "ground",
-    Fée: "fairy",
-    Combat: "fighting",
-    Psy: "psychic",
-    Roche: "rock",
-    Acier: "steel",
-    Glace: "ice",
-    Spectre: "ghost",
-    Dragon: "dragon",
-    Ténèbres: "dark",
-  } as const;
-
   const { generationName, setGenerationName, typeName, setTypeName } =
     useBattle();
 
@@ -52,6 +32,7 @@ export default function GenerationTypeFilter({
       }
     }
   };
+
   return (
     <div className="generation-filter-container">
       {array.map((elem: string) => (
@@ -73,15 +54,21 @@ export default function GenerationTypeFilter({
               ? {
                   background:
                     typeColor[
-                      typeTranslation[elem as keyof typeof typeTranslation]
+                      typeTranslation.find(
+                        (element: TypeLanguage) => element.fr === elem,
+                      )?.en || ""
                     ].background,
                   border:
                     typeColor[
-                      typeTranslation[elem as keyof typeof typeTranslation]
+                      typeTranslation.find(
+                        (element: TypeLanguage) => element.fr === elem,
+                      )?.en || ""
                     ].border,
                   color:
                     typeColor[
-                      typeTranslation[elem as keyof typeof typeTranslation]
+                      typeTranslation.find(
+                        (element: TypeLanguage) => element.fr === elem,
+                      )?.en || ""
                     ].color,
                 }
               : {}
