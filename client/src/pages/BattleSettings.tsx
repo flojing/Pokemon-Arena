@@ -193,13 +193,15 @@ export default function BattleSettings() {
           </div>
           <CustomizedSlider />
         </div>
-        <button
-          onClick={handleClickBattle}
-          className="go-to-button"
-          type="button"
-        >
-          Play ! <img className="img-button" src={monImage} alt="Pokéball" />
-        </button>
+        <div className="go-to-button-container">
+          <button
+            onClick={handleClickBattle}
+            className="go-to-button"
+            type="button"
+          >
+            Play ! <img className="img-button" src={monImage} alt="Pokéball" />
+          </button>
+        </div>
       </div>
     </div>
   );

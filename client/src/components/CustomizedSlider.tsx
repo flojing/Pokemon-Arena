@@ -18,34 +18,36 @@ function ValueLabelComponent(props: SliderValueLabelProps) {
 
 // Style personnalisé pour le slider
 const SliderPoke = styled(Slider)(() => ({
-  color: "",
+  color: "white",
   height: 5,
   padding: "15px 0",
   "& .MuiSlider-thumb": {
-    height: 18,
-    width: 18,
-    backgroundColor: "#fff",
-    boxShadow: "0 0 2px 0px rgba(0, 0, 0, 0.1)",
+    height: 30, // Adapter la taille pour l'image
+    width: 30,
+    backgroundColor: "transparent", // Rendre le fond transparent si nécessaire
+    backgroundImage:
+      "url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif')", // Lien vers votre image
+    backgroundSize: "cover", // Ajuste l'image pour remplir le bouton
+    backgroundRepeat: "no-repeat", // Empêche la répétition
+    backgroundPosition: "center", // Centre l'image
+    border: "none", // Supprime les bordures si nécessaire
+    boxShadow: "none", // Supprime les ombres pour se concentrer sur l'image
     "&:focus, &:hover, &.Mui-active": {
-      boxShadow: "0px 0px 3px 1px rgba(0, 0, 0, 0.1)",
-      "@media (hover: none)": {
-        boxShadow:
-          "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)",
-      },
+      boxShadow: "0px 0px 3px 1px rgba(0, 0, 0, 0.1)", // Ajoutez un effet visuel si souhaité
     },
   },
   "& .MuiSlider-track": {
-    border: "none",
-    height: 3,
-    backgroundColor: "#ffffff",
+    border: "solid 1px white",
+    height: 4,
+    backgroundColor: "white",
   },
   "& .MuiSlider-rail": {
-    opacity: 0.8,
-    backgroundColor: "#d0d0d0",
+    opacity: 0.6,
+    backgroundColor: "white",
   },
   "& .MuiSlider-markLabel": {
     color: "#ffffff",
-    fontFamily: '"Fredoka", sans-serif', // Définit la couleur des marques en blanc
+    fontFamily: '"Fredoka", sans-serif',
   },
 }));
 
