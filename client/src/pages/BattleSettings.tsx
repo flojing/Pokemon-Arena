@@ -163,6 +163,7 @@ export default function BattleSettings() {
         <p id="battle-settings-text">
           <span>Prêt à découvrir quel Pokémon est vraiment ton préféré ?</span>
           <br />
+          <br />
           Dans cette Battle, crée ton propre tournoi en opposant des Pokémon
           aléatoires en face-à-face ! À chaque tour, deux Pokémon s'affrontent,
           et c'est toi qui choisis celui qui continuera l'aventure jusqu'à la
@@ -202,7 +203,9 @@ export default function BattleSettings() {
               <SettingFilter />
             </Collapse>
           </div>
-          <CustomizedSlider />
+          <div className="battle-slider">
+            <CustomizedSlider />
+          </div>
         </div>
         <div className="go-to-button-container">
           <button
