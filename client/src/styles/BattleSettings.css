@@ -168,10 +168,6 @@
     cursor: pointer;
   }
 
-  .battle-filter-img-button {
-    width: 16px;
-  }
-
   .go-to-button-container {
     display: flex;
     width: 100%;
