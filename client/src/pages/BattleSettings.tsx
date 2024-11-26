@@ -1,5 +1,6 @@
 import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
+import { Collapse } from "@mui/material";
 import { useState } from "react";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
@@ -21,6 +22,7 @@ export default function BattleSettings() {
     generationName,
     typeName,
   } = useBattle();
+  const [isFilters, setIsFilters] = useState(false);
   const roundArray = [3, 4, 5, 6];
   const matchArray = [4, 8, 16, 32];
   const numberOfPokemonArray = [8, 16, 32, 64];
@@ -137,8 +139,6 @@ export default function BattleSettings() {
     }
   };
 
-  const [isFilters, setIsFilters] = useState(false);
-
   const handleClickFilters = () => {
     setIsFilters(!isFilters);
   };
@@ -186,10 +186,21 @@ export default function BattleSettings() {
                 type="button"
                 onClick={handleClickFilters}
               >
-                Filtres
+                Filtres{" "}
+                <img
+                  src={
+                    !isFilters
+                      ? "/src/assets/images/down-white.svg"
+                      : "/src/assets/images/up-white.svg"
+                  }
+                  alt=""
+                  className="battle-filter-img-button"
+                />
               </button>
             </div>
-            {isFilters && <SettingFilter />}
+            <Collapse in={isFilters}>
+              <SettingFilter />
+            </Collapse>
           </div>
           <CustomizedSlider />
         </div>
