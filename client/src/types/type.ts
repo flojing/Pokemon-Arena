@@ -205,24 +205,7 @@ export interface GenerationTypeFilterProps {
   name: string;
 }
 
-export interface TypeTranslation {
-  [key: string]: string;
-  Plante: string;
-  Poison: string;
-  Feu: string;
-  Vol: string;
-  Eau: string;
-  Insecte: string;
-  Normal: string;
-  Électrik: string;
-  Sol: string;
-  Fée: string;
-  Combat: string;
-  Psy: string;
-  Roche: string;
-  Acier: string;
-  Glace: string;
-  Spectre: string;
-  Dragon: string;
-  Ténèbres: string;
+export interface TypeLanguage {
+  en: string;
+  fr: string;
 }

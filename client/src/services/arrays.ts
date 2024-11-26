@@ -1,4 +1,4 @@
-import type { TypeTranslation } from "../types/type";
+import type { TypeLanguage } from "../types/type";
 
 export const generation: string[] = [
   "Génération 1",
@@ -32,23 +32,77 @@ export const types: string[] = [
   "Fée",
 ];
 
-export const typeTranslation: TypeTranslation = {
-  Plante: "grass",
-  Poison: "poison",
-  Feu: "fire",
-  Vol: "flying",
-  Eau: "water",
-  Insecte: "bug",
-  Normal: "normal",
-  Électrik: "electric",
-  Sol: "ground",
-  Fée: "fairy",
-  Combat: "fighting",
-  Psy: "psychic",
-  Roche: "rock",
-  Acier: "steel",
-  Glace: "ice",
-  Spectre: "ghost",
-  Dragon: "dragon",
-  Ténèbres: "dark",
-};
+export const typeTranslation: TypeLanguage[] = [
+  {
+    en: "grass",
+    fr: "Plante",
+  },
+  {
+    en: "poison",
+    fr: "Poison",
+  },
+  {
+    en: "fire",
+    fr: "Feu",
+  },
+  {
+    en: "flying",
+    fr: "Vol",
+  },
+  {
+    en: "water",
+    fr: "Eau",
+  },
+  {
+    en: "bug",
+    fr: "Insecte",
+  },
+  {
+    en: "normal",
+    fr: "Normal",
+  },
+  {
+    en: "electric",
+    fr: "Électrik",
+  },
+  {
+    en: "ground",
+    fr: "Sol",
+  },
+  {
+    en: "fairy",
+    fr: "Fée",
+  },
+  {
+    en: "fighting",
+    fr: "Combat",
+  },
+  {
+    en: "psychic",
+    fr: "Psy",
+  },
+  {
+    en: "rock",
+    fr: "Roche",
+  },
+  {
+    en: "steel",
+    fr: "Acier",
+  },
+  {
+    en: "ice",
+    fr: "Glace",
+  },
+  {
+    en: "ghost",
+    fr: "Spectre",
+  },
+  {
+    en: "dragon",
+    fr: "Dragon",
+  },
+  {
+    en: "dark",
+    fr: "Ténèbres",
+  },
+];

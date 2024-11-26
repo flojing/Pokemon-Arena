@@ -2,7 +2,7 @@ import { useBattle } from "../contexts/BattleProvider";
 import { typeTranslation } from "../services/arrays";
 import { typeColor } from "../services/battleCardBackgroundColor";
 import "../styles/GenerationTypeFilter.css";
-import type { GenerationTypeFilterProps, TypeTranslation } from "../types/type";
+import type { GenerationTypeFilterProps, TypeLanguage } from "../types/type";
 
 export default function GenerationTypeFilter({
   array,
@@ -53,14 +53,23 @@ export default function GenerationTypeFilter({
             typeName.includes(elem) && name === "type"
               ? {
                   background:
-                    typeColor[typeTranslation[elem as keyof TypeTranslation]]
-                      .background,
+                    typeColor[
+                      typeTranslation.find(
+                        (element: TypeLanguage) => element.fr === elem,
+                      )?.en || ""
+                    ].background,
                   border:
-                    typeColor[typeTranslation[elem as keyof TypeTranslation]]
-                      .border,
+                    typeColor[
+                      typeTranslation.find(
+                        (element: TypeLanguage) => element.fr === elem,
+                      )?.en || ""
+                    ].border,
                   color:
-                    typeColor[typeTranslation[elem as keyof TypeTranslation]]
-                      .color,
+                    typeColor[
+                      typeTranslation.find(
+                        (element: TypeLanguage) => element.fr === elem,
+                      )?.en || ""
+                    ].color,
                 }
               : {}
           }
