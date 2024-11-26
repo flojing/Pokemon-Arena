@@ -14,6 +14,13 @@ export default function BattleProvider({ children }: { children: ReactNode }) {
   const [generationName, setGenerationName] = useState<string[]>([]);
   const [typeName, setTypeName] = useState<string[]>([]);
 
+  const reset = () => {
+    setGenerationName([]);
+    setTypeName([]);
+    setIsBaseForm(false);
+    setIsShinyBattle(false);
+  };
+
   return (
     <BattleContext.Provider
       value={{
@@ -35,6 +42,7 @@ export default function BattleProvider({ children }: { children: ReactNode }) {
         setGenerationName,
         typeName,
         setTypeName,
+        reset,
       }}
     >
       {children}
