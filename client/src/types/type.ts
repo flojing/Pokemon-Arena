@@ -144,6 +144,7 @@ export interface Context {
   setGenerationName: React.Dispatch<React.SetStateAction<string[]>>;
   typeName: string[];
   setTypeName: React.Dispatch<React.SetStateAction<string[]>>;
+  reset: () => void;
 }
 
 export interface Background {
@@ -153,6 +154,7 @@ export interface Background {
 }
 
 export interface TypeColor {
+  [key: string]: Background;
   normal: Background;
   fire: Background;
   water: Background;
@@ -201,4 +203,26 @@ export interface StatsBarProps {
 export interface GenerationTypeFilterProps {
   array: string[];
   name: string;
+}
+
+export interface TypeTranslation {
+  [key: string]: string;
+  Plante: string;
+  Poison: string;
+  Feu: string;
+  Vol: string;
+  Eau: string;
+  Insecte: string;
+  Normal: string;
+  Électrik: string;
+  Sol: string;
+  Fée: string;
+  Combat: string;
+  Psy: string;
+  Roche: string;
+  Acier: string;
+  Glace: string;
+  Spectre: string;
+  Dragon: string;
+  Ténèbres: string;
 }

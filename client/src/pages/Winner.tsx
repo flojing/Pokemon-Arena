@@ -7,29 +7,16 @@ import { useBattle } from "../contexts/BattleProvider";
 
 export default function Winner() {
   const navigate = useNavigate();
-  const {
-    setMatchWinner,
-    matchWinner,
-    setGenerationName,
-    setTypeName,
-    setIsBaseForm,
-    setIsShinyBattle,
-  } = useBattle();
+  const { matchWinner, reset, setMatchWinner } = useBattle();
   const { name, id, img, imgShiny } = matchWinner[0];
 
-  const reset = () => {
-    setMatchWinner([]);
-    setGenerationName([]);
-    setTypeName([]);
-    setIsBaseForm(false);
-    setIsShinyBattle(false);
-  };
-
   const handleClickHome = () => {
+    setMatchWinner([]);
     reset();
     navigate("/");
   };
   const handleClickBattleSettings = () => {
+    setMatchWinner([]);
     reset();
     navigate("/battle");
   };

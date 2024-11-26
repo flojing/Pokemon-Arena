@@ -1,18 +1,69 @@
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import PokemonMiniature from "../components/PokemonMiniature";
 import "../styles/PokedexSearch.css";
-import { useState } from "react";
+import { Collapse } from "@mui/material";
+import { useEffect, useState } from "react";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import imageSearchBar from "../assets/images/loupe.svg";
+import SettingFilter from "../components/SettingFilter";
+import { useBattle } from "../contexts/BattleProvider";
+import { formatedType } from "../services/utils";
 import type { Data } from "../types/type";
 
 export default function PokedexSearch() {
   const navigate = useNavigate();
   const data = useRouteLoaderData("data") as Data[];
-  const [valueInput, setValueInput] = useState("");
+  const [valueInput, setValueInput] = useState<string>("");
+  const [isFilters, setIsFilters] = useState<boolean>(false);
+  const [dataPokemon, setDataPokemon] = useState<Data[]>(data);
+  const { isBaseForm, generationName, typeName, reset } = useBattle();
+
+  useEffect(() => {
+    setDataPokemon(data);
+    if (isBaseForm) {
+      setDataPokemon((prev) => {
+        const newData = prev?.filter((elem) => elem.baseForm === null);
+        return newData;
+      });
+    }
+
+    if (typeName.length !== 0) {
+      setDataPokemon((prev) => {
+        const newData = prev.filter((elem) => {
+          if (elem.type) {
+            let containType = false;
+            for (const element of elem.type) {
+              const type = formatedType(element);
+              if (typeName.includes(type)) {
+                containType = true;
+              }
+            }
+            return containType;
+          }
+        });
+        return newData;
+      });
+    }
+
+    if (generationName.length !== 0) {
+      setDataPokemon((prev) => {
+        const newData = prev.filter((elem) => {
+          return generationName.some((element) =>
+            elem.generation?.includes(element[11]),
+          );
+        });
+        return newData;
+      });
+    }
+  }, [isBaseForm, data, typeName, generationName]);
 
   const handleClickBackToHome = () => {
+    reset();
     navigate("/");
+  };
+
+  const handleClickFilters = () => {
+    setIsFilters(!isFilters);
   };
 
   return (
@@ -44,8 +95,27 @@ export default function PokedexSearch() {
           id="pokemon-search-input"
         />
       </form>
+      <button
+        className="battle-filters-button"
+        type="button"
+        onClick={handleClickFilters}
+      >
+        Filtres{" "}
+        <img
+          src={
+            !isFilters
+              ? "/src/assets/images/down-white.svg"
+              : "/src/assets/images/up-white.svg"
+          }
+          alt=""
+          className="battle-filter-img-button"
+        />
+      </button>
+      <Collapse in={isFilters}>
+        <SettingFilter filter="pokedex" />
+      </Collapse>
       <div className="pokedex-search-pokemon">
-        {data.map((element) => {
+        {dataPokemon?.map((element: Data) => {
           if (element.name?.toLowerCase().includes(valueInput.toLowerCase())) {
             return (
               <PokemonMiniature
