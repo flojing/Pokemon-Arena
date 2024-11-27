@@ -3,7 +3,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
+  z-index: 10;
 }
 
 .pokeball.hidden {
@@ -53,4 +54,100 @@
   top: 80px;
   transform: translate(-50%, -50%);
   cursor: default;
+}
+
+.help-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 5;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.Dracaufeu-gif {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.help-text {
+  color: black;
+  font-family: var(--font-family-p);
+  font-size: 18px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(-3deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(3deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.pokeball-logo.vibrate {
+  animation: vibrate 0.3s ease-in-out infinite;
+}
+
+.pokeball-logo.vibrate.move-to-header {
+  animation: none;
+}
+
+@media screen and (min-width: 767px) {
+  .help-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 5;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .Dracaufeu-gif {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
 }
