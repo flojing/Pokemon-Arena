@@ -8,6 +8,13 @@ export default function Pokeball() {
   const [shouldVibrate, setShouldVibrate] = useState(false);
 
   useEffect(() => {
+    const hasSeenAnimation = localStorage.getItem("pokeballAnimationSeen");
+    if (hasSeenAnimation) {
+      setIsAnimationCompleted(true);
+      setIsOpen(true);
+      return;
+    }
+
     const vibrateTimeout = setTimeout(() => {
       if (!isOpen) {
         setShouldVibrate(true);
@@ -22,8 +29,10 @@ export default function Pokeball() {
     setShouldVibrate(false);
     setTimeout(() => {
       setIsAnimationCompleted(true);
+      localStorage.setItem("pokeballAnimationSeen", "true");
     }, 1000);
   };
+
   return (
     <div className={`pokeball ${isAnimationCompleted ? "hidden" : ""}`}>
       <div
