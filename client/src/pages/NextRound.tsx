@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/NextRound.css";
-import { useBattle } from "../contexts/BattleProvider";
 import { useEffect } from "react";
+import { useBattle } from "../contexts/BattleProvider";
 
 export default function NextRound() {
   const navigate = useNavigate();

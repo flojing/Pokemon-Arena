@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from "react-router-dom"; // Importer useNavigate
 import { useEffect } from "react"; // Importer useEffect
+import { useNavigate, useParams } from "react-router-dom"; // Importer useNavigate
 import LogoVS from "/src/assets/images/logo_VS-removebg-preview 1.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import "../styles/Battle.css";

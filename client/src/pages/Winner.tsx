@@ -1,10 +1,10 @@
 import "../styles/Winner.css";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import homeImage from "../assets/images/home.svg";
 import restartImage from "../assets/images/restart.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import { useBattle } from "../contexts/BattleProvider";
-import { useEffect } from "react";
 
 export default function Winner() {
   const navigate = useNavigate();
