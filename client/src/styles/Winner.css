@@ -1,12 +1,13 @@
 #winner-page {
   padding: 30px;
+  overflow: hidden;
 }
 
 #champion-title {
   font-family: var(--font-family-h1);
   font-size: var(--font-size-h1);
   font-weight: 100;
-  padding: 40px;
+  padding: 0px 40px 40px 40px;
   color: white;
   text-align: center;
 }
@@ -39,7 +40,6 @@
 
 .winner-button-nav {
   border-radius: 25px;
-  border-style: none;
   padding: 10px 20px;
   color: white;
   background-color: #3b2d69;
@@ -49,6 +49,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
+  border: solid 3px #644eae;
 }
 
 #winner-nav {
@@ -65,4 +66,29 @@
   background-color: #b3aace;
   color: #3b2d69;
   cursor: pointer;
+}
+
+.winner-button-nav:hover .winner-image-button {
+  filter: brightness(0) saturate(100%) invert(17%) sepia(27%) saturate(1166%)
+    hue-rotate(225deg) brightness(94%) contrast(91%);
+}
+
+@media screen and (min-width: 767px) {
+  .winner-nav {
+    justify-content: center;
+  }
+
+  .winner-button-nav {
+    font-size: 56px;
+    justify-content: center;
+  }
+
+  .winner-image-button {
+    height: 48px;
+  }
+
+  #winner-nav {
+    justify-content: center;
+    gap: 30px;
+  }
 }

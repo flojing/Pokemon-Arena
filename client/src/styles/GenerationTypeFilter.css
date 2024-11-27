@@ -28,3 +28,9 @@
   padding: 10px;
   gap: 5px;
 }
+
+@media screen and (min-width: 850px) {
+  .generation-filter-container {
+    justify-content: flex-start;
+  }
+}
