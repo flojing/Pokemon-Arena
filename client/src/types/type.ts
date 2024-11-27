@@ -145,6 +145,7 @@ export interface Context {
   typeName: string[];
   setTypeName: React.Dispatch<React.SetStateAction<string[]>>;
   reset: () => void;
+  restart: () => void;
 }
 
 export interface Background {

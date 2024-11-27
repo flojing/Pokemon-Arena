@@ -40,9 +40,11 @@ export default function PokemonBattleCard({
           if (round !== 1) {
             setMatch(match / 2);
             navigate("/battle/next-round");
+            window.history.pushState(null, "", location.pathname);
           } else {
             setRandomPokemon([]);
             navigate("/battle/winner");
+            window.history.pushState(null, "", location.pathname);
           }
         } else {
           navigate(
