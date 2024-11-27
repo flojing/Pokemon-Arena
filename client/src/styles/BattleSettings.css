@@ -75,7 +75,6 @@
 
 .go-to-button {
   border-radius: 20px;
-  border-style: none;
   background: #3b2d69;
   padding: 14px 36px;
   margin: 48px 0;
@@ -91,6 +90,7 @@
   -webkit-text-stroke-color: #000;
   color: var(--color-font);
   cursor: pointer;
+  border: solid 3px #644eae;
 }
 
 .go-to-button:hover {
@@ -174,7 +174,6 @@
 
   .go-to-button {
     border-radius: 20px;
-    border-style: none;
     background: #3b2d69;
     padding: 14px 36px;
     margin: 48px 0;
@@ -188,5 +187,6 @@
     -webkit-text-stroke-width: 1;
     -webkit-text-stroke-color: #000;
     color: var(--color-font);
+    border: solid 3px #644eae;
   }
 }
