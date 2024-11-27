@@ -67,7 +67,7 @@ export default function Pokeball() {
         <div className="help-container">
           <img src={DracaufeuGif} alt="Dracaufeu" className="Dracaufeu-gif" />
           <p className="help-text">
-            Cliquez sur le logo pour rentrer dans l'arène
+            Cliquez sur le logo pour entrer dans l'arène
           </p>
         </div>
       )}
