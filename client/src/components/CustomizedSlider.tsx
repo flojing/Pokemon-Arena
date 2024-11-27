@@ -17,35 +17,54 @@ function ValueLabelComponent(props: SliderValueLabelProps) {
 }
 
 // Style personnalisé pour le slider
-const SliderPoke = styled(Slider)(() => ({
-  color: "",
+const SliderPoke = styled(Slider)(({ theme }) => ({
+  color: "white",
   height: 5,
   padding: "15px 0",
   "& .MuiSlider-thumb": {
-    height: 18,
-    width: 18,
-    backgroundColor: "#fff",
-    boxShadow: "0 0 2px 0px rgba(0, 0, 0, 0.1)",
-    "&:focus, &:hover, &.Mui-active": {
-      boxShadow: "0px 0px 3px 1px rgba(0, 0, 0, 0.1)",
-      "@media (hover: none)": {
-        boxShadow:
-          "0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)",
-      },
+    height: 30,
+    width: 30,
+    backgroundColor: "transparent",
+    backgroundImage:
+      "url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif')", // Lien vers votre image
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    border: "none",
+    borderRadius: "4px",
+    boxShadow: "none",
+    marginTop: -5,
+    marginLeft: 5,
+    [theme.breakpoints.up(850)]: {
+      height: 40,
+      width: 40,
     },
   },
   "& .MuiSlider-track": {
-    border: "none",
-    height: 3,
-    backgroundColor: "#ffffff",
+    border: "solid 1px white",
+    height: 4,
+    backgroundColor: "white",
+    [theme.breakpoints.up(850)]: {
+      height: 6,
+    },
   },
   "& .MuiSlider-rail": {
-    opacity: 0.8,
-    backgroundColor: "#d0d0d0",
+    opacity: 0.6,
+    backgroundColor: "white",
+    "& .MuiSlider-rail": {
+      opacity: 0.6,
+      backgroundColor: "white",
+      [theme.breakpoints.up(850)]: {
+        height: 6,
+      },
+    },
   },
   "& .MuiSlider-markLabel": {
     color: "#ffffff",
-    fontFamily: '"Fredoka", sans-serif', // Définit la couleur des marques en blanc
+    fontFamily: '"Fredoka", sans-serif',
+    [theme.breakpoints.up(850)]: {
+      fontSize: "16px",
+    },
   },
 }));
 
@@ -57,12 +76,16 @@ const marks = [
   { value: 3, label: "64" },
 ];
 
-const StyledTypography = styled(Typography)({
+const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: "18px", // Taille de la police
   fontWeight: "500", // Style de police
   fontFamily: '"Fredoka", sans-serif',
   marginBottom: "16px", // Marge inférieure
-});
+  [theme.breakpoints.up(850)]: {
+    fontSize: "24px", // Taille de la police augmentée pour les grands écrans
+    marginBottom: "20px", // Ajuste la marge inférieure
+  },
+}));
 
 // Composant principal
 export default function CustomizedSlider() {
@@ -73,7 +96,7 @@ export default function CustomizedSlider() {
   };
   return (
     <Box sx={{ width: 278 }}>
-      <StyledTypography gutterBottom>Nombre de Pokémon</StyledTypography>
+      <StyledTypography gutterBottom>Nombre de Pokémons :</StyledTypography>
       <SliderPoke
         aria-label="slider"
         onChange={handleChange}
