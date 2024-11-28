@@ -56,7 +56,6 @@
 .home-button {
   width: 302px;
   height: 121px;
-  border-style: none;
   background: #3b2d69;
   border-radius: 20px;
   color: white;
@@ -69,6 +68,7 @@
   padding-left: 15px;
   margin-bottom: 30px;
   cursor: pointer;
+  border: solid 3px #644eae;
 }
 
 .home-button:hover {

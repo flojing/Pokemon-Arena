@@ -105,62 +105,83 @@ export default function PokedexDetails({
           <div> </div>
           {!isBattle && <h1 className="details-title">Pokédex</h1>}
         </div>
-        <ul className="details-name-container">
-          <li className="details-pokemon-name">{name}</li>
-          <li className="details-pokemon-id">
-            <i>
-              Pokedex ID : {convertID(isBattle ? idBattle?.toString() : id)}
-            </i>
-          </li>
-        </ul>
-        <ul className="details-species-container">
-          <li className="details-type">
-            <b className="bold-text">Type</b> : {typeNames?.join(" / ")}
-          </li>
-          <li className="details-category">
-            <b className="bold-text">Catégorie</b> : {category}
-          </li>
-        </ul>
-        <img
-          onKeyDown={handleClickTurnShiny}
-          onClick={handleClickTurnShiny}
-          className="details-pokemon-photo"
-          src={isShiny ? imgShiny : img}
-          alt="Pokémon"
-        />
+        <div className="info-and-img-container">
+          <div className="main-info-container">
+            <div className="details-name-container">
+              <p className="details-pokemon-name">{name}</p>
+              <p className="details-pokemon-id">
+                <i>
+                  Pokedex ID : {convertID(isBattle ? idBattle?.toString() : id)}
+                </i>
+              </p>
+            </div>
+            <div className="details-species-container">
+              <div className="details-type">
+                <b className="bold-text">Type</b> : {typeNames?.join(" / ")}
+              </div>
+              <div className="details-category">
+                <b className="bold-text">Catégorie</b> : {category}
+              </div>
+            </div>
+            <div className="description-responsive">
+              <PokemonDetailsContent
+                description={description}
+                height={height}
+                weight={weight}
+                handleClickPlayCry={handleClickPlayCry}
+                cryIcon={cryIcon}
+              />
+            </div>
+          </div>
+          <div className="img-container">
+            <img
+              onKeyDown={handleClickTurnShiny}
+              onClick={handleClickTurnShiny}
+              className="details-pokemon-photo"
+              src={isShiny ? imgShiny : img}
+              alt="Pokémon"
+            />
+          </div>
+        </div>
       </div>
       <div className="details-description-container">
-        <div className="image-shadow"> </div>
-        <div className="details-navigation-tabs-container">
-          <button
-            type="button"
-            className={`specifications-button tab-buttons ${activeTab === "specs" ? "active" : ""}`}
-            onClick={() => setActiveTab("specs")}
-            disabled={activeTab === "specs"}
-          >
-            Caractéristiques
-          </button>
-          <button
-            type="button"
-            className={`statistics-button tab-buttons ${activeTab === "stats" ? "active" : ""}`}
-            onClick={() => setActiveTab("stats")}
-            disabled={activeTab === "stats"}
-          >
-            Stats
-          </button>
+        <div className="shadow-and-nav-container">
+          <div className="image-shadow"> </div>
+          <div className="details-navigation-tabs-container">
+            <button
+              type="button"
+              className={`specifications-button tab-buttons ${activeTab === "specs" ? "active" : ""}`}
+              onClick={() => setActiveTab("specs")}
+              disabled={activeTab === "specs"}
+            >
+              Caractéristiques
+            </button>
+            <button
+              type="button"
+              className={`statistics-button tab-buttons ${activeTab === "stats" ? "active" : ""}`}
+              onClick={() => setActiveTab("stats")}
+              disabled={activeTab === "stats"}
+            >
+              Stats
+            </button>
+          </div>
+
+          {activeTab === "specs" && (
+            <div className="pokemon-details-mobile">
+              <PokemonDetailsContent
+                description={description}
+                height={height}
+                weight={weight}
+                handleClickPlayCry={handleClickPlayCry}
+                cryIcon={cryIcon}
+              />
+            </div>
+          )}
+
+          {(activeTab === "stats" || window.innerWidth >= 768) && (
+            <PokemonNavStats stats={stats} />
+          )}
         </div>
-
-        {activeTab === "specs" && (
-          <PokemonDetailsContent
-            description={description}
-            height={height}
-            weight={weight}
-            handleClickPlayCry={handleClickPlayCry}
-            cryIcon={cryIcon}
-          />
-        )}
-
-        {activeTab === "stats" && <PokemonNavStats stats={stats} />}
 
         <div className="pokedex-details-navigation-container">
           {prevId > 0 && !isBattle && (
