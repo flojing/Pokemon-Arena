@@ -30,6 +30,10 @@
   transform: rotateY(6deg) rotateX(6deg);
 }
 
+.pokemon-battle-card-container:active {
+  transform: scale(0.9);
+}
+
 .pokemon-detail-card-container {
   width: 100%;
   height: 100%;

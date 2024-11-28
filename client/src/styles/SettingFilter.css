@@ -53,6 +53,10 @@
   gap: 5px;
 }
 
+.setting-filter-reset-button:active {
+  background-color: #b3aace;
+}
+
 @media screen and (min-width: 767px) {
   .setting-filter-title {
     font-size: 20px;
