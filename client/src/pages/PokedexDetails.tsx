@@ -1,12 +1,13 @@
-import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
 import { useEffect, useState } from "react";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
 import PokemonDetailsContent from "../components/PokemonNavSpecifications";
 import PokemonNavStats from "../components/PokemonNavStats";
+import { useData } from "../contexts/DataProvider";
 import { getPokemonTypesTranslation } from "../services/getApi";
-import type { Data, PokedexDetailsProps } from "../types/type";
+import type { PokedexDetailsProps } from "../types/type";
 
 export default function PokedexDetails({
   idBattle,
@@ -14,11 +15,13 @@ export default function PokedexDetails({
 }: PokedexDetailsProps) {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
-  const [typeNames, setTypeNames] = useState<string[]>([]);
+  const [typeNames, setTypeNames] = useState<string[] | null>(null);
   const [activeTab, setActiveTab] = useState("specs");
-  const data = useRouteLoaderData("data") as Data[];
+  const { data } = useData();
   const { id } = useParams();
-  const pokemon = data.find(
+  const prevId = Number.parseInt(id || "0") - 1;
+  const nextId = Number.parseInt(id || "0") + 1;
+  const pokemon = data?.find(
     (element) => element.id === Number(isBattle ? idBattle : id),
   );
   const {
@@ -59,8 +62,7 @@ export default function PokedexDetails({
   const handleClickBackToList = () => {
     navigate("/pokedex");
   };
-  const prevId = Number.parseInt(id || "0") - 1;
-  const nextId = Number.parseInt(id || "0") + 1;
+
   const handleClickPreviousPokemon = () => {
     if (prevId > 0) {
       navigate(`/pokedex/${prevId}`);
@@ -87,6 +89,10 @@ export default function PokedexDetails({
     };
     getTypes();
   }, [type]);
+
+  if (typeNames === null) {
+    return;
+  }
 
   return (
     <div className="details-page-container">
