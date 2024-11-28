@@ -12,7 +12,7 @@ export default function Pokeball() {
   const [showHelp, setShowHelp] = useState(false);
 
   useEffect(() => {
-    const hasSeenAnimation = localStorage.getItem("pokeballAnimationSeen");
+    const hasSeenAnimation = sessionStorage.getItem("pokeballAnimationSeen");
     if (hasSeenAnimation) {
       setIsAnimationCompleted(true);
       setIsOpen(true);
@@ -42,7 +42,7 @@ export default function Pokeball() {
     setShouldVibrate(false);
     setTimeout(() => {
       setIsAnimationCompleted(true);
-      localStorage.setItem("pokeballAnimationSeen", "true");
+      sessionStorage.setItem("pokeballAnimationSeen", "true");
     }, 1000);
   };
 
@@ -58,16 +58,17 @@ export default function Pokeball() {
         onClick={handleClickLogoOpening}
         onKeyDown={handleClickLogoOpening}
         src={logoPokemon}
-        className={`pokeball-logo ${isOpen ? "move-to-header" : ""} ${
+        className={`pokeball-logo ${isOpen && !isAnimationCompleted ? "move-to-header" : ""} ${
           shouldVibrate ? "vibrate" : ""
-        }`}
+        } ${isOpen && isAnimationCompleted ? "final-position" : ""}`}
         alt="Logo Pokémon Aréna"
       />
       {showHelp && !isOpen && (
         <div className="help-container">
           <img src={DracaufeuGif} alt="Dracaufeu" className="Dracaufeu-gif" />
           <p className="help-text">
-            Cliquez sur le logo pour entrer dans l'arène
+            Cliquez sur le logo <br />
+            pour entrer dans l'arène
           </p>
         </div>
       )}
