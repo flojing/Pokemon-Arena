@@ -1,4 +1,5 @@
 import "../styles/Winner.css";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import homeImage from "../assets/images/home.svg";
 import restartImage from "../assets/images/restart.svg";
@@ -7,7 +8,7 @@ import { useBattle } from "../contexts/BattleProvider";
 
 export default function Winner() {
   const navigate = useNavigate();
-  const { matchWinner, reset, setMatchWinner } = useBattle();
+  const { matchWinner, reset, setMatchWinner, restart } = useBattle();
   const { name, id, img, imgShiny } = matchWinner[0];
 
   const handleClickHome = () => {
@@ -20,6 +21,18 @@ export default function Winner() {
     reset();
     navigate("/battle");
   };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      restart();
+      navigate("/battle");
+    };
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [navigate, restart]);
 
   return (
     <div id="winner-page">

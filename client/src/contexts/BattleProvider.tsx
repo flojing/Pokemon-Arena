@@ -21,6 +21,13 @@ export default function BattleProvider({ children }: { children: ReactNode }) {
     setIsShinyBattle(false);
   };
 
+  const restart = () => {
+    setMatchWinner([]);
+    setRound(0);
+    setMatch(0);
+    reset();
+  };
+
   return (
     <BattleContext.Provider
       value={{
@@ -43,6 +50,7 @@ export default function BattleProvider({ children }: { children: ReactNode }) {
         typeName,
         setTypeName,
         reset,
+        restart,
       }}
     >
       {children}
