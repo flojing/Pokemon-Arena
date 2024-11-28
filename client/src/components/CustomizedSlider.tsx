@@ -31,10 +31,15 @@ const SliderPoke = styled(Slider)(({ theme }) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     border: "none",
+    outline: "none",
     borderRadius: "4px",
     boxShadow: "none",
     marginTop: -5,
     marginLeft: 5,
+    "&:before, &:focus, &:hover, &.Mui-active": {
+      outline: "none", // Supprime le contour de focus en mode actif
+      boxShadow: "none", // Supprime l'ombre supplémentaire
+    },
     [theme.breakpoints.up(850)]: {
       height: 40,
       width: 40,

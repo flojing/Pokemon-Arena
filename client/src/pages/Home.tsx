@@ -59,7 +59,7 @@ export default function Home() {
               type="button"
               className="home-button"
             >
-              Pokedex
+              Pokédex
               <img
                 className="home-img-pokedex-button"
                 src={imgSecondButton}
