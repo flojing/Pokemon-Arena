@@ -60,14 +60,6 @@
   }
 }
 
-.pokedex-search-filter {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 0 70px;
-  gap: 10px;
-}
-
 #pokemon-search-input::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -83,4 +75,17 @@
   border-radius: 10px;
   background-color: #3b2d69;
   padding-right: 8px;
+}
+
+.pokedex-search-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+@media screen and (min-width: 655px) {
+  .pokedex-search-filter {
+    padding: 0 70px;
+  }
 }

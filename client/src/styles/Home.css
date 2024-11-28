@@ -102,7 +102,7 @@
   }
 }
 
-@media screen and (min-width: 920px) {
+@media screen and (min-height: 700px) {
   .home-footer {
     position: absolute;
     bottom: 0;

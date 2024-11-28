@@ -34,7 +34,6 @@ import DataProvider from "./contexts/DataProvider";
 const router = createBrowserRouter([
   {
     element: <App />,
-    id: "data",
     children: [
       {
         path: "/",
