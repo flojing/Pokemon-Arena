@@ -15,10 +15,12 @@ export default function PokedexDetails({
 }: PokedexDetailsProps) {
   const navigate = useNavigate();
   const [isShiny, setIsShiny] = useState(false);
-  const [typeNames, setTypeNames] = useState<string[]>([]);
+  const [typeNames, setTypeNames] = useState<string[] | null>(null);
   const [activeTab, setActiveTab] = useState("specs");
   const { data } = useData();
   const { id } = useParams();
+  const prevId = Number.parseInt(id || "0") - 1;
+  const nextId = Number.parseInt(id || "0") + 1;
   const pokemon = data?.find(
     (element) => element.id === Number(isBattle ? idBattle : id),
   );
@@ -60,8 +62,7 @@ export default function PokedexDetails({
   const handleClickBackToList = () => {
     navigate("/pokedex");
   };
-  const prevId = Number.parseInt(id || "0") - 1;
-  const nextId = Number.parseInt(id || "0") + 1;
+
   const handleClickPreviousPokemon = () => {
     if (prevId > 0) {
       navigate(`/pokedex/${prevId}`);
@@ -88,6 +89,10 @@ export default function PokedexDetails({
     };
     getTypes();
   }, [type]);
+
+  if (typeNames === null) {
+    return;
+  }
 
   return (
     <div className="details-page-container">

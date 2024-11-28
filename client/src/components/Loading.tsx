@@ -8,7 +8,7 @@ export default function Loading() {
   return (
     <div className="loading-container">
       <h1>Chargement du Pokédex en cours...</h1>
-      <Box sx={{ width: "70vw" }}>
+      <Box sx={{ width: "25vw" }}>
         <LinearProgress variant="determinate" value={progress} />
       </Box>
     </div>
