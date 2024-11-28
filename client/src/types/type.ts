@@ -125,7 +125,7 @@ export interface PokedexDetailsProps {
   isBattle?: boolean;
 }
 
-export interface Context {
+export interface BattleContextType {
   sliderValue: number;
   setSliderValue: React.Dispatch<React.SetStateAction<number>>;
   round: number;
@@ -146,6 +146,11 @@ export interface Context {
   setTypeName: React.Dispatch<React.SetStateAction<string[]>>;
   reset: () => void;
   restart: () => void;
+}
+
+export interface DataContextType {
+  data: Data[] | null;
+  progress: number;
 }
 
 export interface Background {
