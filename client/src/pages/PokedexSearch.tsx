@@ -78,7 +78,7 @@ export default function PokedexSearch() {
           alt="Retour Home"
         />
         <div className="pokedex-search-title-container">
-          <h1 className="pokedex-search-title">Pokedex</h1>
+          <h1 className="pokedex-search-title">Pokédex</h1>
         </div>
       </div>
       <form
