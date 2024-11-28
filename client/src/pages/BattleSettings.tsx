@@ -2,18 +2,19 @@ import CustomizedSlider from "../components/CustomizedSlider";
 import "../styles/BattleSettings.css";
 import { Collapse } from "@mui/material";
 import { useState } from "react";
-import { useNavigate, useRouteLoaderData } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
 import SettingFilter from "../components/SettingFilter";
 import { useBattle } from "../contexts/BattleProvider";
+import { useData } from "../contexts/DataProvider";
 import { formatedType } from "../services/utils";
 import type { Data } from "../types/type";
 
 export default function BattleSettings() {
   const navigate = useNavigate();
-  const data = useRouteLoaderData("data") as Data[];
+  const { data } = useData();
   const {
     sliderValue,
     setRound,
@@ -30,47 +31,49 @@ export default function BattleSettings() {
   const numberOfPokemonArray = [8, 16, 32, 64];
 
   const randomizer = () => {
-    let prevData: Data[] = data;
+    let prevData: Data[] | null | undefined = data;
     const rawResult: Data[] = [];
     const result = [];
     let i = 0;
 
-    if (isBaseForm) {
-      prevData = prevData.filter((elem) => elem.baseForm === null);
-    }
+    if (prevData) {
+      if (isBaseForm) {
+        prevData = prevData.filter((elem) => elem.baseForm === null);
+      }
 
-    if (generationName.length !== 0) {
-      prevData = prevData.filter((elem) => {
-        return generationName.some((element) =>
-          elem.generation?.includes(element[11]),
-        );
-      });
-    }
+      if (generationName.length !== 0) {
+        prevData = prevData.filter((elem) => {
+          return generationName.some((element) =>
+            elem.generation?.includes(element[11]),
+          );
+        });
+      }
 
-    if (typeName.length !== 0) {
-      prevData = prevData.filter((elem) => {
-        if (elem.type) {
-          let containType = false;
-          for (const element of elem.type) {
-            const type = formatedType(element);
-            if (typeName.includes(type)) {
-              containType = true;
+      if (typeName.length !== 0) {
+        prevData = prevData.filter((elem) => {
+          if (elem.type) {
+            let containType = false;
+            for (const element of elem.type) {
+              const type = formatedType(element);
+              if (typeName.includes(type)) {
+                containType = true;
+              }
             }
+            return containType;
           }
-          return containType;
+        });
+      }
+
+      if (prevData.length < numberOfPokemonArray[sliderValue]) {
+        return false;
+      }
+
+      while (i < numberOfPokemonArray[sliderValue]) {
+        const random = Math.floor(Math.random() * prevData.length);
+        if (!rawResult.includes(prevData[random])) {
+          rawResult.push(prevData[random]);
+          i++;
         }
-      });
-    }
-
-    if (prevData.length < numberOfPokemonArray[sliderValue]) {
-      return false;
-    }
-
-    while (i < numberOfPokemonArray[sliderValue]) {
-      const random = Math.floor(Math.random() * prevData.length);
-      if (!rawResult.includes(prevData[random])) {
-        rawResult.push(prevData[random]);
-        i++;
       }
     }
 

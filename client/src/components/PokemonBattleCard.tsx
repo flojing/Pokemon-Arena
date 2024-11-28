@@ -2,12 +2,13 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Info, X } from "lucide-react";
 import "../styles/PokemonBattleCard.css";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useBattle } from "../contexts/BattleProvider";
+import { useData } from "../contexts/DataProvider";
 import PokedexDetails from "../pages/PokedexDetails";
 import { typeColor } from "../services/battleCardBackgroundColor";
 import { getPokemonTypesTranslation } from "../services/getApi";
-import type { Data, PokemonBattleCardProps, TypeColor } from "../types/type";
+import type { PokemonBattleCardProps, TypeColor } from "../types/type";
 
 export default function PokemonBattleCard({
   id,
@@ -17,8 +18,8 @@ export default function PokemonBattleCard({
   imgShiny,
 }: PokemonBattleCardProps) {
   const [type, setType] = useState<keyof TypeColor>("normal");
-  const data = useRouteLoaderData("data") as Data[];
-  const pokemon = data.find((element) => element.id === id);
+  const { data } = useData();
+  const pokemon = data?.find((element) => element.id === id);
   const pokemonType = pokemon?.type?.[0];
   const navigate = useNavigate();
   const { currentMatch } = useParams();

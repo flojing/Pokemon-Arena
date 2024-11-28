@@ -1,7 +1,7 @@
 import { type ReactNode, createContext, useContext, useState } from "react";
-import type { Context, Data } from "../types/type";
+import type { BattleContextType, Data } from "../types/type";
 
-export const BattleContext = createContext<Context | null>(null);
+export const BattleContext = createContext<BattleContextType | null>(null);
 
 export default function BattleProvider({ children }: { children: ReactNode }) {
   const [sliderValue, setSliderValue] = useState<number>(0);

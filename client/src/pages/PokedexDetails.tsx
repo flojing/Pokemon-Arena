@@ -1,12 +1,13 @@
-import { useNavigate, useParams, useRouteLoaderData } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "/src/styles/PokedexDetails.css";
 import { useEffect, useState } from "react";
 import returnArrow from "/src/assets/images/left-arrow.png";
 import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
 import PokemonDetailsContent from "../components/PokemonNavSpecifications";
 import PokemonNavStats from "../components/PokemonNavStats";
+import { useData } from "../contexts/DataProvider";
 import { getPokemonTypesTranslation } from "../services/getApi";
-import type { Data, PokedexDetailsProps } from "../types/type";
+import type { PokedexDetailsProps } from "../types/type";
 
 export default function PokedexDetails({
   idBattle,
@@ -16,9 +17,9 @@ export default function PokedexDetails({
   const [isShiny, setIsShiny] = useState(false);
   const [typeNames, setTypeNames] = useState<string[]>([]);
   const [activeTab, setActiveTab] = useState("specs");
-  const data = useRouteLoaderData("data") as Data[];
+  const { data } = useData();
   const { id } = useParams();
-  const pokemon = data.find(
+  const pokemon = data?.find(
     (element) => element.id === Number(isBattle ? idBattle : id),
   );
   const {
