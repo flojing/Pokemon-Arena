@@ -64,7 +64,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 0 70px;
   gap: 10px;
 }
 
@@ -91,5 +90,10 @@
   }
   .pokedex-header {
     padding: 30px 70px;
+  }
+}
+@media screen and (min-width: 655px) {
+  .pokedex-search-filter {
+    padding: 0 70px;
   }
 }
