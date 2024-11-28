@@ -9,6 +9,7 @@
 
 .pokeball.hidden {
   height: 0;
+  position: absolute;
 }
 
 .pokeball-red {
@@ -47,12 +48,16 @@
   z-index: 3;
   cursor: pointer;
   transform: translate(-50%, -50%);
-  transition: all 1s ease-in-out;
 }
 
 .pokeball-logo.move-to-header {
   top: 80px;
   transform: translate(-50%, -50%);
+  cursor: default;
+  transition: all 1s ease-in-out;
+}
+.pokeball-logo.final-position {
+  top: 80px;
   cursor: default;
 }
 
