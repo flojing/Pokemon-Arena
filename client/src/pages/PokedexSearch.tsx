@@ -96,25 +96,27 @@ export default function PokedexSearch() {
           id="pokemon-search-input"
         />
       </form>
-      <button
-        className="battle-filters-button"
-        type="button"
-        onClick={handleClickFilters}
-      >
-        Filtres{" "}
-        <img
-          src={
-            !isFilters
-              ? "/src/assets/images/down-white.svg"
-              : "/src/assets/images/up-white.svg"
-          }
-          alt=""
-          className="battle-filter-img-button"
-        />
-      </button>
-      <Collapse in={isFilters}>
-        <SettingFilter filter="pokedex" />
-      </Collapse>
+      <div className="pokedex-search-filter">
+        <button
+          className="battle-filters-button"
+          type="button"
+          onClick={handleClickFilters}
+        >
+          Filtres{" "}
+          <img
+            src={
+              !isFilters
+                ? "/src/assets/images/down-white.svg"
+                : "/src/assets/images/up-white.svg"
+            }
+            alt=""
+            className="battle-filter-img-button"
+          />
+        </button>
+        <Collapse in={isFilters}>
+          <SettingFilter filter="pokedex" />
+        </Collapse>
+      </div>
       <div className="pokedex-search-pokemon">
         {dataPokemon?.map((element: Data) => {
           if (element.name?.toLowerCase().includes(valueInput.toLowerCase())) {
