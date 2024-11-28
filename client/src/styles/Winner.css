@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   animation: hithere 2s ease 2;
+  perspective: 1000px;
 }
 
 @keyframes hithere {

@@ -145,6 +145,7 @@ export interface BattleContextType {
   typeName: string[];
   setTypeName: React.Dispatch<React.SetStateAction<string[]>>;
   reset: () => void;
+  restart: () => void;
 }
 
 export interface DataContextType {
