@@ -104,4 +104,6 @@
   border-radius: 15px;
   transform-style: preserve-3d;
   transition: transform 0.1s ease-out;
+  display: flex;
+  justify-content: center;
 }
