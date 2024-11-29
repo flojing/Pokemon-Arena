@@ -18,7 +18,11 @@ export default function Winner() {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (cardContainerRef.current && cardRef.current) {
+    if (
+      cardContainerRef.current &&
+      cardRef.current &&
+      window.innerWidth >= 900
+    ) {
       const rect = cardContainerRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
