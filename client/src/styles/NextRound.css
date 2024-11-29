@@ -4,6 +4,7 @@
   align-items: center;
   padding: 30px;
   height: 100vh;
+  user-select: none;
 }
 .next-round-button {
   width: 302px;

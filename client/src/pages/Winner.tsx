@@ -63,7 +63,7 @@ export default function Winner() {
 
   return (
     <div id="winner-page">
-      <MouseFollower id={id} />
+      {window.innerWidth >= 900 && <MouseFollower id={id} />}
       <h1 id="champion-title">Champion</h1>
       <div
         ref={cardContainerRef}
