@@ -7,6 +7,10 @@ export default function Loading() {
   const { progress } = useData();
   return (
     <div className="loading-container">
+      <img
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/94.gif"
+        alt=""
+      />
       <h1>Chargement du Pokédex en cours...</h1>
       <Box sx={{ width: "25vw", minWidth: "300px" }}>
         <LinearProgress variant="determinate" value={progress} />
