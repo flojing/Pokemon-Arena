@@ -76,24 +76,22 @@ export default function PokemonBattleCard({
       <div className="pokemon-detail-card-container" style={typeColor[type]}>
         <div className="pokemon-battle-card-title">
           <p>{name}</p>
-          {
-            <DialogPrimitive.Root>
-              <DialogPrimitive.Trigger asChild>
-                <button type="button" className="info-button">
-                  <Info className="pokemon-battle-card-logo-info" />
-                </button>
-              </DialogPrimitive.Trigger>
-              <DialogPrimitive.Portal>
-                <DialogPrimitive.Overlay className="modal-overlay" />
-                <DialogPrimitive.Content className="modal-content">
-                  <DialogPrimitive.Close className="modal-close">
-                    <X className="h-4 w-4" />
-                  </DialogPrimitive.Close>
-                  <PokedexDetails idBattle={id} isBattle={true} />
-                </DialogPrimitive.Content>
-              </DialogPrimitive.Portal>
-            </DialogPrimitive.Root>
-          }
+          <DialogPrimitive.Root>
+            <DialogPrimitive.Trigger asChild>
+              <button type="button" className="info-button">
+                <Info className="pokemon-battle-card-logo-info" />
+              </button>
+            </DialogPrimitive.Trigger>
+            <DialogPrimitive.Portal>
+              <DialogPrimitive.Overlay className="modal-overlay" />
+              <DialogPrimitive.Content className="modal-content">
+                <DialogPrimitive.Close className="modal-close">
+                  <X className="h-4 w-4" />
+                </DialogPrimitive.Close>
+                <PokedexDetails idBattle={id} isBattle={true} />
+              </DialogPrimitive.Content>
+            </DialogPrimitive.Portal>
+          </DialogPrimitive.Root>
         </div>
         <img
           src={isShinyBattle ? imgShiny : img}

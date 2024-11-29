@@ -30,8 +30,8 @@ export default function Home() {
           <div className="home-paragraph">
             <p className="home-first-paragraph">
               Explorez notre Pokédex complet pour découvrir chaque Pokémon :
-              types, statistiques, évolutions… toutes les informations pour
-              devenir incollable !
+              type, catégorie, poids, taille, statistiques ... toutes les
+              informations pour devenir incollable !
             </p>
             <br />
             <p className="home-second-paragraph">

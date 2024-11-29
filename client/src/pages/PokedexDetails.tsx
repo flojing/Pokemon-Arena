@@ -95,7 +95,9 @@ export default function PokedexDetails({
   }
 
   return (
-    <div className="details-page-container">
+    <div
+      className={!isBattle ? "details-page-container" : "modal-page-container"}
+    >
       <div className="details-container">
         <div className="pokedex-detail-header">
           {!isBattle && (
