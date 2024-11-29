@@ -4,7 +4,7 @@
 }
 
 .modal-page-container {
-  height: auto;
+  height: 100vh;
 }
 
 .details-container {
@@ -238,6 +238,10 @@
 }
 
 @media screen and (min-width: 767px) {
+  .modal-page-container {
+    height: auto;
+  }
+
   .details-page-container {
     font-size: 1rem;
     background-color: #1c1636;
