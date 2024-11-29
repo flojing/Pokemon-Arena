@@ -1,5 +1,5 @@
 import "../styles/Winner.css";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import homeImage from "../assets/images/home.svg";
 import restartImage from "../assets/images/restart.svg";
@@ -10,6 +10,28 @@ export default function Winner() {
   const navigate = useNavigate();
   const { matchWinner, reset, setMatchWinner, restart } = useBattle();
   const { name, id, img, imgShiny } = matchWinner[0];
+
+  const cardContainerRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (cardContainerRef.current && cardRef.current) {
+      const rect = cardContainerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const xRotation = (y / rect.height - 0.5) * 30;
+      const yRotation = (x / rect.width - 0.5) * -30;
+
+      setRotation({ x: xRotation, y: yRotation });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setRotation({ x: 0, y: 0 });
+  };
 
   const handleClickHome = () => {
     setMatchWinner([]);
@@ -37,14 +59,27 @@ export default function Winner() {
   return (
     <div id="winner-page">
       <h1 id="champion-title">Champion</h1>
-      <div className="winner-card-container">
-        <PokemonBattleCard
-          name={name}
-          id={id}
-          img={img}
-          imgShiny={imgShiny}
-          isWinner={true}
-        />
+      <div
+        ref={cardContainerRef}
+        className="winner-card-container"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div
+          ref={cardRef}
+          className="card"
+          style={{
+            transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          }}
+        >
+          <PokemonBattleCard
+            name={name}
+            id={id}
+            img={img}
+            imgShiny={imgShiny}
+            isWinner={true}
+          />
+        </div>
       </div>
       <nav id="winner-nav">
         <button

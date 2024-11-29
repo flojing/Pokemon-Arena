@@ -135,10 +135,15 @@
   .modal-content {
     transform: translate(-50%, -50%);
     width: 95%;
-    height: 580px;
+    height: 80vh;
     font-family: var(--font-family-h1);
     z-index: 10;
-    overflow: hidden;
+    overflow: auto;
+    scrollbar-width: none;
+  }
+
+  .modal-content::-webkit-scrollbar {
+    display: none;
   }
 
   .pokemon-battle-card-container {
