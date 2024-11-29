@@ -2,6 +2,9 @@ import { Collapse, Switch, alpha } from "@mui/material";
 import "../styles/SettingFilter.css";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import downImg from "/src/assets/images/down.svg";
+import restartImg from "/src/assets/images/restart.svg";
+import upImg from "/src/assets/images/up.svg";
 import { useBattle } from "../contexts/BattleProvider";
 import { generation, types } from "../services/arrays";
 import GenerationTypeFilter from "./GenerationTypeFilter";
@@ -43,11 +46,7 @@ export default function SettingFilter({ filter }: { filter: string }) {
           Génération{" "}
           <img
             className="setting-filter-img-button"
-            src={
-              !isGeneration
-                ? "/src/assets/images/down.svg"
-                : "/src/assets/images/up.svg"
-            }
+            src={!isGeneration ? downImg : upImg}
             alt="up"
             style={{ fill: "#4d3a8c" }}
           />
@@ -57,11 +56,7 @@ export default function SettingFilter({ filter }: { filter: string }) {
           onClick={handleClickReset}
           onKeyDown={handleClickReset}
         >
-          <img
-            src="/src/assets/images/restart.svg"
-            alt=""
-            style={{ width: "17px" }}
-          />
+          <img src={restartImg} alt="" style={{ width: "17px" }} />
           Reset
         </div>
       </div>
@@ -79,11 +74,7 @@ export default function SettingFilter({ filter }: { filter: string }) {
         Type{" "}
         <img
           className="setting-filter-img-button"
-          src={
-            !isType
-              ? "/src/assets/images/down.svg"
-              : "/src/assets/images/up.svg"
-          }
+          src={!isType ? downImg : upImg}
           alt="up"
           style={{ fill: "#4d3a8c" }}
         />
