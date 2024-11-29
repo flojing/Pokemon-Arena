@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import homeImage from "../assets/images/home.svg";
 import restartImage from "../assets/images/restart.svg";
+import MouseFollower from "../components/MouseFollower";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import { useBattle } from "../contexts/BattleProvider";
 
@@ -36,6 +37,7 @@ export default function Winner() {
 
   return (
     <div id="winner-page">
+      <MouseFollower id={id} />
       <h1 id="champion-title">Champion</h1>
       <div className="winner-card-container">
         <PokemonBattleCard
