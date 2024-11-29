@@ -51,6 +51,7 @@
   align-items: center;
   gap: 10px;
   border: solid 3px #644eae;
+  transition: transform 0.1s ease;
 }
 
 #winner-nav {
@@ -67,6 +68,11 @@
   background-color: #b3aace;
   color: #3b2d69;
   cursor: pointer;
+}
+
+.winner-button-nav:active {
+  transform: scale(0.95);
+  border: solid 3px white;
 }
 
 .winner-button-nav:hover .winner-image-button {
@@ -92,4 +98,11 @@
     justify-content: center;
     gap: 30px;
   }
+}
+
+.card {
+  height: 100%;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
 }

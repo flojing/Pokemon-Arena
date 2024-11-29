@@ -3,6 +3,10 @@
   height: 100vh;
 }
 
+.modal-page-container {
+  height: 100vh;
+}
+
 .details-container {
   background-color: var(--background-color);
   color: white;
@@ -174,6 +178,29 @@
   cursor: pointer;
   width: 40px;
   height: auto;
+  animation: shake 1.2s 2s 2;
+}
+
+@keyframes shake {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.cry-icon:active {
+  transform: scale(0.95);
 }
 
 .return-arrow-icon {
@@ -211,6 +238,10 @@
 }
 
 @media screen and (min-width: 767px) {
+  .modal-page-container {
+    height: auto;
+  }
+
   .details-page-container {
     font-size: 1rem;
     background-color: #1c1636;

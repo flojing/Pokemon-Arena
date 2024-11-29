@@ -70,6 +70,11 @@
   color: var(--color-font);
   align-self: flex-end;
   cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.battle-filters-button:active {
+  background-color: #b3aace;
 }
 
 .go-to-button-container {
@@ -94,6 +99,7 @@
   padding-left: 15px;
   cursor: pointer;
   border: solid 3px #644eae;
+  transition: transform 0.1s ease;
 }
 
 .go-to-button:hover {
@@ -102,6 +108,10 @@
   .img-button {
     background-color: #b3aace;
   }
+}
+.go-to-button:active {
+  transform: scale(0.95);
+  border: solid 3px white;
 }
 
 .img-button {
@@ -157,7 +167,7 @@
   .battle-filters-button {
     border-radius: 50px;
     background-color: #4d3a8c;
-    border: 1.5px solid white;
+    border: 2px solid #644eae;
     padding: 5px 15px;
     font-family: var(--font-family-p);
     font-size: var(--font-size-p);
@@ -165,6 +175,7 @@
     color: var(--color-font);
     align-self: flex-end;
     cursor: pointer;
+    transition: transform 0.1s ease;
   }
 
   .go-to-button-container {

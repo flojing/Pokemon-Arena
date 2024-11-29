@@ -20,9 +20,15 @@
   justify-content: space-around;
   cursor: pointer;
   border: solid 3px #644eae;
+  transition: transform 0.1s ease;
 }
 
 .next-round-button:hover {
   background-color: #b3aace;
   color: #3b2d69;
+}
+
+.next-round-button:active {
+  transform: scale(0.95);
+  border: solid 3px white;
 }
