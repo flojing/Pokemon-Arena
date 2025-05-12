@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import logoPokemon from "/src/assets/images/logo-pokemon-arena.png";
-import "/src/styles/Pokeball.css";
+import logoPokemon from "../assets/images/logo-pokemon-arena.png";
+import "../styles/Pokeball.css";
 
 const DracaufeuGif =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif";

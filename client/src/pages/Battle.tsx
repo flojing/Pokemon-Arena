@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import LogoVS from "/src/assets/images/logo_VS-removebg-preview 1.svg";
+import LogoVS from "../assets/images/logo_VS-removebg-preview 1.svg";
 import PokemonBattleCard from "../components/PokemonBattleCard";
 import "../styles/Battle.css";
 import TournamentStatus from "../components/TournamentStatus";

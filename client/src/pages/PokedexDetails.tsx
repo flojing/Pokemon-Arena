@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
-import "/src/styles/PokedexDetails.css";
+import "../styles/PokedexDetails.css";
 import { useEffect, useState } from "react";
-import returnArrow from "/src/assets/images/left-arrow.png";
-import cryIcon from "/src/assets/images/picto_musique_fond_blanc.svg";
+import returnArrow from "../assets/images/left-arrow.png";
+import cryIcon from "../assets/images/picto_musique_fond_blanc.svg";
 import PokemonDetailsContent from "../components/PokemonNavSpecifications";
 import PokemonNavStats from "../components/PokemonNavStats";
 import { useData } from "../contexts/DataProvider";

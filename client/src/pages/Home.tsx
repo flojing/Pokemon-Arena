@@ -1,8 +1,8 @@
-import "/src/styles/Home.css";
+import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
-import imgFirstButton from "/src/assets/images/Pokemon-removebg-preview 1.png";
-import logoPokemon from "/src/assets/images/logo-pokemon-arena.png";
-import imgSecondButton from "/src/assets/images/pokemon-pokedex-button.svg";
+import imgFirstButton from "../assets/images/Pokemon-removebg-preview 1.png";
+import logoPokemon from "../assets/images/logo-pokemon-arena.png";
+import imgSecondButton from "../assets/images/pokemon-pokedex-button.svg";
 import Pokeball from "../components/Pokeball";
 
 export default function Home() {
