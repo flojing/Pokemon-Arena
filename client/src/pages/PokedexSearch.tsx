@@ -4,7 +4,9 @@ import "../styles/PokedexSearch.css";
 import { Collapse } from "@mui/material";
 import { useEffect, useState } from "react";
 import returnArrow from "/src/assets/images/left-arrow.png";
+import downWhite from "../assets/images/down-white.svg";
 import imageSearchBar from "../assets/images/loupe.svg";
+import upWhite from "../assets/images/up-white.svg";
 import SettingFilter from "../components/SettingFilter";
 import { useBattle } from "../contexts/BattleProvider";
 import { useData } from "../contexts/DataProvider";
@@ -104,11 +106,7 @@ export default function PokedexSearch() {
         >
           Filtres{" "}
           <img
-            src={
-              !isFilters
-                ? "/src/assets/images/down-white.svg"
-                : "/src/assets/images/up-white.svg"
-            }
+            src={!isFilters ? downWhite : upWhite}
             alt=""
             className="battle-filter-img-button"
           />
