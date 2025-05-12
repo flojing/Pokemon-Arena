@@ -4,8 +4,10 @@ import { Collapse } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
-import returnArrow from "/src/assets/images/left-arrow.png";
 import monImage from "../assets/images/button-play-pokeball.png";
+import downWhite from "../assets/images/down-white.svg";
+import returnArrow from "../assets/images/left-arrow.png";
+import upWhite from "../assets/images/up-white.svg";
 import SettingFilter from "../components/SettingFilter";
 import { useBattle } from "../contexts/BattleProvider";
 import { useData } from "../contexts/DataProvider";
@@ -161,11 +163,7 @@ export default function BattleSettings() {
               >
                 Filtres{" "}
                 <img
-                  src={
-                    !isFilters
-                      ? "../assets/images/down-white.svg"
-                      : "../assets/images/up-white.svg"
-                  }
+                  src={!isFilters ? downWhite : upWhite}
                   alt=""
                   className="battle-filter-img-button"
                 />
