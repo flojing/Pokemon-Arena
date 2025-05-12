@@ -13,7 +13,7 @@
   "workspaces": ["client", "server"],
   "scripts": {
     "setup": "cd client && npm install --include=dev && cd ../server && npm install --include=dev",
-    "build": "cd client && npx vite build",
+    "build": "cd client && npx vite build && cd ../server && npm run build",
     "type-check": "tsc --noEmit",
     "check": "biome check --error-on-warnings --no-errors-on-unmatched --staged . && npm run check-types --workspaces --if-present",
     "clean": "node ./bin/clean",
@@ -23,11 +23,12 @@
     "dev:client": "npm run dev --workspace=client",
     "dev:server": "npm run dev --workspace=server",
     "prepare": "husky || true",
-    "start": "cd server && npm start",
+    "start": "node server.js",
     "test": "npm run test --workspaces --if-present"
   },
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "express": "^4.18.2"
   },
   "keywords": [],
   "author": "{{ org }}",
