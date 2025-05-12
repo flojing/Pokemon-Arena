@@ -163,8 +163,8 @@ export default function BattleSettings() {
                 <img
                   src={
                     !isFilters
-                      ? "/src/assets/images/down-white.svg"
-                      : "/src/assets/images/up-white.svg"
+                      ? "../assets/images/down-white.svg"
+                      : "../assets/images/up-white.svg"
                   }
                   alt=""
                   className="battle-filter-img-button"
