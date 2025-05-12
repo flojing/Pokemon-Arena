@@ -12,17 +12,21 @@
   },
   "workspaces": ["client", "server"],
   "scripts": {
-    "build": "npm run build --workspaces --if-present",
+    "install": "cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
     "check": "biome check --error-on-warnings --no-errors-on-unmatched --staged . && npm run check-types --workspaces --if-present",
     "clean": "node ./bin/clean",
     "db:migrate": "npm run db:migrate --workspace=server",
     "db:seed": "npm run db:seed --workspace=server",
-    "dev": "concurrently -c green,yellow -t \"HH:mm:ss\" -p \"{name} {time}\" \"npm:dev:*\"",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
     "dev:client": "npm run dev --workspace=client",
     "dev:server": "npm run dev --workspace=server",
     "prepare": "husky || true",
-    "start": "npm run start --workspace=server",
+    "start": "cd server && npm start",
     "test": "npm run test --workspaces --if-present"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
   },
   "keywords": [],
   "author": "{{ org }}",

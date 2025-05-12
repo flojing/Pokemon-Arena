@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: pokemon-arena
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: APP_PORT
+        value: 10000
+      - key: CLIENT_URL
+        value: https://pokemon-arena.onrender.com
