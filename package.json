@@ -13,7 +13,7 @@
   "workspaces": ["client", "server"],
   "scripts": {
     "setup": "cd client && npm install && cd ../server && npm install",
-    "build": "vite build",
+    "build": "cd client && npm run build",
     "type-check": "tsc --noEmit",
     "check": "biome check --error-on-warnings --no-errors-on-unmatched --staged . && npm run check-types --workspaces --if-present",
     "clean": "node ./bin/clean",
